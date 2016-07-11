@@ -24,10 +24,8 @@
 @property (nonatomic, strong) ControllerNavi *controllerNaviMine;
 @property (nonatomic, strong) ControllerMineMain *controllerMine;
 
-
 @property (nonatomic, strong) ControllerNavi *controllerNaviCommunity;
 @property (nonatomic, strong) ControllerCommunity * controllerCommunity;
-
 
 @end
 
