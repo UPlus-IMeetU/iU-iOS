@@ -150,6 +150,9 @@
                 [weakSelf.bannerArray removeAllObjects];
                 weakSelf.postListArray = [NSMutableArray arrayWithArray:community.postList];
                 weakSelf.bannerArray = [NSMutableArray arrayWithArray:community.banner];
+                if(community.bannerTag.count != 0){
+                    [weakSelf.bannerArray addObjectsFromArray:community.bannerTag];
+                }
                 if (weakSelf.bannerArray.count != 0) {
                     weakSelf.postListTableView.tableHeaderView = weakSelf.cycleScrollView;
                 }

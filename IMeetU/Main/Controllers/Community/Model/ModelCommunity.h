@@ -14,4 +14,5 @@
 @property (nonatomic,assign) long long time;
 @property (nonatomic,assign) BOOL hasNext;
 @property (nonatomic,strong) NSArray *postList;
+@property (nonatomic,strong) NSArray *bannerTag;
 @end

@@ -12,6 +12,7 @@
 @implementation ModelCommunity
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{@"banner":[ModelAdvert class],
+             @"bannerTag":[ModelAdvert class],
              @"postList":[ModelPost class]};
 }
 @end
