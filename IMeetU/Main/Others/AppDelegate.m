@@ -59,7 +59,6 @@
 
 #import "UserDefultAppGlobalStatus.h"
 
-
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 @property (nonatomic, strong) ControllerFirstLaunch *controllerFirstLaunch;
