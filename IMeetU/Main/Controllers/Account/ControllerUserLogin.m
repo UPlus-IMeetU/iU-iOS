@@ -27,8 +27,6 @@
 #import "AppDelegate.h"
 #import "MBProgressHUD+plug.h"
 
-#import <BQMM/BQMM.h>
-
 @interface ControllerUserLogin ()<YYKeyboardObserver>
 
 @property (weak, nonatomic) IBOutlet UITextField *textPhoneNumber;
@@ -120,22 +118,6 @@
                 [self.navigationController popToRootViewControllerAnimated:NO];
             });
             
-            
-            [[EMClient sharedClient].options setIsAutoLogin:YES];
-            dispatch_queue_t queue = dispatch_queue_create("tk.bourne.testQueue", DISPATCH_QUEUE_SERIAL);
-            dispatch_async(queue, ^{
-                EMError *error = [[EMClient sharedClient] loginWithUsername:responseData.imName password:responseData.imPasswork];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (!error){
-                        
-                    }else{
-                        hud.mode = MBProgressHUDModeCustomView;
-                        hud.labelText = @"im登录失败";
-                        [hud hide:YES afterDelay:1];
-                    }
-                });
-                
-            });
         }else{
             hud.mode = MBProgressHUDModeCustomView;
             hud.labelText = @"登录失败..";

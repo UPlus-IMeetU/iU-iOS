@@ -6,7 +6,7 @@
 //  Copyright © 2016年 zhanghao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ModelPost : NSObject
 @property (nonatomic,assign) NSInteger postId;

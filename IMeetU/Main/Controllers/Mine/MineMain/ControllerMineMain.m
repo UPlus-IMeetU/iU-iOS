@@ -15,7 +15,6 @@
 #import "XMNibStoryboardFilesName.h"
 
 #import "ModelUser.h"
-#import "EmptyController.h"
 
 #import "CellMineMainProfileAndPhotos.h"
 #import "CellMineMainPersonalIntroductions.h"
@@ -66,8 +65,6 @@
 #import "ControllerUserLoginOrRegister.h"
 
 #import "AppDelegate.h"
-#import "ControllerBiuBiu.h"
-#import "ControllerBiuPayB.h"
 #import "ControllerMatchSetting.h"
 
 #import "ControllerUserLogin.h"
@@ -77,10 +74,11 @@
 
 #import "XMHttpCommunity.h"
 #import "MLToast.h"
-#import "ControllerChatMsg.h"
 #import "ControllerSamePostList.h"
 
 #import "UIColor+Plug.h"
+
+#import "ControllerBiuPayB.h"
 
 @interface ControllerMineMain ()<UITableViewDataSource, UITableViewDelegate, CellMineMainPersonalIntroductionsDelegate, CellMineMainProfileAndPhotosDelegate, ControllerMineAlterCharacterDelegate, ControllerMineAlterInterestDelegate, ViewMineMainAlterProfileDelegate, ControllerMineAlterNameDelegate, ControllerMineAlterBirthdayDelegate, ControllerMineAlterConstellationDelegate, ControllerMineAlterAboutMeDelegate, ControllerMineAlterAddressDelegate, ControllerMineAlterBodyHeightWeightDelegate, ControllerMineAlterIdentityProfessionDelegate, ControllerMineAlterCompanyDelegate, ControllerSelectSchoolDelegate, ControllerMinePhotoBrowseDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, XMActionSheetMineMainMoreDelegate>
 
@@ -174,12 +172,6 @@
                 [[MLToast toastInView:self.view content:@"biu失败了~"] show];
             }
         }];
-    }
-    //进入聊天页面
-    else if(button.tag == 10002){
-        ControllerChatMsg *controllerChat = [[ControllerChatMsg alloc] initWithConversationChatter:_userCode    conversationType:EMConversationTypeChat backController:self];
-        [controllerChat setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:controllerChat animated:YES];
     }
 }
 

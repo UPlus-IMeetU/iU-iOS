@@ -6,7 +6,7 @@
 //  Copyright © 2016年 zhanghao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "ModelTag.h"
 
 @interface ModelTagsAll : NSObject

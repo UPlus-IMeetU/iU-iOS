@@ -26,8 +26,6 @@
 #import "UserDefultAccount.h"
 #import "ModelCharacher.h"
 
-#import "EMSDK.h"
-
 #import "ControllerMineAlterCharacter.h"
 #import "ModelRequestMineInfoUpdate.h"
 
@@ -40,7 +38,6 @@
 #import "ViewNewComerGuide.h"
 #import "ControllerTabBarMain.h"
 
-#import "DBCacheBiuBiu.h"
 #import "ControllerTabBarMain.h"
 
 #define CellCollectionMatchSettingCharacterIdentifier @"CellCollectionMatchSettingCharacter"
@@ -196,8 +193,6 @@
         if (successed) {
             self.modelMatchSetting.gender = gender;
             self.modelMatchSetting.characters = nil;
-            //清空本地数据库
-            [[DBCacheBiuBiu shareInstance] cleanDB];
         }
         [self.collectionViewSettting reloadData];
     }];
@@ -387,15 +382,6 @@
             
         }];
         
-        
-        //退出环信
-        dispatch_queue_t queue = dispatch_queue_create("em.logout.setting", DISPATCH_QUEUE_SERIAL);
-        dispatch_async(queue, ^{
-            EMError *logoutErr = [[EMClient sharedClient] logout:YES];
-            if (logoutErr) {
-                
-            }
-        });
         
         //进行UserDefaultAccount数据的清除
         [UserDefultAccount cleanAccountCache];
