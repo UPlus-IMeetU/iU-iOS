@@ -325,6 +325,12 @@
 		6FBC68871CFBCECA00B45657 /* ZXCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBC68841CFBCECA00B45657 /* ZXCycleScrollView.m */; };
 		6FBC68891CFBCEE000B45657 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FBC68881CFBCEE000B45657 /* Community.storyboard */; };
 		6FBC68A11CFBE9EA00B45657 /* XMHttpCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBC68A01CFBE9EA00B45657 /* XMHttpCommunity.m */; };
+		6FC13BCA1D34844D00B64C62 /* ControllerCouple.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13BC21D34844D00B64C62 /* ControllerCouple.m */; };
+		6FC13BCB1D34844D00B64C62 /* ControllerCouple.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13BC31D34844D00B64C62 /* ControllerCouple.xib */; };
+		6FC13BCC1D34844D00B64C62 /* CoupleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13BC51D34844D00B64C62 /* CoupleViewCell.m */; };
+		6FC13BCD1D34844D00B64C62 /* CoupleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13BC61D34844D00B64C62 /* CoupleViewCell.xib */; };
+		6FC13BCE1D34844D00B64C62 /* SquareViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13BC81D34844D00B64C62 /* SquareViewCell.m */; };
+		6FC13BCF1D34844D00B64C62 /* SquareViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13BC91D34844D00B64C62 /* SquareViewCell.xib */; };
 		6FE066341D3332F2001A02A6 /* IMCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE066321D3332F2001A02A6 /* IMCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -919,6 +925,15 @@
 		6FBC68881CFBCEE000B45657 /* Community.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		6FBC689F1CFBE9EA00B45657 /* XMHttpCommunity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMHttpCommunity.h; sourceTree = "<group>"; };
 		6FBC68A01CFBE9EA00B45657 /* XMHttpCommunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMHttpCommunity.m; sourceTree = "<group>"; };
+		6FC13BC11D34844D00B64C62 /* ControllerCouple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControllerCouple.h; path = Couple/ControllerCouple.h; sourceTree = "<group>"; };
+		6FC13BC21D34844D00B64C62 /* ControllerCouple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControllerCouple.m; path = Couple/ControllerCouple.m; sourceTree = "<group>"; };
+		6FC13BC31D34844D00B64C62 /* ControllerCouple.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ControllerCouple.xib; path = Couple/ControllerCouple.xib; sourceTree = "<group>"; };
+		6FC13BC41D34844D00B64C62 /* CoupleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoupleViewCell.h; path = Couple/CoupleViewCell.h; sourceTree = "<group>"; };
+		6FC13BC51D34844D00B64C62 /* CoupleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoupleViewCell.m; path = Couple/CoupleViewCell.m; sourceTree = "<group>"; };
+		6FC13BC61D34844D00B64C62 /* CoupleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CoupleViewCell.xib; path = Couple/CoupleViewCell.xib; sourceTree = "<group>"; };
+		6FC13BC71D34844D00B64C62 /* SquareViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SquareViewCell.h; path = Couple/SquareViewCell.h; sourceTree = "<group>"; };
+		6FC13BC81D34844D00B64C62 /* SquareViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SquareViewCell.m; path = Couple/SquareViewCell.m; sourceTree = "<group>"; };
+		6FC13BC91D34844D00B64C62 /* SquareViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SquareViewCell.xib; path = Couple/SquareViewCell.xib; sourceTree = "<group>"; };
 		6FE066321D3332F2001A02A6 /* IMCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMCore.framework; sourceTree = "<group>"; };
 		6FE066331D3332F2001A02A6 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
 		74126A2A9FF1D8D3F7A7D4C1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1826,6 +1841,7 @@
 		04B1659C1C89D87E00EE6DB8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6FC13BD01D34845200B64C62 /* Couple */,
 				041DA3211D33A49100429F23 /* Others */,
 				6FBC68671CFBCE6600B45657 /* Community */,
 				0450B7BF1C906637001DD60A /* Setting */,
@@ -2223,6 +2239,38 @@
 			name = titleView;
 			sourceTree = "<group>";
 		};
+		6FC13BD01D34845200B64C62 /* Couple */ = {
+			isa = PBXGroup;
+			children = (
+				6FC13BD11D34998400B64C62 /* Controller */,
+				6FC13BD21D34999300B64C62 /* View */,
+			);
+			name = Couple;
+			sourceTree = "<group>";
+		};
+		6FC13BD11D34998400B64C62 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6FC13BC11D34844D00B64C62 /* ControllerCouple.h */,
+				6FC13BC21D34844D00B64C62 /* ControllerCouple.m */,
+				6FC13BC31D34844D00B64C62 /* ControllerCouple.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		6FC13BD21D34999300B64C62 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6FC13BC41D34844D00B64C62 /* CoupleViewCell.h */,
+				6FC13BC51D34844D00B64C62 /* CoupleViewCell.m */,
+				6FC13BC61D34844D00B64C62 /* CoupleViewCell.xib */,
+				6FC13BC71D34844D00B64C62 /* SquareViewCell.h */,
+				6FC13BC81D34844D00B64C62 /* SquareViewCell.m */,
+				6FC13BC91D34844D00B64C62 /* SquareViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		8DED88011BE5CD828EC52278 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2412,10 +2460,12 @@
 				04B165EB1C89D87E00EE6DB8 /* XMBiuFaceStar.xib in Resources */,
 				044AF7801C8F0536009AF59F /* CellMineMainFooter.xib in Resources */,
 				044AF72F1C8D6E27009AF59F /* XMAlertDialog.xib in Resources */,
+				6FC13BCB1D34844D00B64C62 /* ControllerCouple.xib in Resources */,
 				044AF7501C8E6F86009AF59F /* CellMineMainProfileAndPhotos.xib in Resources */,
 				047519D11CA631CB009115CE /* BeeCloud.bundle in Resources */,
 				044AF77B1C8EF863009AF59F /* CellMineMainCollectionTag.xib in Resources */,
 				044B3F5F1CFEF4A300E9E46F /* CellCommunityNotifies.xib in Resources */,
+				6FC13BCD1D34844D00B64C62 /* CoupleViewCell.xib in Resources */,
 				044AF6D91C8C88B0009AF59F /* city.sqlite in Resources */,
 				047335F11CF844D50055A0C6 /* msg.wav in Resources */,
 				04B165721C89CC0B00EE6DB8 /* Assets.xcassets in Resources */,
@@ -2426,6 +2476,7 @@
 				04B165FA1C89D87E00EE6DB8 /* Mine.storyboard in Resources */,
 				0450B7D31C907F6B001DD60A /* ReusableViewMatchSettingFooter.xib in Resources */,
 				044B3FC91D02F0BF00E9E46F /* XMNetworkErr.xib in Resources */,
+				6FC13BCF1D34844D00B64C62 /* SquareViewCell.xib in Resources */,
 				0450B8131C925CF0001DD60A /* CellTableViewMineAlterInterestFooter.xib in Resources */,
 				0450B7E61C91A128001DD60A /* ViewMineMainAlterProfile.xib in Resources */,
 				040F4F961CAB731200AD8334 /* biubiu.wav in Resources */,
@@ -2537,6 +2588,7 @@
 				046B495A1CFC6B0B00946987 /* ControllerPostReleaseImage.m in Sources */,
 				6FBC68751CFBCE9300B45657 /* PostListCell.m in Sources */,
 				047519C41CA631CB009115CE /* BCHTTPSessionManager.m in Sources */,
+				6FC13BCE1D34844D00B64C62 /* SquareViewCell.m in Sources */,
 				044AF7381C8D8747009AF59F /* ControllerUserRegisterSecondStep.m in Sources */,
 				04C8F2151D23C640007DCF9F /* ModelActivity.m in Sources */,
 				044AF7881C8FCEFE009AF59F /* CellMinePhotoBrowse.m in Sources */,
@@ -2634,6 +2686,7 @@
 				047519B21CA631CB009115CE /* BCPayPalVerifyReq.m in Sources */,
 				04C8F2271D23C640007DCF9F /* ModelRemoteNotification.m in Sources */,
 				044AF73E1C8D878E009AF59F /* ControllerUserRegisterThirdStep.m in Sources */,
+				6FC13BCC1D34844D00B64C62 /* CoupleViewCell.m in Sources */,
 				044724C11C9A61EC000FD349 /* XMAlertDialog.m in Sources */,
 				047519CA1CA631CB009115CE /* BCPayCache.m in Sources */,
 				047519B81CA631CB009115CE /* BCQueryBillsCountResp.m in Sources */,
@@ -2733,6 +2786,7 @@
 				047519B31CA631CB009115CE /* BCQueryBillByIdReq.m in Sources */,
 				044AF7231C8D390D009AF59F /* XMQueryConstellation.m in Sources */,
 				044AF7241C8D390D009AF59F /* MLStructWrap.m in Sources */,
+				6FC13BCA1D34844D00B64C62 /* ControllerCouple.m in Sources */,
 				046B49791CFC6B3A00946987 /* TZImagePickerController.m in Sources */,
 				04DA95E11CAD6F1D00A5BF37 /* ControllerAboutIU.m in Sources */,
 			);

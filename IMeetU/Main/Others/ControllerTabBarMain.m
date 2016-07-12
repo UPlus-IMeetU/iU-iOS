@@ -16,16 +16,22 @@
 #import "ControllerCommunity.h"
 #import "MLToast.h"
 #import "Reachability.h"
+#import "ControllerCouple.h"
 
 #import "UITabBar+badge.h"
 
 @interface ControllerTabBarMain ()
+
+@property (nonatomic,strong) ControllerNavi *controllerNaviCouple;
+@property (nonatomic,strong) ControllerCouple *controllerCouple;
 
 @property (nonatomic, strong) ControllerNavi *controllerNaviMine;
 @property (nonatomic, strong) ControllerMineMain *controllerMine;
 
 @property (nonatomic, strong) ControllerNavi *controllerNaviCommunity;
 @property (nonatomic, strong) ControllerCommunity * controllerCommunity;
+
+
 
 @end
 
@@ -83,7 +89,12 @@
     bgView.backgroundColor = [UIColor  colorWithRed:50/255.0 green:64/255.0 blue:71/255.0 alpha:1];
     [self.tabBar insertSubview:bgView atIndex:0];
     self.tabBar.opaque = YES;
-    
+    //一半
+    self.controllerCouple = [ControllerCouple shareControllerCouple];
+    self.controllerNaviCouple = [[ControllerNavi alloc] initWithRootViewController:self.controllerCouple];
+    self.controllerNaviCouple.tabBarItem.image = [[UIImage imageNamed:@"tab_btn_cp_nor"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.controllerNaviCouple.tabBarItem.selectedImage = [[UIImage imageNamed:@"tab_btn_cp_light"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.controllerNaviCouple.title = @"一半";
     //社区
     self.controllerCommunity = [ControllerCommunity shareControllerCommunity];
     self.controllerNaviCommunity = [[ControllerNavi alloc] initWithRootViewController:self.controllerCommunity];
@@ -99,7 +110,7 @@
     self.controllerNaviMine.tabBarItem.selectedImage = [[UIImage imageNamed:@"main_tab_icon_mine_light"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     
-    self.viewControllers = @[self.controllerNaviCommunity,self.controllerNaviMine];
+    self.viewControllers = @[self.controllerNaviCouple,self.controllerNaviCommunity,self.controllerNaviMine];
     //默认显示发送biubiu的页面
     self.selectedIndex = 0;
     
