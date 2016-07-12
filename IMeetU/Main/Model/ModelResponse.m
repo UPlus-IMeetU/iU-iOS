@@ -9,7 +9,6 @@
 #import "ModelResponse.h"
 #import <YYKit/YYKit.h>
 #import "UserDefultAccount.h"
-#import "EMSDK.h"
 
 @implementation ModelResponse
 
@@ -22,14 +21,6 @@
 - (NSInteger)state{
     if (_state == 303) {
         [UserDefultAccount cleanAccountCache];
-        //退出环信
-        dispatch_queue_t queue = dispatch_queue_create("em.logout.setting", DISPATCH_QUEUE_SERIAL);
-        dispatch_async(queue, ^{
-            EMError *logoutErr = [[EMClient sharedClient] logout:YES];
-            if (logoutErr) {
-                
-            }
-        });
     }
     return _state;
 }

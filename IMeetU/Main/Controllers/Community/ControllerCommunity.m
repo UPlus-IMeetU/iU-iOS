@@ -16,7 +16,6 @@
 #import <YYKit/YYKit.h>
 #import "ModelTag.h"
 #import "ControllerCommunityNotifies.h"
-#import "ViewDrawerRightLoginRegister.h"
 #import "UserDefultAppGlobalStatus.h"
 #import "ControllerUserLogin.h"
 #import "ControllerUserRegisterThirdStep.h"
@@ -24,7 +23,7 @@
 #import "ControllerSamePostList.h"
 #import "ControllerTabBarMain.h"
 
-@interface ControllerCommunity ()<ControllerPostListDelegate,SMPagerTabViewDelegate, ControllerPostTagsDelegate,ViewDrawerRightLoginRegisterDelegate>
+@interface ControllerCommunity ()<ControllerPostListDelegate,SMPagerTabViewDelegate, ControllerPostTagsDelegate>
 @property (strong, nonatomic) SMPagerTabView *titleView;
 /**
  *  存储子视图控制器
@@ -180,17 +179,6 @@
     samePostList.titleName = model.content;
     samePostList.tagId = model.tagId;
     [self.navigationController pushViewController:samePostList animated:YES];
-}
-
-#pragma mark ViewDrawerRightLoginRegisterDelegate
-- (void)viewDrawerRightLogin:(ViewDrawerRightLoginRegister *)view{
-    ControllerUserLogin *controller = [ControllerUserLogin controller];
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
-- (void)viewDrawerRightRegister:(ViewDrawerRightLoginRegister *)view{
-    ControllerUserRegisterThirdStep *controller = [ControllerUserRegisterThirdStep controller];
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

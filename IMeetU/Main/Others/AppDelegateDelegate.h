@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
-#import "EMSDK.h"
 
 @protocol AppDelegateRemoteNotificationDelegate;
 
-@interface AppDelegateDelegate : NSObject<EMClientDelegate, EMChatManagerDelegate>
+@interface AppDelegateDelegate : NSObject
 
 + (instancetype)shareAppDelegateDelegate;
 

@@ -12,9 +12,7 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import "ControllerFirstLaunch.h"
 
-#import "ControllerDrawer.h"
 #import "ControllerMineMain.h"
-#import "ControllerDrawerRight.h"
 
 #import "NSDate+plug.h"
 #import "UIScreen+Plug.h"
@@ -22,8 +20,6 @@
 
 #import "AppDelegateDelegate.h"
 #import <YYKit/YYKit.h>
-
-#import "EMSDK.h"
 
 #import "AFNetworking.h"
 #import "XMUrlHttp.h"
@@ -40,10 +36,7 @@
 #import "ModelRequestMineInfoUpdate.h"
 
 #import "UserDefultConfig.h"
-#import "ControllerBiuBiu.h"
-#import "ControllerChatMsg.h"
 #import "FactotyLocalNotification.h"
-#import <BQMM/BQMM.h>
 #import <Bugly/Bugly.h>
 
 #import "UserDefultAccount.h"
@@ -113,28 +106,6 @@
     }
     [self.window makeKeyAndVisible];
     
-    //环信
-    EMOptions *options = [EMOptions optionsWithAppkey:@"imeetu#meetu"];
-    //options.apnsCertName = @"meetu_develop";
-    [[EMClient sharedClient] initializeSDKWithOptions:options];
-    [[EMClient sharedClient] addDelegate:[AppDelegateDelegate shareAppDelegateDelegate] delegateQueue:nil];
-    [[EMClient sharedClient].chatManager addDelegate:[AppDelegateDelegate shareAppDelegateDelegate] delegateQueue:nil];
-    BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
-    if (!isAutoLogin) {
-        dispatch_queue_t queue = dispatch_queue_create("em.login", DISPATCH_QUEUE_SERIAL);
-        dispatch_async(queue, ^{
-            EMError *error = [[EMClient sharedClient] loginWithUsername:[UserDefultAccount imName] password:[UserDefultAccount imPasswork]];
-            if (!error){
-                [[EMClient sharedClient].options setIsAutoLogin:YES];
-            }
-        });
-    }else{
-        
-    }
-    
-    //表情云
-    [[MMEmotionCentre defaultCentre] setAppId:@"5ca457f4bf624e31ac2dbc1ba3bc398e" secret:@"eafc5215121a4075927f4317e6ab67d5"];
-    
     //腾讯崩溃日志跟踪
     [Bugly startWithAppId:@"i1400009724"];
     //腾讯信鸽
@@ -159,7 +130,6 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[EMClient sharedClient] applicationDidEnterBackground:application];
     [self changeForeOrBackGround:0];
     
 }
@@ -167,7 +137,6 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [[AppDelegateDelegate shareAppDelegateDelegate] applicationWillEnterForeground:application];
     
-    [[EMClient sharedClient] applicationWillEnterForeground:application];
     self.isEnterFromRemoteNotification = YES;
     
     [self changeForeOrBackGround:1];
@@ -230,14 +199,6 @@
 #pragma mark 本地推送
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
     
-    if ([FactotyLocalNotification notificationTypeWithNotification:notification] == FactoryLocalNotificationTypeIMReceiveMsg) {
-        if (self.isEnterFromRemoteNotification) {
-            NSString *userCode = notification.userInfo[@"userCode"];
-            if (userCode) {
-                //ControllerChatMsg *controllerChat = [[ControllerChatMsg alloc] initWithConversationChatter:userCode conversationType:EMConversationTypeChat];
-            }
-        }
-    }
 }
 
 //禁止横屏

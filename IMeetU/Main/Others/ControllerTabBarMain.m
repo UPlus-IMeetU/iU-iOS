@@ -12,8 +12,6 @@
 #import "ControllerNavi.h"
 
 #import "ControllerUserLoginOrRegister.h"
-#import "ControllerDrawerRight.h"
-#import "ControllerBiuBiu.h"
 #import "ControllerMineMain.h"
 #import "ControllerCommunity.h"
 #import "MLToast.h"
@@ -23,21 +21,11 @@
 
 @interface ControllerTabBarMain ()
 
-@property (nonatomic, strong) ControllerNavi *controllerNaviBiu;
-@property (nonatomic, strong) ControllerBiuBiu *controllerBiu;
-
-@property (nonatomic, strong) ControllerNavi *controllerNaviMsg;
-@property (nonatomic, strong) ControllerDrawerRight *controllerMsg;
-
 @property (nonatomic, strong) ControllerNavi *controllerNaviMine;
 @property (nonatomic, strong) ControllerMineMain *controllerMine;
 
-
-@property (nonatomic, strong) ControllerNavi *
-controllerNaviCommunity;
+@property (nonatomic, strong) ControllerNavi *controllerNaviCommunity;
 @property (nonatomic, strong) ControllerCommunity * controllerCommunity;
-
-
 
 @end
 
@@ -55,17 +43,17 @@ controllerNaviCommunity;
 
 + (void)setBadgeMsgWithCount:(NSInteger)badge{
     ControllerTabBarMain *controller = [ControllerTabBarMain shareController];
-    UITabBarItem *tabBarItem = controller.controllerNaviMsg.tabBarItem;
     
-    if (badge == 0) {
-        tabBarItem.badgeValue = nil;
-    }else if (badge > 0 && badge < 100){
-        tabBarItem.badgeValue = [NSString stringWithFormat:@"%lu", (long)badge];
-    }else if (badge > 99 && badge < NSIntegerMax){
-        tabBarItem.badgeValue = @"99+";
-    }else{
-        tabBarItem.badgeValue = @"";
-    }
+//    UITabBarItem *tabBarItem = controller.controllerNaviMsg.tabBarItem;
+//    if (badge == 0) {
+//        tabBarItem.badgeValue = nil;
+//    }else if (badge > 0 && badge < 100){
+//        tabBarItem.badgeValue = [NSString stringWithFormat:@"%lu", (long)badge];
+//    }else if (badge > 99 && badge < NSIntegerMax){
+//        tabBarItem.badgeValue = @"99+";
+//    }else{
+//        tabBarItem.badgeValue = @"";
+//    }
 }
 
 + (void)setBadgeCommunityWithIsShow:(BOOL)isShow{
@@ -96,18 +84,6 @@ controllerNaviCommunity;
     [self.tabBar insertSubview:bgView atIndex:0];
     self.tabBar.opaque = YES;
     
-    self.controllerMsg = [ControllerDrawerRight controller];
-    self.controllerNaviMsg = [[ControllerNavi alloc] initWithRootViewController:self.controllerMsg];
-    self.controllerNaviMsg.tabBarItem.title = @"消息";
-    self.controllerNaviMsg.tabBarItem.image = [[UIImage imageNamed:@"main_tab_icon_mes_nor"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    self.controllerNaviMsg.tabBarItem.selectedImage = [[UIImage imageNamed:@"main_tab_icon_mes_light"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    self.controllerBiu = [ControllerBiuBiu shareControllerBiuBiu];
-    self.controllerNaviBiu = [[ControllerNavi alloc] initWithRootViewController:self.controllerBiu];
-    self.controllerNaviBiu.tabBarItem.title = @"BiuBiu";
-    self.controllerNaviBiu.tabBarItem.image = [[UIImage imageNamed:@"tab_icon_biu_nor"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    self.controllerNaviBiu.tabBarItem.selectedImage = [[UIImage imageNamed:@"tab_icon_biu_light"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
     //社区
     self.controllerCommunity = [ControllerCommunity shareControllerCommunity];
     self.controllerNaviCommunity = [[ControllerNavi alloc] initWithRootViewController:self.controllerCommunity];
@@ -123,7 +99,7 @@ controllerNaviCommunity;
     self.controllerNaviMine.tabBarItem.selectedImage = [[UIImage imageNamed:@"main_tab_icon_mine_light"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     
-    self.viewControllers = @[self.controllerNaviBiu,self.controllerNaviCommunity,self.controllerNaviMsg,self.controllerNaviMine];
+    self.viewControllers = @[self.controllerNaviCommunity,self.controllerNaviMine];
     //默认显示发送biubiu的页面
     self.selectedIndex = 0;
     

@@ -14,7 +14,5 @@ typedef NS_ENUM(NSInteger, FactoryLocalNotificationType){
 };
 @interface FactotyLocalNotification : NSObject
 
-+ (UILocalNotification*)notificationIMReceiveMsgWithAlertBody:(NSString*)alertBody userCode:(NSString*)userCode;
 
-+ (FactoryLocalNotificationType)notificationTypeWithNotification:(UILocalNotification*)notification;
 @end
