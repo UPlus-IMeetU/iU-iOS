@@ -7,7 +7,15 @@
 //
 
 #import "SquareViewCell.h"
+@interface SquareViewCell()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *colorView;
+@property (weak, nonatomic) IBOutlet UIImageView *topicImageView;
+@property (weak, nonatomic) IBOutlet UIView *topicNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topicInfoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topicNum;
 
+
+@end
 @implementation SquareViewCell
 
 - (void)awakeFromNib {

@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIView *viewChooseAgeLeft;
 @property (weak, nonatomic) IBOutlet UILabel *topicLabel;
 @property (nonatomic,strong) ModelFilter *modelFilter;
+
+- (void)initWithFormat:(NSString *)formatStr andWithFloor:(NSInteger)floor andWithCeil:(NSInteger)ceil;
 @end

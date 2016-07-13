@@ -11,11 +11,13 @@
 #import "FilterView.h"
 #import "ModelFilter.h"
 
+#import "ControllerMyVoice.h"
+
 #define Couple 10001
 #define Square 10002
 #define ScreenWidth [UIScreen screenWidth]
 #define ScreenHeight [UIScreen screenHeight]
-@interface ControllerCouple ()<UITableViewDelegate,UITableViewDataSource>
+@interface ControllerCouple ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) UITableView *squareTableView;
 @property (nonatomic,strong) UITableView * coupleTableView;
@@ -23,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *changeButton;
 @property (weak, nonatomic) IBOutlet UIButton *choiceButton;
 @property (nonatomic,strong) UIView *filterView;
+@property (nonatomic,strong) UIView *filterChildView;
 @end
 @implementation ControllerCouple
 
@@ -50,6 +53,7 @@
 - (void)prepareUI{
     [self.view addSubview:self.backScrollView];
     self.type = Couple;
+    [_changeButton setShowsTouchWhenHighlighted:YES];
     [_backScrollView addSubview:self.squareTableView];
     [_backScrollView addSubview:self.coupleTableView];
     [_backScrollView addSubview:self.filterView];
@@ -65,7 +69,6 @@
     if (self.type == Couple) {
         self.type = Square;
         [_backScrollView setContentOffset:CGPointMake(ScreenWidth, 0) animated:YES];
-        [_changeButton setImage:[UIImage imageNamed:@"cp_nav_btn_public"] forState:UIControlStateNormal];
         [UIView animateWithDuration:1 animations:^{
             _choiceButton.alpha = 0;
         }];
@@ -73,7 +76,6 @@
     //切换成一半
         self.type = Couple;
         [_backScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-        [_changeButton setImage:[UIImage imageNamed:@"cp_nav_btn_half"] forState:UIControlStateNormal];
         [UIView animateWithDuration:1 animations:^{
             _choiceButton.alpha = 1;
         }];
@@ -92,13 +94,7 @@
             [weakSelf.squareTableView.mj_header endRefreshing];
         }];
         [((MJIUHeader *)_squareTableView.mj_header) initGit];
-        _squareTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-            [weakSelf.squareTableView.mj_footer endRefreshing];
-        }];
-        _squareTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        MJRefreshBackNormalFooter *footer = (MJRefreshBackNormalFooter *)_squareTableView.mj_footer;
-        footer.stateLabel.textColor = [UIColor colorWithR:128 G:128 B:128 A:1];
-        footer.stateLabel.font = [UIFont systemFontOfSize:12];
+               _squareTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_squareTableView registerNib:[UINib xmNibFromMainBundleWithName:@"SquareViewCell"] forCellReuseIdentifier:@"SquareViewCell"];
 
 
@@ -139,6 +135,7 @@
         _backScrollView.showsHorizontalScrollIndicator = NO;
         _backScrollView.pagingEnabled = YES;
         _backScrollView.contentSize = CGSizeMake(ScreenWidth * 2, 0);
+        _backScrollView.delegate = self;
     }
     return _backScrollView;
 }
@@ -146,24 +143,37 @@
 - (UIView *)filterView{
     if (!_filterView) {
         _filterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, _backScrollView.height)];
-        _filterView.backgroundColor = [UIColor often_EEEEEE:0.5];
-        
+        _filterView.backgroundColor =  [UIColor colorWithR:0 G:0 B:0 A:0.5];
+        _filterChildView = [[UIView alloc] initWithFrame:CGRectMake(0, -200, ScreenWidth, 200)];
+        [_filterView addSubview:_filterChildView];
         FilterView *ageFilterView = [FilterView createFilterView];
         ageFilterView.frame = CGRectMake(0, 0, ScreenWidth, 100);
         ageFilterView.topicLabel.text = @"年龄范围:";
-        [_filterView addSubview:ageFilterView];
+        [ageFilterView initWithFormat:@"%lu岁-%lu岁" andWithFloor:16 andWithCeil:40];
+        [_filterChildView addSubview:ageFilterView];
         
         FilterView *rangeFilterView = [FilterView createFilterView];
         rangeFilterView.frame = CGRectMake(0, 100, ScreenWidth, 100);
         rangeFilterView.topicLabel.text = @"距离范围:";
-        rangeFilterView.viewChooseAgeLeft.userInteractionEnabled = NO;
-        
-        [_filterView addSubview:rangeFilterView];
+        rangeFilterView.viewChooseAgeLeft.hidden = YES;
+        [rangeFilterView initWithFormat:@"%lukm-%lukm" andWithFloor:0 andWithCeil:100];
+        [_filterChildView addSubview:rangeFilterView];
+        _filterView.alpha = 0;
     }
     return _filterView;
 }
+#pragma mark UIScrollViewDelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 
-
+{
+    NSInteger pageInt = floor(scrollView.contentOffset.x / scrollView.frame.size.width);
+    if (pageInt == 0) {
+        [_changeButton setImage:[UIImage imageNamed:@"cp_nav_btn_half"] forState:UIControlStateNormal];
+    }else if(pageInt == 1){
+         [_changeButton setImage:[UIImage imageNamed:@"cp_nav_btn_public"] forState:UIControlStateNormal];
+    }
+}
+#pragma mark UITableViewDelegate,UITableViewDataSourse
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
     if (tableView.tag == Couple) {
@@ -174,12 +184,12 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.backgroundColor = [UIColor clearColor];
-    cell.layer.transform = CATransform3DMakeScale(0.97, 0.97, 1);
-    //x和y的最终值为1
-    [UIView animateWithDuration:0.5 animations:^{
-        cell.layer.transform = CATransform3DMakeScale(1, 1, 1);
-        //cell.alpha=1;
-    }];
+//    cell.layer.transform = CATransform3DMakeScale(0.97, 0.97, 1);
+//    //x和y的最终值为1
+//    [UIView animateWithDuration:0.5 animations:^{
+//        cell.layer.transform = CATransform3DMakeScale(1, 1, 1);
+//        //cell.alpha=1;
+//    }];
 
     return cell;
 }
@@ -203,6 +213,29 @@
         return 127;
     }
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ControllerMyVoice *myVoice = [[ControllerMyVoice alloc] init];
+    [self.navigationController pushViewController:myVoice animated:YES];
+}
+
+
+
+- (IBAction)choiceButtonClick:(id)sender {
+    if (_filterView.alpha == 0) {
+        [UIView animateWithDuration:.5 animations:^{
+            _filterView.alpha = 1;
+            _filterChildView.frame = CGRectMake(0, 0, ScreenWidth, 200);
+        }];
+    }else{
+        [UIView animateWithDuration:.5 animations:^{
+            _filterView.alpha = 0;
+            _filterChildView.frame = CGRectMake(0, -200, ScreenWidth, 200);
+        }];
+    }
+}
+
 
 
 
