@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintChooseAgeMarginLeft;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintChooseAgeMarginRight;
 @property (nonatomic,copy) NSString *formatStr;
+@property (nonatomic,assign) NSInteger max;
+@property (nonatomic,assign) NSInteger min;
 
 @end
 @implementation FilterView
@@ -35,14 +37,23 @@
 
 
 - (void)awakeFromNib {
+    _min = 16;
+    _max = 40;
     [self initChooseAgeRange];
+
 }
 
 - (void)setModelFilter:(ModelFilter *)modelFilter{
     _modelFilter = modelFilter;
-    _formatStr = modelFilter.formatStr;
     _ageFloorSelected = modelFilter.selectFloor;
     _ageCeilingSelected = modelFilter.selectCeil;
+    [self initChooseAgeRange];
+}
+
+- (void)initWithFormat:(NSString *)formatStr andWithFloor:(NSInteger)floor andWithCeil:(NSInteger)ceil{
+    _formatStr = formatStr;
+    _max = ceil;
+    _min = floor;
     [self initChooseAgeRange];
 }
 
@@ -51,7 +62,10 @@
         _formatStr = @"%lu岁-%lu岁";
     }
     float slidingRange = [UIScreen screenWidth] - 20*2;
+    NSLog(@"ceil = %lu floor = %lu",self.ageCeiling,self.ageFloor);
     float step = slidingRange/(self.ageCeiling-self.ageFloor);
+    NSLog(@"step = %f",step);
+    NSLog(@"slidingRange = %lu",slidingRange);
     self.constraintChooseAgeMarginLeft.constant = step*(self.ageFloorSelected-self.ageFloor)+20-25;
     self.constraintChooseAgeMarginRight.constant = step*(self.ageCeilingSelected-self.ageFloor)+20-25;
     self.constraintChooseAgeRangeMarginLeft.constant = self.constraintChooseAgeMarginLeft.constant+25;
@@ -70,6 +84,7 @@
                 self.constraintChooseAgeRangeLength.constant = self.constraintChooseAgeMarginRight.constant-self.constraintChooseAgeMarginLeft.constant;
                 self.ageFloorSelected = ((margin+25-20)/step+0.5)+self.ageFloor;
                 [self.labelAgeRange setText:[NSString stringWithFormat:_formatStr, self.ageFloorSelected, self.ageCeilingSelected]];
+                NSLog(@"min = %lu , max = %lu",self.ageFloorSelected,self.ageCeilingSelected);
             }
         }else if(gestureRecognizer.state == UIGestureRecognizerStateEnded){
             NSLog(@"选择完毕");
@@ -95,11 +110,11 @@
 }
 
 - (NSInteger)ageFloor{
-   return  _modelFilter.floor ? _modelFilter.floor : 16;
+    return 0 ;
 }
 
 - (NSInteger)ageCeiling{
-    return _modelFilter.ceil ? _modelFilter.ceil : 40;
+    return _max ;
 }
 
 - (NSInteger)ageCeilingSelected{
@@ -107,7 +122,7 @@
         _ageCeilingSelected = self.ageCeiling;
     }
     if (_ageCeilingSelected<=self.ageFloorSelected) {
-        _ageCeilingSelected = self.ageFloorSelected+1;
+        _ageCeilingSelected = self.ageFloorSelected;
     }
     return _ageCeilingSelected;
 }

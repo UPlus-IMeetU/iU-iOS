@@ -365,6 +365,8 @@
 		6FC13BDA1D34D29800B64C62 /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13BD91D34D29800B64C62 /* FilterView.m */; };
 		6FC13BDC1D34D2A500B64C62 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13BDB1D34D2A500B64C62 /* FilterView.xib */; };
 		6FC13BE01D34DDE600B64C62 /* ModelFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13BDF1D34DDE600B64C62 /* ModelFilter.m */; };
+		6FC13BE41D35DD8900B64C62 /* ControllerMyVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13BE21D35DD8900B64C62 /* ControllerMyVoice.m */; };
+		6FC13BE51D35DD8900B64C62 /* ControllerMyVoice.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13BE31D35DD8900B64C62 /* ControllerMyVoice.xib */; };
 		6FE066341D3332F2001A02A6 /* IMCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE066321D3332F2001A02A6 /* IMCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -1027,6 +1029,9 @@
 		6FC13BDB1D34D2A500B64C62 /* FilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FilterView.xib; path = Couple/FilterView.xib; sourceTree = "<group>"; };
 		6FC13BDE1D34DDE600B64C62 /* ModelFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelFilter.h; sourceTree = "<group>"; };
 		6FC13BDF1D34DDE600B64C62 /* ModelFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelFilter.m; sourceTree = "<group>"; };
+		6FC13BE11D35DD8900B64C62 /* ControllerMyVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControllerMyVoice.h; path = MyVoice/ControllerMyVoice.h; sourceTree = "<group>"; };
+		6FC13BE21D35DD8900B64C62 /* ControllerMyVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControllerMyVoice.m; path = MyVoice/ControllerMyVoice.m; sourceTree = "<group>"; };
+		6FC13BE31D35DD8900B64C62 /* ControllerMyVoice.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ControllerMyVoice.xib; path = MyVoice/ControllerMyVoice.xib; sourceTree = "<group>"; };
 		6FE066321D3332F2001A02A6 /* IMCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMCore.framework; sourceTree = "<group>"; };
 		6FE066331D3332F2001A02A6 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
 		74126A2A9FF1D8D3F7A7D4C1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1279,6 +1284,7 @@
 				044AF7481C8E6E06009AF59F /* MineMain */,
 				044AF7811C8FC328009AF59F /* MineMainPhotoBrower */,
 				044AF7081C8D3061009AF59F /* AlterUserInfo */,
+				6FC13BE61D35DD9300B64C62 /* MyVoice */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2479,6 +2485,16 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		6FC13BE61D35DD9300B64C62 /* MyVoice */ = {
+			isa = PBXGroup;
+			children = (
+				6FC13BE11D35DD8900B64C62 /* ControllerMyVoice.h */,
+				6FC13BE21D35DD8900B64C62 /* ControllerMyVoice.m */,
+				6FC13BE31D35DD8900B64C62 /* ControllerMyVoice.xib */,
+			);
+			name = MyVoice;
+			sourceTree = "<group>";
+		};
 		8DED88011BE5CD828EC52278 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2792,6 +2808,7 @@
 				0450B7C21C90665A001DD60A /* ControllerMatchSetting.m in Sources */,
 				04B165E71C89D87E00EE6DB8 /* XMBiuCenterView.m in Sources */,
 				04C8F2211D23C640007DCF9F /* ModelResponseMineHeader.m in Sources */,
+				6FC13BE41D35DD8900B64C62 /* ControllerMyVoice.m in Sources */,
 				04B165EC1C89D87E00EE6DB8 /* XMBiuFaceStarCollection.m in Sources */,
 				044AF77A1C8EF863009AF59F /* CellMineMainCollectionTag.m in Sources */,
 				044AF7571C8E7210009AF59F /* CellMineMainBaseInfo.m in Sources */,

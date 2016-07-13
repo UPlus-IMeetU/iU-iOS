@@ -96,6 +96,13 @@
                     <constraint firstItem="92h-93-Qqj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="wW3-Qw-nRH"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="colorView" destination="QhS-5P-dIb" id="gyU-h8-5zJ"/>
+                <outlet property="topicImageView" destination="APS-tX-bjc" id="aJe-EG-o2U"/>
+                <outlet property="topicInfoLabel" destination="5uU-l0-0GZ" id="nvY-Fi-xly"/>
+                <outlet property="topicNameLabel" destination="sO0-I0-bg1" id="3m2-df-vvc"/>
+                <outlet property="topicNum" destination="G90-Fu-CFZ" id="Dff-6A-UMg"/>
+            </connections>
             <point key="canvasLocation" x="203.5" y="348.5"/>
         </tableViewCell>
     </objects>
