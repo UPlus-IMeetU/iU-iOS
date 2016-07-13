@@ -207,6 +207,35 @@
 		04A31D991C98091E00BCBAE0 /* ModelMineAlterInterestSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A31D981C98091E00BCBAE0 /* ModelMineAlterInterestSection.m */; };
 		04AC65C21D35ECBE00FB61F0 /* ControllerNaviIM.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65C11D35ECBE00FB61F0 /* ControllerNaviIM.m */; };
 		04AC65C51D35ECFA00FB61F0 /* ControllerIMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65C41D35ECFA00FB61F0 /* ControllerIMConversation.m */; };
+		04AC65F31D35F32700FB61F0 /* TextParserIMInputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65C81D35F32700FB61F0 /* TextParserIMInputPanel.m */; };
+		04AC65F41D35F32700FB61F0 /* ViewIMInputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65CA1D35F32700FB61F0 /* ViewIMInputPanel.m */; };
+		04AC65F51D35F32700FB61F0 /* ViewIMInputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC65CB1D35F32700FB61F0 /* ViewIMInputPanel.xib */; };
+		04AC65F61D35F32700FB61F0 /* CellCollectionEmojiEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65CF1D35F32700FB61F0 /* CellCollectionEmojiEmoji.m */; };
+		04AC65F71D35F32700FB61F0 /* CellCollectionEmojiEmoji.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC65D01D35F32700FB61F0 /* CellCollectionEmojiEmoji.xib */; };
+		04AC65F81D35F32700FB61F0 /* CellCollectionEmojiMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65D21D35F32700FB61F0 /* CellCollectionEmojiMarket.m */; };
+		04AC65F91D35F32700FB61F0 /* CellCollectionEmojiMarket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC65D31D35F32700FB61F0 /* CellCollectionEmojiMarket.xib */; };
+		04AC65FA1D35F32700FB61F0 /* CellCollectionEmojiStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65D51D35F32700FB61F0 /* CellCollectionEmojiStore.m */; };
+		04AC65FB1D35F32700FB61F0 /* CellCollectionEmojiStore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC65D61D35F32700FB61F0 /* CellCollectionEmojiStore.xib */; };
+		04AC65FC1D35F32700FB61F0 /* CellCollectionEmojiSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65D81D35F32700FB61F0 /* CellCollectionEmojiSwitch.m */; };
+		04AC65FD1D35F32700FB61F0 /* CellCollectionEmojiSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC65D91D35F32700FB61F0 /* CellCollectionEmojiSwitch.xib */; };
+		04AC65FE1D35F32700FB61F0 /* DBEmojiStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65DB1D35F32700FB61F0 /* DBEmojiStore.m */; };
+		04AC65FF1D35F32700FB61F0 /* InputViewIMEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65DD1D35F32700FB61F0 /* InputViewIMEmoji.m */; };
+		04AC66001D35F32700FB61F0 /* InputViewIMEmoji.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC65DE1D35F32700FB61F0 /* InputViewIMEmoji.xib */; };
+		04AC66011D35F32700FB61F0 /* ModelEmojiStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65E01D35F32700FB61F0 /* ModelEmojiStore.m */; };
+		04AC66021D35F32700FB61F0 /* ModelEmojiStores.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65E21D35F32700FB61F0 /* ModelEmojiStores.m */; };
+		04AC66031D35F32700FB61F0 /* ModelIMEmojiMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65E41D35F32700FB61F0 /* ModelIMEmojiMarket.m */; };
+		04AC66041D35F32700FB61F0 /* ModelIMEmojiMarketItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65E61D35F32700FB61F0 /* ModelIMEmojiMarketItem.m */; };
+		04AC66051D35F32700FB61F0 /* ModelIMEmojiMarkets.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65E81D35F32700FB61F0 /* ModelIMEmojiMarkets.m */; };
+		04AC66061D35F32700FB61F0 /* InputViewIM.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65EA1D35F32700FB61F0 /* InputViewIM.m */; };
+		04AC66071D35F32700FB61F0 /* InputViewIMMore.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65ED1D35F32700FB61F0 /* InputViewIMMore.m */; };
+		04AC66081D35F32700FB61F0 /* InputViewIMMore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC65EE1D35F32700FB61F0 /* InputViewIMMore.xib */; };
+		04AC66091D35F32700FB61F0 /* InputViewIMVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65F11D35F32700FB61F0 /* InputViewIMVoice.m */; };
+		04AC660A1D35F32700FB61F0 /* InputViewIMVoice.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC65F21D35F32700FB61F0 /* InputViewIMVoice.xib */; };
+		04AC66161D35F47600FB61F0 /* IMEmojiHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC660D1D35F47600FB61F0 /* IMEmojiHelper.m */; };
+		04AC66171D35F47600FB61F0 /* IMEmojiUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC660F1D35F47600FB61F0 /* IMEmojiUrlHelper.m */; };
+		04AC66181D35F47600FB61F0 /* ModelIMEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC66111D35F47600FB61F0 /* ModelIMEmoji.m */; };
+		04AC66191D35F47600FB61F0 /* ModelIMEmojis.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC66131D35F47600FB61F0 /* ModelIMEmojis.m */; };
+		04AC661A1D35F47600FB61F0 /* ModelsIMEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC66151D35F47600FB61F0 /* ModelsIMEmoji.m */; };
 		04B0F4251CBF96F300268082 /* CellUserIdentifierGuideBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0F41E1CBF96F300268082 /* CellUserIdentifierGuideBody.m */; };
 		04B0F4261CBF96F300268082 /* CellUserIdentifierGuideBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B0F41F1CBF96F300268082 /* CellUserIdentifierGuideBody.xib */; };
 		04B0F4271CBF96F300268082 /* CellUserIdentifierGuideFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0F4211CBF96F300268082 /* CellUserIdentifierGuideFooter.m */; };
@@ -724,6 +753,56 @@
 		04AC65C11D35ECBE00FB61F0 /* ControllerNaviIM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerNaviIM.m; sourceTree = "<group>"; };
 		04AC65C31D35ECFA00FB61F0 /* ControllerIMConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerIMConversation.h; sourceTree = "<group>"; };
 		04AC65C41D35ECFA00FB61F0 /* ControllerIMConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerIMConversation.m; sourceTree = "<group>"; };
+		04AC65C71D35F32700FB61F0 /* TextParserIMInputPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextParserIMInputPanel.h; sourceTree = "<group>"; };
+		04AC65C81D35F32700FB61F0 /* TextParserIMInputPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextParserIMInputPanel.m; sourceTree = "<group>"; };
+		04AC65C91D35F32700FB61F0 /* ViewIMInputPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewIMInputPanel.h; sourceTree = "<group>"; };
+		04AC65CA1D35F32700FB61F0 /* ViewIMInputPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewIMInputPanel.m; sourceTree = "<group>"; };
+		04AC65CB1D35F32700FB61F0 /* ViewIMInputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewIMInputPanel.xib; sourceTree = "<group>"; };
+		04AC65CE1D35F32700FB61F0 /* CellCollectionEmojiEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCollectionEmojiEmoji.h; sourceTree = "<group>"; };
+		04AC65CF1D35F32700FB61F0 /* CellCollectionEmojiEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCollectionEmojiEmoji.m; sourceTree = "<group>"; };
+		04AC65D01D35F32700FB61F0 /* CellCollectionEmojiEmoji.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCollectionEmojiEmoji.xib; sourceTree = "<group>"; };
+		04AC65D11D35F32700FB61F0 /* CellCollectionEmojiMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCollectionEmojiMarket.h; sourceTree = "<group>"; };
+		04AC65D21D35F32700FB61F0 /* CellCollectionEmojiMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCollectionEmojiMarket.m; sourceTree = "<group>"; };
+		04AC65D31D35F32700FB61F0 /* CellCollectionEmojiMarket.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCollectionEmojiMarket.xib; sourceTree = "<group>"; };
+		04AC65D41D35F32700FB61F0 /* CellCollectionEmojiStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCollectionEmojiStore.h; sourceTree = "<group>"; };
+		04AC65D51D35F32700FB61F0 /* CellCollectionEmojiStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCollectionEmojiStore.m; sourceTree = "<group>"; };
+		04AC65D61D35F32700FB61F0 /* CellCollectionEmojiStore.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCollectionEmojiStore.xib; sourceTree = "<group>"; };
+		04AC65D71D35F32700FB61F0 /* CellCollectionEmojiSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCollectionEmojiSwitch.h; sourceTree = "<group>"; };
+		04AC65D81D35F32700FB61F0 /* CellCollectionEmojiSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCollectionEmojiSwitch.m; sourceTree = "<group>"; };
+		04AC65D91D35F32700FB61F0 /* CellCollectionEmojiSwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCollectionEmojiSwitch.xib; sourceTree = "<group>"; };
+		04AC65DA1D35F32700FB61F0 /* DBEmojiStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBEmojiStore.h; sourceTree = "<group>"; };
+		04AC65DB1D35F32700FB61F0 /* DBEmojiStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBEmojiStore.m; sourceTree = "<group>"; };
+		04AC65DC1D35F32700FB61F0 /* InputViewIMEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewIMEmoji.h; sourceTree = "<group>"; };
+		04AC65DD1D35F32700FB61F0 /* InputViewIMEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewIMEmoji.m; sourceTree = "<group>"; };
+		04AC65DE1D35F32700FB61F0 /* InputViewIMEmoji.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputViewIMEmoji.xib; sourceTree = "<group>"; };
+		04AC65DF1D35F32700FB61F0 /* ModelEmojiStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEmojiStore.h; sourceTree = "<group>"; };
+		04AC65E01D35F32700FB61F0 /* ModelEmojiStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEmojiStore.m; sourceTree = "<group>"; };
+		04AC65E11D35F32700FB61F0 /* ModelEmojiStores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEmojiStores.h; sourceTree = "<group>"; };
+		04AC65E21D35F32700FB61F0 /* ModelEmojiStores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEmojiStores.m; sourceTree = "<group>"; };
+		04AC65E31D35F32700FB61F0 /* ModelIMEmojiMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelIMEmojiMarket.h; sourceTree = "<group>"; };
+		04AC65E41D35F32700FB61F0 /* ModelIMEmojiMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelIMEmojiMarket.m; sourceTree = "<group>"; };
+		04AC65E51D35F32700FB61F0 /* ModelIMEmojiMarketItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelIMEmojiMarketItem.h; sourceTree = "<group>"; };
+		04AC65E61D35F32700FB61F0 /* ModelIMEmojiMarketItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelIMEmojiMarketItem.m; sourceTree = "<group>"; };
+		04AC65E71D35F32700FB61F0 /* ModelIMEmojiMarkets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelIMEmojiMarkets.h; sourceTree = "<group>"; };
+		04AC65E81D35F32700FB61F0 /* ModelIMEmojiMarkets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelIMEmojiMarkets.m; sourceTree = "<group>"; };
+		04AC65E91D35F32700FB61F0 /* InputViewIM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewIM.h; sourceTree = "<group>"; };
+		04AC65EA1D35F32700FB61F0 /* InputViewIM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewIM.m; sourceTree = "<group>"; };
+		04AC65EC1D35F32700FB61F0 /* InputViewIMMore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewIMMore.h; sourceTree = "<group>"; };
+		04AC65ED1D35F32700FB61F0 /* InputViewIMMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewIMMore.m; sourceTree = "<group>"; };
+		04AC65EE1D35F32700FB61F0 /* InputViewIMMore.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputViewIMMore.xib; sourceTree = "<group>"; };
+		04AC65F01D35F32700FB61F0 /* InputViewIMVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewIMVoice.h; sourceTree = "<group>"; };
+		04AC65F11D35F32700FB61F0 /* InputViewIMVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewIMVoice.m; sourceTree = "<group>"; };
+		04AC65F21D35F32700FB61F0 /* InputViewIMVoice.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputViewIMVoice.xib; sourceTree = "<group>"; };
+		04AC660C1D35F47600FB61F0 /* IMEmojiHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMEmojiHelper.h; sourceTree = "<group>"; };
+		04AC660D1D35F47600FB61F0 /* IMEmojiHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMEmojiHelper.m; sourceTree = "<group>"; };
+		04AC660E1D35F47600FB61F0 /* IMEmojiUrlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMEmojiUrlHelper.h; sourceTree = "<group>"; };
+		04AC660F1D35F47600FB61F0 /* IMEmojiUrlHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMEmojiUrlHelper.m; sourceTree = "<group>"; };
+		04AC66101D35F47600FB61F0 /* ModelIMEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelIMEmoji.h; sourceTree = "<group>"; };
+		04AC66111D35F47600FB61F0 /* ModelIMEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelIMEmoji.m; sourceTree = "<group>"; };
+		04AC66121D35F47600FB61F0 /* ModelIMEmojis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelIMEmojis.h; sourceTree = "<group>"; };
+		04AC66131D35F47600FB61F0 /* ModelIMEmojis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelIMEmojis.m; sourceTree = "<group>"; };
+		04AC66141D35F47600FB61F0 /* ModelsIMEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelsIMEmoji.h; sourceTree = "<group>"; };
+		04AC66151D35F47600FB61F0 /* ModelsIMEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelsIMEmoji.m; sourceTree = "<group>"; };
 		04B0F41D1CBF96F300268082 /* CellUserIdentifierGuideBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellUserIdentifierGuideBody.h; sourceTree = "<group>"; };
 		04B0F41E1CBF96F300268082 /* CellUserIdentifierGuideBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellUserIdentifierGuideBody.m; sourceTree = "<group>"; };
 		04B0F41F1CBF96F300268082 /* CellUserIdentifierGuideBody.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellUserIdentifierGuideBody.xib; sourceTree = "<group>"; };
@@ -1744,6 +1823,102 @@
 			path = BCWXPayAdapter;
 			sourceTree = "<group>";
 		};
+		04AC65C61D35F32700FB61F0 /* ViewIMInputPanel */ = {
+			isa = PBXGroup;
+			children = (
+				04AC65C71D35F32700FB61F0 /* TextParserIMInputPanel.h */,
+				04AC65C81D35F32700FB61F0 /* TextParserIMInputPanel.m */,
+				04AC65C91D35F32700FB61F0 /* ViewIMInputPanel.h */,
+				04AC65CA1D35F32700FB61F0 /* ViewIMInputPanel.m */,
+				04AC65CB1D35F32700FB61F0 /* ViewIMInputPanel.xib */,
+				04AC65CC1D35F32700FB61F0 /* ViewIMKeyboard */,
+			);
+			path = ViewIMInputPanel;
+			sourceTree = "<group>";
+		};
+		04AC65CC1D35F32700FB61F0 /* ViewIMKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				04AC65CD1D35F32700FB61F0 /* emoji */,
+				04AC65E91D35F32700FB61F0 /* InputViewIM.h */,
+				04AC65EA1D35F32700FB61F0 /* InputViewIM.m */,
+				04AC65EB1D35F32700FB61F0 /* more */,
+				04AC65EF1D35F32700FB61F0 /* voice */,
+			);
+			path = ViewIMKeyboard;
+			sourceTree = "<group>";
+		};
+		04AC65CD1D35F32700FB61F0 /* emoji */ = {
+			isa = PBXGroup;
+			children = (
+				04AC65CE1D35F32700FB61F0 /* CellCollectionEmojiEmoji.h */,
+				04AC65CF1D35F32700FB61F0 /* CellCollectionEmojiEmoji.m */,
+				04AC65D01D35F32700FB61F0 /* CellCollectionEmojiEmoji.xib */,
+				04AC65D11D35F32700FB61F0 /* CellCollectionEmojiMarket.h */,
+				04AC65D21D35F32700FB61F0 /* CellCollectionEmojiMarket.m */,
+				04AC65D31D35F32700FB61F0 /* CellCollectionEmojiMarket.xib */,
+				04AC65D41D35F32700FB61F0 /* CellCollectionEmojiStore.h */,
+				04AC65D51D35F32700FB61F0 /* CellCollectionEmojiStore.m */,
+				04AC65D61D35F32700FB61F0 /* CellCollectionEmojiStore.xib */,
+				04AC65D71D35F32700FB61F0 /* CellCollectionEmojiSwitch.h */,
+				04AC65D81D35F32700FB61F0 /* CellCollectionEmojiSwitch.m */,
+				04AC65D91D35F32700FB61F0 /* CellCollectionEmojiSwitch.xib */,
+				04AC65DA1D35F32700FB61F0 /* DBEmojiStore.h */,
+				04AC65DB1D35F32700FB61F0 /* DBEmojiStore.m */,
+				04AC65DC1D35F32700FB61F0 /* InputViewIMEmoji.h */,
+				04AC65DD1D35F32700FB61F0 /* InputViewIMEmoji.m */,
+				04AC65DE1D35F32700FB61F0 /* InputViewIMEmoji.xib */,
+				04AC65DF1D35F32700FB61F0 /* ModelEmojiStore.h */,
+				04AC65E01D35F32700FB61F0 /* ModelEmojiStore.m */,
+				04AC65E11D35F32700FB61F0 /* ModelEmojiStores.h */,
+				04AC65E21D35F32700FB61F0 /* ModelEmojiStores.m */,
+				04AC65E31D35F32700FB61F0 /* ModelIMEmojiMarket.h */,
+				04AC65E41D35F32700FB61F0 /* ModelIMEmojiMarket.m */,
+				04AC65E51D35F32700FB61F0 /* ModelIMEmojiMarketItem.h */,
+				04AC65E61D35F32700FB61F0 /* ModelIMEmojiMarketItem.m */,
+				04AC65E71D35F32700FB61F0 /* ModelIMEmojiMarkets.h */,
+				04AC65E81D35F32700FB61F0 /* ModelIMEmojiMarkets.m */,
+			);
+			path = emoji;
+			sourceTree = "<group>";
+		};
+		04AC65EB1D35F32700FB61F0 /* more */ = {
+			isa = PBXGroup;
+			children = (
+				04AC65EC1D35F32700FB61F0 /* InputViewIMMore.h */,
+				04AC65ED1D35F32700FB61F0 /* InputViewIMMore.m */,
+				04AC65EE1D35F32700FB61F0 /* InputViewIMMore.xib */,
+			);
+			path = more;
+			sourceTree = "<group>";
+		};
+		04AC65EF1D35F32700FB61F0 /* voice */ = {
+			isa = PBXGroup;
+			children = (
+				04AC65F01D35F32700FB61F0 /* InputViewIMVoice.h */,
+				04AC65F11D35F32700FB61F0 /* InputViewIMVoice.m */,
+				04AC65F21D35F32700FB61F0 /* InputViewIMVoice.xib */,
+			);
+			path = voice;
+			sourceTree = "<group>";
+		};
+		04AC660B1D35F47600FB61F0 /* EmojiHelper */ = {
+			isa = PBXGroup;
+			children = (
+				04AC660C1D35F47600FB61F0 /* IMEmojiHelper.h */,
+				04AC660D1D35F47600FB61F0 /* IMEmojiHelper.m */,
+				04AC660E1D35F47600FB61F0 /* IMEmojiUrlHelper.h */,
+				04AC660F1D35F47600FB61F0 /* IMEmojiUrlHelper.m */,
+				04AC66101D35F47600FB61F0 /* ModelIMEmoji.h */,
+				04AC66111D35F47600FB61F0 /* ModelIMEmoji.m */,
+				04AC66121D35F47600FB61F0 /* ModelIMEmojis.h */,
+				04AC66131D35F47600FB61F0 /* ModelIMEmojis.m */,
+				04AC66141D35F47600FB61F0 /* ModelsIMEmoji.h */,
+				04AC66151D35F47600FB61F0 /* ModelsIMEmoji.m */,
+			);
+			path = EmojiHelper;
+			sourceTree = "<group>";
+		};
 		04B0F41C1CBF96F300268082 /* ControllerUserIdentifierGuide */ = {
 			isa = PBXGroup;
 			children = (
@@ -2139,6 +2314,8 @@
 		04C8F2441D23D2A7007DCF9F /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				04AC65C61D35F32700FB61F0 /* ViewIMInputPanel */,
+				04AC660B1D35F47600FB61F0 /* EmojiHelper */,
 				04C8F2451D23D2EB007DCF9F /* ControllerIMChatMsg.h */,
 				04C8F2461D23D2EB007DCF9F /* ControllerIMChatMsg.m */,
 				04AC65C01D35ECBE00FB61F0 /* ControllerNaviIM.h */,
@@ -2452,6 +2629,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04AC66081D35F32700FB61F0 /* InputViewIMMore.xib in Resources */,
 				046B49601CFC6B0B00946987 /* ViewHeaderPostTags.xib in Resources */,
 				044AF76A1C8E7E48009AF59F /* CellMineMainTableViewHeader.xib in Resources */,
 				044AF7581C8E7210009AF59F /* CellMineMainBaseInfo.xib in Resources */,
@@ -2464,12 +2642,15 @@
 				6FBC68761CFBCE9300B45657 /* PostListCell.xib in Resources */,
 				04DA95EB1CAD7CE900A5BF37 /* ViewNewComerGuide.xib in Resources */,
 				044AF6831C8C85E7009AF59F /* ControllerSelectSchool.storyboard in Resources */,
+				04AC65FD1D35F32700FB61F0 /* CellCollectionEmojiSwitch.xib in Resources */,
 				044AF7651C8E77B9009AF59F /* CellMineMainPersonalIntroductions.xib in Resources */,
 				04B0F4261CBF96F300268082 /* CellUserIdentifierGuideBody.xib in Resources */,
 				046B495D1CFC6B0B00946987 /* CellPostTags.xib in Resources */,
 				0450B8121C925CF0001DD60A /* CellTableViewMineAlterInterest.xib in Resources */,
 				04B165E81C89D87E00EE6DB8 /* XMBiuCenterView.xib in Resources */,
 				04DA95DB1CAD2AEC00A5BF37 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				04AC65F51D35F32700FB61F0 /* ViewIMInputPanel.xib in Resources */,
+				04AC65F71D35F32700FB61F0 /* CellCollectionEmojiEmoji.xib in Resources */,
 				0450B80D1C925CF0001DD60A /* CellCollectionMineAlterCharacter.xib in Resources */,
 				04A31D901C9805F800BCBAE0 /* ReusableViewMineAlterCharacter.xib in Resources */,
 				044AF7601C8E7491009AF59F /* CellMineMainTags.xib in Resources */,
@@ -2478,12 +2659,14 @@
 				044AF6821C8C85E7009AF59F /* CellTableSchool.xib in Resources */,
 				041DA32D1D33A6C400429F23 /* ViewBiuPayB.xib in Resources */,
 				040F4FED1CABD56500AD8334 /* XMActionSheet.xib in Resources */,
+				04AC660A1D35F32700FB61F0 /* InputViewIMVoice.xib in Resources */,
 				044AF68A1C8C861C009AF59F /* ViewSchoolGroup.xib in Resources */,
 				6FBC68891CFBCEE000B45657 /* Community.storyboard in Resources */,
 				044AF7031C8D182E009AF59F /* XMInputViews.xib in Resources */,
 				6FBC687D1CFBCE9D00B45657 /* CommunityReplyCell.xib in Resources */,
 				04B0F4281CBF96F300268082 /* CellUserIdentifierGuideFooter.xib in Resources */,
 				044AF7891C8FCEFE009AF59F /* CellMinePhotoBrowse.xib in Resources */,
+				04AC65FB1D35F32700FB61F0 /* CellCollectionEmojiStore.xib in Resources */,
 				04B165751C89CC0B00EE6DB8 /* LaunchScreen.storyboard in Resources */,
 				0450B7C41C906678001DD60A /* Setting.storyboard in Resources */,
 				0450B7C91C907F13001DD60A /* ReusableViewMatchSettingHeader.xib in Resources */,
@@ -2500,12 +2683,14 @@
 				044AF6D91C8C88B0009AF59F /* city.sqlite in Resources */,
 				047335F11CF844D50055A0C6 /* msg.wav in Resources */,
 				04B165721C89CC0B00EE6DB8 /* Assets.xcassets in Resources */,
+				04AC65F91D35F32700FB61F0 /* CellCollectionEmojiMarket.xib in Resources */,
 				046B49781CFC6B3A00946987 /* TZImagePickerController.bundle in Resources */,
 				6F35633A1D06B65B0083AB90 /* banner_fail@2x.png in Resources */,
 				0450B8161C925CF0001DD60A /* ReusableViewMineAlterInterestFooter.xib in Resources */,
 				04C8F1B71D23C174007DCF9F /* Message.storyboard in Resources */,
 				04B165FA1C89D87E00EE6DB8 /* Mine.storyboard in Resources */,
 				0450B7D31C907F6B001DD60A /* ReusableViewMatchSettingFooter.xib in Resources */,
+				04AC66001D35F32700FB61F0 /* InputViewIMEmoji.xib in Resources */,
 				044B3FC91D02F0BF00E9E46F /* XMNetworkErr.xib in Resources */,
 				6FC13BCF1D34844D00B64C62 /* SquareViewCell.xib in Resources */,
 				6FC13BDC1D34D2A500B64C62 /* FilterView.xib in Resources */,
@@ -2587,6 +2772,7 @@
 			files = (
 				04B0F4271CBF96F300268082 /* CellUserIdentifierGuideFooter.m in Sources */,
 				044AF6C01C8C883D009AF59F /* DBCity.m in Sources */,
+				04AC66161D35F47600FB61F0 /* IMEmojiHelper.m in Sources */,
 				04C8F1DE1D23C61A007DCF9F /* ModelTagsAll.m in Sources */,
 				04C8F2471D23D2EB007DCF9F /* ControllerIMChatMsg.m in Sources */,
 				6FBC687E1CFBCE9D00B45657 /* ControllerReply.m in Sources */,
@@ -2626,6 +2812,7 @@
 				044AF7881C8FCEFE009AF59F /* CellMinePhotoBrowse.m in Sources */,
 				047519D41CA631CB009115CE /* BCAliPayAdapter.m in Sources */,
 				04A31D961C98081500BCBAE0 /* ModelMineAlterInterest.m in Sources */,
+				04AC661A1D35F47600FB61F0 /* ModelsIMEmoji.m in Sources */,
 				04C8F1D71D23C61A007DCF9F /* ModelCommunityNotice.m in Sources */,
 				046B49591CFC6B0B00946987 /* ControllerPostRelease.m in Sources */,
 				047519C81CA631CB009115CE /* BCURLResponseSerialization.m in Sources */,
@@ -2634,6 +2821,7 @@
 				04C8F21F1D23C640007DCF9F /* ModelResponse.m in Sources */,
 				044AF6F91C8D17BF009AF59F /* XMInputViewBirthday.m in Sources */,
 				6FBC68851CFBCECA00B45657 /* SMPagerTabView.m in Sources */,
+				04AC66041D35F32700FB61F0 /* ModelIMEmojiMarketItem.m in Sources */,
 				044AF7151C8D3061009AF59F /* ControllerMineAlterConstellation.m in Sources */,
 				04C8F2171D23C640007DCF9F /* ModelAdvert.m in Sources */,
 				04C8F2351D23C708007DCF9F /* YLLabel.m in Sources */,
@@ -2652,17 +2840,20 @@
 				047519BF1CA631CB009115CE /* BCRefundStatusReq.m in Sources */,
 				6FBC68861CFBCECA00B45657 /* UIViewAdditions.m in Sources */,
 				04B165EF1C89D87E00EE6DB8 /* NSString+Plug.m in Sources */,
+				04AC66011D35F32700FB61F0 /* ModelEmojiStore.m in Sources */,
 				040F4FFB1CACFD9E00AD8334 /* XMHttp.m in Sources */,
 				040F4F8D1CAAB96100AD8334 /* XMAlertDialogUnfriendYou.m in Sources */,
 				044AF7441C8D8887009AF59F /* ControllerUserForgotPassword.m in Sources */,
 				046B497C1CFC6B3A00946987 /* TZPhotoPreviewController.m in Sources */,
 				04C8F2201D23C640007DCF9F /* ModelResponseMine.m in Sources */,
+				04AC65FC1D35F32700FB61F0 /* CellCollectionEmojiSwitch.m in Sources */,
 				04B165F71C89D87E00EE6DB8 /* UITabBar+Plug.m in Sources */,
 				04C8F2251D23C640007DCF9F /* ModelUserListMatch.m in Sources */,
 				6FBC68741CFBCE9300B45657 /* ControllerPostList.m in Sources */,
 				047519B91CA631CB009115CE /* BCQueryRefundByIdReq.m in Sources */,
 				047519CD1CA631CB009115CE /* NSDictionary+Utils.m in Sources */,
 				044EB4661CE46C1A0076DCD6 /* ControllerNavi.m in Sources */,
+				04AC66061D35F32700FB61F0 /* InputViewIM.m in Sources */,
 				047519BC1CA631CB009115CE /* BCQueryRefundsResp.m in Sources */,
 				047519E81CA631CB009115CE /* BCWXPayAdapter.m in Sources */,
 				046B497B1CFC6B3A00946987 /* TZPhotoPreviewCell.m in Sources */,
@@ -2673,6 +2864,7 @@
 				04B165F11C89D87E00EE6DB8 /* UIColor+Plug.m in Sources */,
 				04C8F1D81D23C61A007DCF9F /* ModelCommunityNotifies.m in Sources */,
 				047519BA1CA631CB009115CE /* BCQueryRefundByIdResp.m in Sources */,
+				04AC66021D35F32700FB61F0 /* ModelEmojiStores.m in Sources */,
 				041DA32B1D33A6C400429F23 /* ControllerBiuPayB.m in Sources */,
 				045C01381CCA3D4400AFA3C3 /* UserDefultSetting.m in Sources */,
 				04B165E61C89D87E00EE6DB8 /* ControllerFirstLaunch.m in Sources */,
@@ -2703,9 +2895,11 @@
 				044AF7681C8E7D4D009AF59F /* CellMineMainTableViewHeader.m in Sources */,
 				046B49571CFC6B0B00946987 /* CellPostReleaseImage.m in Sources */,
 				04B165EE1C89D87E00EE6DB8 /* NSDate+plug.m in Sources */,
+				04AC65F81D35F32700FB61F0 /* CellCollectionEmojiMarket.m in Sources */,
 				041DA3201D33A3F100429F23 /* NSDate+MJ.m in Sources */,
 				0450B81E1C930C2B001DD60A /* ControllerUserProtocol.m in Sources */,
 				04C8F1D61D23C61A007DCF9F /* ModelCommunity.m in Sources */,
+				04AC65F31D35F32700FB61F0 /* TextParserIMInputPanel.m in Sources */,
 				04B165671C89CC0B00EE6DB8 /* main.m in Sources */,
 				046B497A1CFC6B3A00946987 /* TZPhotoPickerController.m in Sources */,
 				0450B8271C944943001DD60A /* XMUrlHttp.m in Sources */,
@@ -2714,6 +2908,7 @@
 				04E7B9A61CC870090047ABE8 /* FactotyLocalNotification.m in Sources */,
 				04B0F4251CBF96F300268082 /* CellUserIdentifierGuideBody.m in Sources */,
 				04B165F41C89D87E00EE6DB8 /* UINib+Plug.m in Sources */,
+				04AC66181D35F47600FB61F0 /* ModelIMEmoji.m in Sources */,
 				0450B8151C925CF0001DD60A /* ReusableViewMineAlterInterestFooter.m in Sources */,
 				047519B21CA631CB009115CE /* BCPayPalVerifyReq.m in Sources */,
 				04C8F2271D23C640007DCF9F /* ModelRemoteNotification.m in Sources */,
@@ -2736,14 +2931,17 @@
 				046B497D1CFC6B3A00946987 /* TZVideoPlayerController.m in Sources */,
 				0450B80C1C925CF0001DD60A /* CellCollectionMineAlterCharacter.m in Sources */,
 				044728C41CA26D16000FD349 /* MBProgressHUD+plug.m in Sources */,
+				04AC65FF1D35F32700FB61F0 /* InputViewIMEmoji.m in Sources */,
 				04C8F22B1D23C640007DCF9F /* ModelRemoteNotificationSendBiu.m in Sources */,
 				04A31D931C98080800BCBAE0 /* ModelMineAlterInterestAll.m in Sources */,
 				04B165F91C89D87E00EE6DB8 /* AppDelegate.m in Sources */,
+				04AC66191D35F47600FB61F0 /* ModelIMEmojis.m in Sources */,
 				04471F5E1C993AAE000FD349 /* ModelMinePhoto.m in Sources */,
 				04B165F31C89D87E00EE6DB8 /* UIImage+Plug.m in Sources */,
 				04C8F1D91D23C61A007DCF9F /* ModelImage.m in Sources */,
 				046B495C1CFC6B0B00946987 /* CellPostTags.m in Sources */,
 				6FBC68A11CFBE9EA00B45657 /* XMHttpCommunity.m in Sources */,
+				04AC65FA1D35F32700FB61F0 /* CellCollectionEmojiStore.m in Sources */,
 				044AF7471C8DD88B009AF59F /* XMInputViewProfession.m in Sources */,
 				047519B51CA631CB009115CE /* BCQueryBillsReq.m in Sources */,
 				04B165F21C89D87E00EE6DB8 /* UIDevice+Plug.m in Sources */,
@@ -2754,6 +2952,7 @@
 				04C8F1DB1D23C61A007DCF9F /* ModelPostDetail.m in Sources */,
 				046B497E1CFC6B3A00946987 /* UIView+Layout.m in Sources */,
 				047519D21CA631CB009115CE /* PaySandBoxViewController.m in Sources */,
+				04AC65F41D35F32700FB61F0 /* ViewIMInputPanel.m in Sources */,
 				04C8F22C1D23C640007DCF9F /* ModelRemoteNotificationXG.m in Sources */,
 				04C8F1BA1D23C34F007DCF9F /* ControllerCommunity.m in Sources */,
 				047519AF1CA631CB009115CE /* BCPayReq.m in Sources */,
@@ -2764,6 +2963,7 @@
 				044AF68D1C8C8738009AF59F /* ViewSelectSchoolSection.m in Sources */,
 				044AF6FA1C8D17BF009AF59F /* ModelCity.m in Sources */,
 				046B49761CFC6B3A00946987 /* TZAssetModel.m in Sources */,
+				04AC66171D35F47600FB61F0 /* IMEmojiUrlHelper.m in Sources */,
 				047519B71CA631CB009115CE /* BCQueryBillsCountReq.m in Sources */,
 				044AF7131C8D3061009AF59F /* ControllerMineAlter.m in Sources */,
 				04B165F61C89D87E00EE6DB8 /* UIStoryboard+Plug.m in Sources */,
@@ -2773,6 +2973,7 @@
 				046B495B1CFC6B0B00946987 /* ControllerPostReleaseText.m in Sources */,
 				04151AB11C967478008955C2 /* UserDefultAccount.m in Sources */,
 				046B49751CFC6B3A00946987 /* TZAssetCell.m in Sources */,
+				04AC66071D35F32700FB61F0 /* InputViewIMMore.m in Sources */,
 				047519BD1CA631CB009115CE /* BCQueryRefundsCountReq.m in Sources */,
 				044724BE1C9A5D7F000FD349 /* XMAlertDialogLoginRegister.m in Sources */,
 				0450B7E41C91A118001DD60A /* ViewMineMainAlterProfile.m in Sources */,
@@ -2780,6 +2981,7 @@
 				044AF6841C8C85E7009AF59F /* ControllerSelectSchool.m in Sources */,
 				044AF77F1C8F0536009AF59F /* CellMineMainFooter.m in Sources */,
 				04C8F21D1D23C640007DCF9F /* ModelRequestMineInfoUpdate.m in Sources */,
+				04AC66031D35F32700FB61F0 /* ModelIMEmojiMarket.m in Sources */,
 				04C8F1DA1D23C61A007DCF9F /* ModelPost.m in Sources */,
 				04B165F81C89D87E00EE6DB8 /* UIView+Plug.m in Sources */,
 				047519AC1CA631CB009115CE /* BeeCloud.m in Sources */,
@@ -2788,6 +2990,7 @@
 				044AF74B1C8E6E17009AF59F /* ControllerMineMain.m in Sources */,
 				044AF7011C8D17BF009AF59F /* XMInputViewGender.m in Sources */,
 				04C8F2191D23C640007DCF9F /* ModelBiuAccepts.m in Sources */,
+				04AC65F61D35F32700FB61F0 /* CellCollectionEmojiEmoji.m in Sources */,
 				04C8F2241D23C640007DCF9F /* ModelUser.m in Sources */,
 				04610B031CEDA56A0033B43E /* XMStitchingImage.m in Sources */,
 				04C8F2231D23C640007DCF9F /* ModelResponseRegisterLogin.m in Sources */,
@@ -2795,13 +2998,16 @@
 				04DA95DE1CAD5A1300A5BF37 /* XMActionSheetMineMainMore.m in Sources */,
 				044B3F5E1CFEF4A300E9E46F /* CellCommunityNotifies.m in Sources */,
 				044AF6C71C8C883D009AF59F /* DBSchools.m in Sources */,
+				04AC66051D35F32700FB61F0 /* ModelIMEmojiMarkets.m in Sources */,
 				047519C21CA631CB009115CE /* BCQueryBillResult.m in Sources */,
 				04C8F22A1D23C640007DCF9F /* ModelRemoteNotificationProfileStatus.m in Sources */,
 				04C8F2221D23C640007DCF9F /* ModelResponseOSSSecurityToke.m in Sources */,
 				04AC65C21D35ECBE00FB61F0 /* ControllerNaviIM.m in Sources */,
+				04AC66091D35F32700FB61F0 /* InputViewIMVoice.m in Sources */,
 				044AF6851C8C85E7009AF59F /* ModelSchools.m in Sources */,
 				044B3F6B1D00292800E9E46F /* UserDefultAppGlobalStatus.m in Sources */,
 				044AF72A1C8D3ADD009AF59F /* UIFont+Plug.m in Sources */,
+				04AC65FE1D35F32700FB61F0 /* DBEmojiStore.m in Sources */,
 				047519BE1CA631CB009115CE /* BCQueryRefundsCountResp.m in Sources */,
 				044AF7161C8D3061009AF59F /* ControllerMineAlterAddress.m in Sources */,
 				044AF75F1C8E7491009AF59F /* CellMineMainTags.m in Sources */,

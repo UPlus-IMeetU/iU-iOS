@@ -10,6 +10,9 @@
 #import "UIStoryboard+Plug.h"
 #import "UserDefultAccount.h"
 
+#import "ViewIMInputPanel.h"
+
+
 #import <ImSDK/ImSDK.h>
 
 @interface ControllerIMChatMsg ()<UITableViewDelegate, UITableViewDataSource, TIMMessageListener>
@@ -21,6 +24,7 @@
 
 @property (nonatomic, strong) NSMutableArray *msgs;
 
+@property (nonatomic, strong) ViewIMInputPanel *viewIMInputPanel;
 @end
 
 @implementation ControllerIMChatMsg
@@ -56,6 +60,9 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    [self.view addSubview:self.viewIMInputPanel];
+    [self.viewIMInputPanel initFrame];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -118,5 +125,11 @@
     }
 }
 
+- (ViewIMInputPanel *)viewIMInputPanel{
+    if (!_viewIMInputPanel) {
+        _viewIMInputPanel = [ViewIMInputPanel viewIMInputPanel];
+    }
+    return _viewIMInputPanel;
+}
 
 @end
