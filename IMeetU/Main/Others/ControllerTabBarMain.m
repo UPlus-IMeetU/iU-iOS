@@ -18,6 +18,9 @@
 #import "Reachability.h"
 #import "ControllerCouple.h"
 
+#import "ControllerNaviIM.h"
+#import "ControllerIMConversation.h"
+
 #import "UITabBar+badge.h"
 
 @interface ControllerTabBarMain ()
@@ -31,8 +34,8 @@
 @property (nonatomic, strong) ControllerNavi *controllerNaviCommunity;
 @property (nonatomic, strong) ControllerCommunity * controllerCommunity;
 
-
-
+@property (nonatomic, strong) ControllerNaviIM *controllerNaviIM;
+@property (nonatomic, strong) ControllerIMConversation *controllerIMConversation;
 @end
 
 @implementation ControllerTabBarMain
@@ -101,8 +104,15 @@
     self.controllerNaviCommunity.tabBarItem.image = [[UIImage imageNamed:@"tab_icon_found_nor"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.controllerNaviCommunity.tabBarItem.selectedImage = [[UIImage imageNamed:@"tab_icon_found_light"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.controllerNaviCommunity.title = @"发现";
+    //消息
+    self.controllerIMConversation = [ControllerIMConversation controller];
+    self.controllerNaviIM = [[ControllerNaviIM alloc] initWithRootViewController:self.controllerIMConversation];
+    self.controllerNaviIM.tabBarItem.title = @"消息";
+    self.controllerNaviIM.tabBarItem.image = [[UIImage imageNamed:@"main_tab_icon_mes_nor"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.controllerNaviIM.tabBarItem.selectedImage = [[UIImage imageNamed:@"main_tab_icon_mes_light"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     
+    //主页
     self.controllerMine = [ControllerMineMain  controllerWithUserCode:nil getUserCodeFrom:MineMainGetUserCodeFromUserDefult];
     self.controllerNaviMine = [[ControllerNavi alloc] initWithRootViewController:self.controllerMine];
     self.controllerNaviMine.tabBarItem.title = @"我的";
@@ -110,7 +120,7 @@
     self.controllerNaviMine.tabBarItem.selectedImage = [[UIImage imageNamed:@"main_tab_icon_mine_light"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     
-    self.viewControllers = @[self.controllerNaviCouple,self.controllerNaviCommunity,self.controllerNaviMine];
+    self.viewControllers = @[self.controllerNaviCouple,self.controllerNaviCommunity,self.controllerNaviIM,self.controllerNaviMine];
     //默认显示发送biubiu的页面
     self.selectedIndex = 0;
     
