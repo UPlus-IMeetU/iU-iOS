@@ -114,10 +114,6 @@
     [XGPush handleLaunching:launchOptions];
     [AppDelegate registerDeviceToken];
     
-    //[[TIMManager sharedInstance] setMessageListener:nil];
-    //[[TIMManager sharedInstance] setConnListener:nil];
-    //[[TIMManager sharedInstance] initSdk:1400009724 accountType:@"5119"];
-    
     
     [self changeForeOrBackGround:1];
     
@@ -166,9 +162,9 @@
     if ([UserDefultAccount isLogin]) {
         [XGPush setAccount:[UserDefultAccount userCode]];
         [XGPush registerDevice:deviceToken successCallback:^{
-            NSLog(@"registerDevice-------------suc");
+            //NSLog(@"registerDevice-------------suc");
         } errorCallback:^{
-            NSLog(@"registerDevice-------------err");
+            //NSLog(@"registerDevice-------------err");
         }];
     }
     
@@ -254,6 +250,8 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
+    
+    
 }
 
 

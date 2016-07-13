@@ -12,7 +12,7 @@
 
 //覆盖父类方法，控制视图大小
 - (CGRect)frame{
-    return CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 220);
+    return CGRectMake(0, 80, [UIScreen mainScreen].bounds.size.width, 220);
 }
 
 + (id)viewWithNibName:(NSString*)nibName viewClass:(Class)viewClass{

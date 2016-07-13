@@ -48,7 +48,7 @@
 }
 
 - (void)awakeFromNib{
-    self.inputViewHeight = 40;
+    self.inputViewHeight = 80;
     
     [self addSubview:self.inputViewIMVoice];
     [self addSubview:self.inputViewIMEmoji];

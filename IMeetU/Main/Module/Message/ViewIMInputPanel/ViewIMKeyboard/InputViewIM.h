@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InputViewIM : UIInputView
+@interface InputViewIM : UIView
 
 + (instancetype)inputViewWithHeight:(CGFloat)height;
 + (id)viewWithNibName:(NSString*)nibName viewClass:(Class)viewClass;

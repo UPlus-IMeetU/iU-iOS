@@ -236,6 +236,7 @@
 		04AC66181D35F47600FB61F0 /* ModelIMEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC66111D35F47600FB61F0 /* ModelIMEmoji.m */; };
 		04AC66191D35F47600FB61F0 /* ModelIMEmojis.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC66131D35F47600FB61F0 /* ModelIMEmojis.m */; };
 		04AC661A1D35F47600FB61F0 /* ModelsIMEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC66151D35F47600FB61F0 /* ModelsIMEmoji.m */; };
+		04AC661D1D35F6C200FB61F0 /* IMEmoji.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04AC661C1D35F6C200FB61F0 /* IMEmoji.bundle */; };
 		04B0F4251CBF96F300268082 /* CellUserIdentifierGuideBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0F41E1CBF96F300268082 /* CellUserIdentifierGuideBody.m */; };
 		04B0F4261CBF96F300268082 /* CellUserIdentifierGuideBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B0F41F1CBF96F300268082 /* CellUserIdentifierGuideBody.xib */; };
 		04B0F4271CBF96F300268082 /* CellUserIdentifierGuideFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0F4211CBF96F300268082 /* CellUserIdentifierGuideFooter.m */; };
@@ -805,6 +806,7 @@
 		04AC66131D35F47600FB61F0 /* ModelIMEmojis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelIMEmojis.m; sourceTree = "<group>"; };
 		04AC66141D35F47600FB61F0 /* ModelsIMEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelsIMEmoji.h; sourceTree = "<group>"; };
 		04AC66151D35F47600FB61F0 /* ModelsIMEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelsIMEmoji.m; sourceTree = "<group>"; };
+		04AC661C1D35F6C200FB61F0 /* IMEmoji.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IMEmoji.bundle; sourceTree = "<group>"; };
 		04B0F41D1CBF96F300268082 /* CellUserIdentifierGuideBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellUserIdentifierGuideBody.h; sourceTree = "<group>"; };
 		04B0F41E1CBF96F300268082 /* CellUserIdentifierGuideBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellUserIdentifierGuideBody.m; sourceTree = "<group>"; };
 		04B0F41F1CBF96F300268082 /* CellUserIdentifierGuideBody.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellUserIdentifierGuideBody.xib; sourceTree = "<group>"; };
@@ -1226,6 +1228,7 @@
 		044AF6CE1C8C88B0009AF59F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				04AC661B1D35F6C200FB61F0 /* im */,
 				044726641C9D0AA3000FD349 /* voice */,
 				044AF6D01C8C88B0009AF59F /* database */,
 			);
@@ -1923,6 +1926,14 @@
 				04AC66151D35F47600FB61F0 /* ModelsIMEmoji.m */,
 			);
 			path = EmojiHelper;
+			sourceTree = "<group>";
+		};
+		04AC661B1D35F6C200FB61F0 /* im */ = {
+			isa = PBXGroup;
+			children = (
+				04AC661C1D35F6C200FB61F0 /* IMEmoji.bundle */,
+			);
+			path = im;
 			sourceTree = "<group>";
 		};
 		04B0F41C1CBF96F300268082 /* ControllerUserIdentifierGuide */ = {
@@ -2645,7 +2656,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FC13BE51D35DD8900B64C62 /* ControllerMyVoice.xib in Resources */,
 				04AC66081D35F32700FB61F0 /* InputViewIMMore.xib in Resources */,
+				04AC661D1D35F6C200FB61F0 /* IMEmoji.bundle in Resources */,
 				046B49601CFC6B0B00946987 /* ViewHeaderPostTags.xib in Resources */,
 				044AF76A1C8E7E48009AF59F /* CellMineMainTableViewHeader.xib in Resources */,
 				044AF7581C8E7210009AF59F /* CellMineMainBaseInfo.xib in Resources */,

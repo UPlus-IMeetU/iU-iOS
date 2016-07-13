@@ -8,6 +8,7 @@
 
 #import "DBEmojiStore.h"
 #import "ModelEmojiStore.h"
+#import "FMDatabase.h"
 
 @implementation DBEmojiStore
 
