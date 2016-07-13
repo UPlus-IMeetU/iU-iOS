@@ -110,7 +110,7 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakSelf.postListTableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
         });
-        }else if([[dict objectForKey:@"operation"] integerValue] == 2){
+    }else if([[dict objectForKey:@"operation"] integerValue] == 2){
         NSInteger isDelete = [[dict objectForKey:@"delete"] integerValue];
         if (isDelete == 1) {
             //没有赞
@@ -138,7 +138,7 @@
     [[XMHttpCommunity http] loadCommunityListWithType:self.postListType withTimeStamp:time withCallBack:^(NSInteger code, id response, NSURLSessionDataTask *task, NSError *error) {
         [_postListTableView.mj_footer endRefreshing];
         [_postListTableView.mj_header endRefreshing];
-
+        
         if (code == 200) {
             [_xmNetworkErr destroyView];
             ModelCommunity *community = [ModelCommunity modelWithJSON:response];
@@ -149,10 +149,7 @@
                 [weakSelf.postListArray removeAllObjects];
                 [weakSelf.bannerArray removeAllObjects];
                 weakSelf.postListArray = [NSMutableArray arrayWithArray:community.postList];
-                weakSelf.bannerArray = [NSMutableArray arrayWithArray:community.banner];
-                if(community.bannerTag.count != 0){
-                    [weakSelf.bannerArray addObjectsFromArray:community.bannerTag];
-                }
+                weakSelf.bannerArray = [NSMutableArray arrayWithArray:community.bannerTag];
                 if (weakSelf.bannerArray.count != 0) {
                     weakSelf.postListTableView.tableHeaderView = weakSelf.cycleScrollView;
                 }
@@ -169,21 +166,21 @@
                 _emptyLabel.hidden = YES;
             }
         }
-   }];
+    }];
 }
 - (void)prepareUI{
-     [self.view addSubview:self.postListTableView];
+    [self.view addSubview:self.postListTableView];
     self.postListTableView.backgroundColor = [UIColor colorWithRed:191/255.0 green:191/255.0 blue:191/255.0 alpha:0.5];
     _emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 240, self.view.width, 20)];
     _emptyLabel.font = [UIFont systemFontOfSize:13];
     _emptyLabel.textColor = [UIColor often_999999:1];
     _emptyLabel.textAlignment = NSTextAlignmentCenter;
-     [self.view addSubview:_emptyLabel];
-     if (self.postListType == PostListTypeBiuBiu) {
+    [self.view addSubview:_emptyLabel];
+    if (self.postListType == PostListTypeBiuBiu) {
         _emptyLabel.text = @"biubiu好友的内容动态会呈现在这里哦";
-     }else if(self.postListType == PostListTypeRecommend){
+    }else if(self.postListType == PostListTypeRecommend){
         _emptyLabel.text = @"iU推荐的内容动态会呈现在这里哦";
-     }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -191,6 +188,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 - (UITableView *)postListTableView{
     if (!_postListTableView) {
@@ -261,7 +261,7 @@
         if(weakSelf.delegate){
             ControllerReply *controllerReply = [ControllerReply shareControllerReply];
             controllerReply.postId = postId;
-            [((UIViewController *)weakSelf.delegate).navigationController pushViewController:controllerReply animated:YES];  
+            [((UIViewController *)weakSelf.delegate).navigationController pushViewController:controllerReply animated:YES];
         }
     };
     postListCell.width = self.view.width;
@@ -387,7 +387,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-     if (scrollView.dragging) {  // 拖拽
+    if (scrollView.dragging) {  // 拖拽
         if ((scrollView.contentOffset.y - contentOffsetY) > 15.0f && _postListArray.count != 0) {  // 向上拖拽
             if (self.delegate) {
                 if ([self.delegate respondsToSelector:@selector(hideTitleView:)]) {
@@ -429,7 +429,7 @@
         _cycleScrollView.pageControl.hidden = NO;
         _cycleScrollView.scrollView.scrollEnabled = YES;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-              [weakSelf.cycleScrollView.timer setFireDate:[NSDate distantPast]];
+            [weakSelf.cycleScrollView.timer setFireDate:[NSDate distantPast]];
         });
     }
     return _bannerArray.count;
@@ -449,24 +449,28 @@
 {
     ModelAdvert *modelAdvert = _bannerArray[index];
     NSString *coverUrl = modelAdvert.url;
-    //如果包含http跳转页面
+    //如果为空的话，不进行跳转
+    if ([coverUrl isEqualToString:@""]) {
+        return;
+    }
+    //如何包涵http,跳转的WebView进行加载
     if ([coverUrl containsString:@"http"]) {
         AdvertDetailController *advertController = [AdvertDetailController shareControllerAdvertWithModel:modelAdvert];
         [advertController setHidesBottomBarWhenPushed:YES];
         if (self.delegate) {
             [((UIViewController *)self.delegate).navigationController pushViewController:advertController animated:YES];
         }
+        //
     }else{
         ControllerSamePostList *samePostListController = [ControllerSamePostList controllerSamePostList];
         NSArray *array = [coverUrl componentsSeparatedByString:@","];
         samePostListController.tagId = [[array firstObject] intValue];
         samePostListController.titleName = [array lastObject];
-        [samePostListController setHidesBottomBarWhenPushed:YES];
         if (self.delegate) {
             [((UIViewController *)self.delegate).navigationController pushViewController:samePostListController animated:YES];
         }
     }
-  }
+}
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
