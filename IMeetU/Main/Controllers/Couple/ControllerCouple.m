@@ -8,6 +8,8 @@
 #import "MJRefresh.h"
 #import "MJIUHeader.h"
 
+#import "FilterView.h"
+#import "ModelFilter.h"
 
 #define Couple 10001
 #define Square 10002
@@ -20,6 +22,7 @@
 @property (nonatomic,assign) NSUInteger type;
 @property (weak, nonatomic) IBOutlet UIButton *changeButton;
 @property (weak, nonatomic) IBOutlet UIButton *choiceButton;
+@property (nonatomic,strong) UIView *filterView;
 @end
 @implementation ControllerCouple
 
@@ -49,6 +52,7 @@
     self.type = Couple;
     [_backScrollView addSubview:self.squareTableView];
     [_backScrollView addSubview:self.coupleTableView];
+    [_backScrollView addSubview:self.filterView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -137,6 +141,26 @@
         _backScrollView.contentSize = CGSizeMake(ScreenWidth * 2, 0);
     }
     return _backScrollView;
+}
+
+- (UIView *)filterView{
+    if (!_filterView) {
+        _filterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, _backScrollView.height)];
+        _filterView.backgroundColor = [UIColor often_EEEEEE:0.5];
+        
+        FilterView *ageFilterView = [FilterView createFilterView];
+        ageFilterView.frame = CGRectMake(0, 0, ScreenWidth, 100);
+        ageFilterView.topicLabel.text = @"年龄范围:";
+        [_filterView addSubview:ageFilterView];
+        
+        FilterView *rangeFilterView = [FilterView createFilterView];
+        rangeFilterView.frame = CGRectMake(0, 100, ScreenWidth, 100);
+        rangeFilterView.topicLabel.text = @"距离范围:";
+        rangeFilterView.viewChooseAgeLeft.userInteractionEnabled = NO;
+        
+        [_filterView addSubview:rangeFilterView];
+    }
+    return _filterView;
 }
 
 

@@ -333,6 +333,9 @@
 		6FC13BCD1D34844D00B64C62 /* CoupleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13BC61D34844D00B64C62 /* CoupleViewCell.xib */; };
 		6FC13BCE1D34844D00B64C62 /* SquareViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13BC81D34844D00B64C62 /* SquareViewCell.m */; };
 		6FC13BCF1D34844D00B64C62 /* SquareViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13BC91D34844D00B64C62 /* SquareViewCell.xib */; };
+		6FC13BDA1D34D29800B64C62 /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13BD91D34D29800B64C62 /* FilterView.m */; };
+		6FC13BDC1D34D2A500B64C62 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13BDB1D34D2A500B64C62 /* FilterView.xib */; };
+		6FC13BE01D34DDE600B64C62 /* ModelFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13BDF1D34DDE600B64C62 /* ModelFilter.m */; };
 		6FE066341D3332F2001A02A6 /* IMCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE066321D3332F2001A02A6 /* IMCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -940,6 +943,11 @@
 		6FC13BC71D34844D00B64C62 /* SquareViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SquareViewCell.h; path = Couple/SquareViewCell.h; sourceTree = "<group>"; };
 		6FC13BC81D34844D00B64C62 /* SquareViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SquareViewCell.m; path = Couple/SquareViewCell.m; sourceTree = "<group>"; };
 		6FC13BC91D34844D00B64C62 /* SquareViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SquareViewCell.xib; path = Couple/SquareViewCell.xib; sourceTree = "<group>"; };
+		6FC13BD81D34D29800B64C62 /* FilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterView.h; path = Couple/FilterView.h; sourceTree = "<group>"; };
+		6FC13BD91D34D29800B64C62 /* FilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterView.m; path = Couple/FilterView.m; sourceTree = "<group>"; };
+		6FC13BDB1D34D2A500B64C62 /* FilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FilterView.xib; path = Couple/FilterView.xib; sourceTree = "<group>"; };
+		6FC13BDE1D34DDE600B64C62 /* ModelFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelFilter.h; sourceTree = "<group>"; };
+		6FC13BDF1D34DDE600B64C62 /* ModelFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelFilter.m; sourceTree = "<group>"; };
 		6FE066321D3332F2001A02A6 /* IMCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMCore.framework; sourceTree = "<group>"; };
 		6FE066331D3332F2001A02A6 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
 		74126A2A9FF1D8D3F7A7D4C1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2252,6 +2260,7 @@
 		6FC13BD01D34845200B64C62 /* Couple */ = {
 			isa = PBXGroup;
 			children = (
+				6FC13BDD1D34DDD200B64C62 /* Model */,
 				6FC13BD11D34998400B64C62 /* Controller */,
 				6FC13BD21D34999300B64C62 /* View */,
 			);
@@ -2277,8 +2286,20 @@
 				6FC13BC71D34844D00B64C62 /* SquareViewCell.h */,
 				6FC13BC81D34844D00B64C62 /* SquareViewCell.m */,
 				6FC13BC91D34844D00B64C62 /* SquareViewCell.xib */,
+				6FC13BD81D34D29800B64C62 /* FilterView.h */,
+				6FC13BD91D34D29800B64C62 /* FilterView.m */,
+				6FC13BDB1D34D2A500B64C62 /* FilterView.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		6FC13BDD1D34DDD200B64C62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6FC13BDE1D34DDE600B64C62 /* ModelFilter.h */,
+				6FC13BDF1D34DDE600B64C62 /* ModelFilter.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		8DED88011BE5CD828EC52278 /* Frameworks */ = {
@@ -2487,6 +2508,7 @@
 				0450B7D31C907F6B001DD60A /* ReusableViewMatchSettingFooter.xib in Resources */,
 				044B3FC91D02F0BF00E9E46F /* XMNetworkErr.xib in Resources */,
 				6FC13BCF1D34844D00B64C62 /* SquareViewCell.xib in Resources */,
+				6FC13BDC1D34D2A500B64C62 /* FilterView.xib in Resources */,
 				0450B8131C925CF0001DD60A /* CellTableViewMineAlterInterestFooter.xib in Resources */,
 				0450B7E61C91A128001DD60A /* ViewMineMainAlterProfile.xib in Resources */,
 				040F4F961CAB731200AD8334 /* biubiu.wav in Resources */,
@@ -2702,6 +2724,7 @@
 				047519B81CA631CB009115CE /* BCQueryBillsCountResp.m in Sources */,
 				044724BB1C9A5B95000FD349 /* MLToast.m in Sources */,
 				0450B7C81C907F13001DD60A /* ReusableViewMatchSettingHeader.m in Sources */,
+				6FC13BDA1D34D29800B64C62 /* FilterView.m in Sources */,
 				044AF7841C8FC347009AF59F /* ControllerMinePhotoBrowse.m in Sources */,
 				047519AE1CA631CB009115CE /* BCBaseResp.m in Sources */,
 				04DA95CF1CAD0EBC00A5BF37 /* XMHttpPersonal.m in Sources */,
@@ -2791,6 +2814,7 @@
 				047519D01CA631CB009115CE /* BCSandBoxAdapter.m in Sources */,
 				0491592D1CA3EBD400EE1481 /* CABasicAnimation+plug.m in Sources */,
 				04151AA71C95AEC4008955C2 /* XMOSS.m in Sources */,
+				6FC13BE01D34DDE600B64C62 /* ModelFilter.m in Sources */,
 				044B3FC71D02F0B200E9E46F /* XMNetworkErr.m in Sources */,
 				0450B7DA1C910EA4001DD60A /* CellCollectionMatchSettingCharacter.m in Sources */,
 				04175C051CE38A9C003AD14B /* ControllerTabBarMain.m in Sources */,
