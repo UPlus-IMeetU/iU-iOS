@@ -53,10 +53,10 @@
 - (void)prepareUI{
     [self.view addSubview:self.backScrollView];
     self.type = Couple;
-    [_changeButton setShowsTouchWhenHighlighted:YES];
     [_backScrollView addSubview:self.squareTableView];
     [_backScrollView addSubview:self.coupleTableView];
     [_backScrollView addSubview:self.filterView];
+    [_changeButton setAdjustsImageWhenDisabled:NO];
 }
 
 - (void)didReceiveMemoryWarning {
