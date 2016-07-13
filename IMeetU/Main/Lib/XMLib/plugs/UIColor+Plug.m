@@ -13,7 +13,7 @@
 
 + (instancetype)xmColorWithHexStrRGB:(NSString *)colorStr{
     UIColor *color;
-    
+    colorStr = [NSString toUpper:colorStr];
     if (colorStr.length == 6) {
         
         NSInteger r = [NSString hexNumberWithString:[colorStr substringWithRange:NSMakeRange(0, 2)]];
@@ -30,7 +30,7 @@
 
 + (instancetype)xmColorWithHexStrRGBA:(NSString *)colorStr{
     UIColor *color;
-    
+    colorStr = [NSString toUpper:colorStr];
     if (colorStr.length == 8) {
         
         NSInteger r = [NSString hexNumberWithString:[colorStr substringWithRange:NSMakeRange(0, 2)]];
@@ -48,7 +48,7 @@
 
 + (instancetype)xmColorWithHexStrRGB:(NSString*)colorStr alpha:(CGFloat)alpha{
     UIColor *color;
-    
+    colorStr = [NSString toUpper:colorStr];
     if (colorStr.length == 6) {
         //透明度小于0
         alpha = alpha<0?0:alpha;
@@ -66,6 +66,7 @@
     
     return color;
 }
+
 
 + (instancetype)often_000000:(float)alpha{
     return [UIColor colorWithRed:0 green:0 blue:0 alpha:alpha];
