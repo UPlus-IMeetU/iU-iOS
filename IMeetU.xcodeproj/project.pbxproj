@@ -205,6 +205,8 @@
 		04A31D931C98080800BCBAE0 /* ModelMineAlterInterestAll.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A31D921C98080800BCBAE0 /* ModelMineAlterInterestAll.m */; };
 		04A31D961C98081500BCBAE0 /* ModelMineAlterInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A31D951C98081500BCBAE0 /* ModelMineAlterInterest.m */; };
 		04A31D991C98091E00BCBAE0 /* ModelMineAlterInterestSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A31D981C98091E00BCBAE0 /* ModelMineAlterInterestSection.m */; };
+		04AC65C21D35ECBE00FB61F0 /* ControllerNaviIM.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65C11D35ECBE00FB61F0 /* ControllerNaviIM.m */; };
+		04AC65C51D35ECFA00FB61F0 /* ControllerIMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC65C41D35ECFA00FB61F0 /* ControllerIMConversation.m */; };
 		04B0F4251CBF96F300268082 /* CellUserIdentifierGuideBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0F41E1CBF96F300268082 /* CellUserIdentifierGuideBody.m */; };
 		04B0F4261CBF96F300268082 /* CellUserIdentifierGuideBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B0F41F1CBF96F300268082 /* CellUserIdentifierGuideBody.xib */; };
 		04B0F4271CBF96F300268082 /* CellUserIdentifierGuideFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0F4211CBF96F300268082 /* CellUserIdentifierGuideFooter.m */; };
@@ -715,6 +717,10 @@
 		04A31D951C98081500BCBAE0 /* ModelMineAlterInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelMineAlterInterest.m; sourceTree = "<group>"; };
 		04A31D971C98091E00BCBAE0 /* ModelMineAlterInterestSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelMineAlterInterestSection.h; sourceTree = "<group>"; };
 		04A31D981C98091E00BCBAE0 /* ModelMineAlterInterestSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelMineAlterInterestSection.m; sourceTree = "<group>"; };
+		04AC65C01D35ECBE00FB61F0 /* ControllerNaviIM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerNaviIM.h; sourceTree = "<group>"; };
+		04AC65C11D35ECBE00FB61F0 /* ControllerNaviIM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerNaviIM.m; sourceTree = "<group>"; };
+		04AC65C31D35ECFA00FB61F0 /* ControllerIMConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerIMConversation.h; sourceTree = "<group>"; };
+		04AC65C41D35ECFA00FB61F0 /* ControllerIMConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerIMConversation.m; sourceTree = "<group>"; };
 		04B0F41D1CBF96F300268082 /* CellUserIdentifierGuideBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellUserIdentifierGuideBody.h; sourceTree = "<group>"; };
 		04B0F41E1CBF96F300268082 /* CellUserIdentifierGuideBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellUserIdentifierGuideBody.m; sourceTree = "<group>"; };
 		04B0F41F1CBF96F300268082 /* CellUserIdentifierGuideBody.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellUserIdentifierGuideBody.xib; sourceTree = "<group>"; };
@@ -2127,6 +2133,10 @@
 			children = (
 				04C8F2451D23D2EB007DCF9F /* ControllerIMChatMsg.h */,
 				04C8F2461D23D2EB007DCF9F /* ControllerIMChatMsg.m */,
+				04AC65C01D35ECBE00FB61F0 /* ControllerNaviIM.h */,
+				04AC65C11D35ECBE00FB61F0 /* ControllerNaviIM.m */,
+				04AC65C31D35ECFA00FB61F0 /* ControllerIMConversation.h */,
+				04AC65C41D35ECFA00FB61F0 /* ControllerIMConversation.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -2765,6 +2775,7 @@
 				047519C21CA631CB009115CE /* BCQueryBillResult.m in Sources */,
 				04C8F22A1D23C640007DCF9F /* ModelRemoteNotificationProfileStatus.m in Sources */,
 				04C8F2221D23C640007DCF9F /* ModelResponseOSSSecurityToke.m in Sources */,
+				04AC65C21D35ECBE00FB61F0 /* ControllerNaviIM.m in Sources */,
 				044AF6851C8C85E7009AF59F /* ModelSchools.m in Sources */,
 				044B3F6B1D00292800E9E46F /* UserDefultAppGlobalStatus.m in Sources */,
 				044AF72A1C8D3ADD009AF59F /* UIFont+Plug.m in Sources */,
@@ -2776,6 +2787,7 @@
 				044B3F681D0026C900E9E46F /* XMHttpGlobal.m in Sources */,
 				044726AC1C9D5CC7000FD349 /* AppDelegateDelegate.m in Sources */,
 				04C8F21B1D23C640007DCF9F /* ModelInterests.m in Sources */,
+				04AC65C51D35ECFA00FB61F0 /* ControllerIMConversation.m in Sources */,
 				047519D01CA631CB009115CE /* BCSandBoxAdapter.m in Sources */,
 				0491592D1CA3EBD400EE1481 /* CABasicAnimation+plug.m in Sources */,
 				04151AA71C95AEC4008955C2 /* XMOSS.m in Sources */,
