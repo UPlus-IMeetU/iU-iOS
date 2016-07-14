@@ -12,16 +12,23 @@
 
 #import "ViewIMInputPanel.h"
 
-@interface ControllerIMChatMsg ()<UITableViewDelegate, UITableViewDataSource>
-
-@property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldContext;
+@interface ControllerIMChatMsg ()<UITableViewDelegate, UITableViewDataSource, ViewIMInputPanelDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *msgs;
 
-@property (nonatomic, strong) ViewIMInputPanel *viewIMInputPanel;
+@property (weak, nonatomic) IBOutlet ViewIMInputPanel *viewIMInputPanel;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnVoice;
+@property (weak, nonatomic) IBOutlet UIButton *btnEmoji;
+@property (weak, nonatomic) IBOutlet UIView *viewKeyboardWrap;
+@property (nonatomic, weak) IBOutlet UIView *textViewContentWrap;
+@property (weak, nonatomic) IBOutlet YYTextView *yyTextViewContent;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constarintViewIMInputPanelHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constarintViewIMInputPanelMarginBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewKeyboardWidth;
+
 @end
 
 @implementation ControllerIMChatMsg
@@ -39,7 +46,23 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self.view addSubview:self.viewIMInputPanel];
+    self.viewIMInputPanel.delegateInputPanel = self;
+    
+    self.viewIMInputPanel.btnVoice = self.btnVoice;
+    self.viewIMInputPanel.btnEmoji = self.btnEmoji;
+    self.viewIMInputPanel.yyTextViewContent = self.yyTextViewContent;
+    self.viewIMInputPanel.viewKeyboardWrap = self.viewKeyboardWrap;
+    self.viewIMInputPanel.textViewContentWrap = self.textViewContentWrap;
+    
+    self.constarintViewIMInputPanelMarginBottom.constant = -220;
+    self.viewIMInputPanel.constraintViewInputViewHeight = self.constarintViewIMInputPanelHeight;
+    self.viewIMInputPanel.constarintViewIMInputPanelMarginBottom = self.constarintViewIMInputPanelMarginBottom;
+    
+    self.constraintViewKeyboardWidth.constant = [UIScreen mainScreen].bounds.size.width;
+    [self.viewIMInputPanel initial];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
     [self.viewIMInputPanel initFrame];
 }
 
@@ -61,6 +84,10 @@
     return cell;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.viewIMInputPanel closeKeyboard];
+}
+
 - (IBAction)onTouchUpInsideBtnSend:(id)sender {
     
 }
@@ -80,11 +107,8 @@
     
 }
 
-- (ViewIMInputPanel *)viewIMInputPanel{
-    if (!_viewIMInputPanel) {
-        _viewIMInputPanel = [ViewIMInputPanel viewIMInputPanel];
-    }
-    return _viewIMInputPanel;
-}
 
+- (void)viewIMInputPanel:(ViewIMInputPanel *)view sendTxt:(NSString *)txt{
+    NSLog(@"====================%@", txt);
+}
 @end

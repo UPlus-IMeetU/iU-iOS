@@ -10,11 +10,6 @@
 
 @implementation InputViewIM
 
-//覆盖父类方法，控制视图大小
-- (CGRect)frame{
-    return CGRectMake(0, 80, [UIScreen mainScreen].bounds.size.width, 220);
-}
-
 + (id)viewWithNibName:(NSString*)nibName viewClass:(Class)viewClass{
     UINib *nib = [UINib nibWithNibName:nibName bundle:[NSBundle mainBundle]];
     NSArray *views = [nib instantiateWithOwner:nil options:nil];

@@ -148,10 +148,19 @@
             if (self.collectionSwitchNowSelectedIndex == 0) {
                 if ((indexPath.row+1)%self.countOfEmojiEveryPage == 0) {
                     //选中的为删除键
-                    NSLog(@"------delete");
+                    if (self.delegateInputView){
+                        if ([self.delegateInputView respondsToSelector:@selector(inputViewIMEmojiDeleteEmoji:)]) {
+                            [self.delegateInputView inputViewIMEmojiDeleteEmoji:self];
+                        }
+                    }
                 }else{
                     //选中的为表情见
-                    NSLog(@"------%@", [self.modelIMEmojis emojiStrWithIndex:indexPath.row]);
+                    NSString *emoji = [self.modelIMEmojis emojiStrWithIndex:indexPath.row];
+                    if (self.delegateInputView){
+                        if ([self.delegateInputView respondsToSelector:@selector(inputViewIMEmoji:emojiStr:)]) {
+                            [self.delegateInputView inputViewIMEmoji:self emojiStr:emoji];
+                        }
+                    }
                 }
             }else if (self.collectionSwitchNowSelectedIndex == 1){
             
@@ -202,6 +211,11 @@
 }
 
 - (IBAction)onTouchUpInsideBtnSending:(id)sender {
+    if (self.delegateInputView){
+        if ([self.delegateInputView respondsToSelector:@selector(inputViewIMEmojiSendEmoji:)]) {
+            [self.delegateInputView inputViewIMEmojiSendEmoji:self];
+        }
+    }
 }
 
 - (ModelIMEmojis *)modelIMEmojis{
