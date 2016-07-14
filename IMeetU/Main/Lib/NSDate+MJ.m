@@ -75,4 +75,30 @@
     int unit = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     return [calendar components:unit fromDate:self toDate:[NSDate date] options:0];
 }
+
+- (NSString *)distanceTimeWithBeforeTime:(long long)beTime
+{
+    NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+    long long distanceTime = now - beTime;
+    //秒数
+    long long time = distanceTime / 1000;
+    if (time < 60) {
+        return @"刚刚";
+    }
+    //转化成分钟
+    time = time / 60;
+    if (time < 60) {
+        return [NSString stringWithFormat:@"%lld分钟前",time];
+    }
+    //转化成小时
+    time = time / 60;
+    if (time < 24 ) {
+        return [NSString stringWithFormat:@"%lld小时前",time];
+    }
+    
+    //转化成天
+    time = time / 24;
+    return [NSString stringWithFormat:@"%lld天前",time];
+    
+}
 @end

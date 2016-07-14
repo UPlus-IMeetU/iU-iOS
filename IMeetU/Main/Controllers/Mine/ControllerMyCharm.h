@@ -1,13 +1,13 @@
 //
-//  CoupleViewCell.h
+//  ControllerMyCharm.h
 //  IMeetU
 //
-//  Created by Spring on 16/7/5.
+//  Created by Spring on 16/7/14.
 //  Copyright © 2016年 zhanghao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface CoupleViewCell : UITableViewCell
+@interface ControllerMyCharm : UIViewController
 
 @end

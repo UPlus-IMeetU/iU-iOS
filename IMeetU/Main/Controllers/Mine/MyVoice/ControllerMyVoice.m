@@ -8,7 +8,12 @@
 
 #import "ControllerMyVoice.h"
 #import <AVFoundation/AVFoundation.h>
-@interface ControllerMyVoice ()
+#import "XMOSS.h"
+#import "UserDefultAccount.h"
+#import "MBProgressHUD.h"
+#import "MBProgressHUD+plug.h"
+#import "MLToast.h"
+@interface ControllerMyVoice ()<AVAudioPlayerDelegate>
 {
     //录音器
     AVAudioRecorder *recorder;
@@ -23,6 +28,7 @@
     //录音名字
     NSString *playName;
     NSInteger recordTime;
+    NSInteger playTime;
     
 }
 
@@ -31,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
 @property (weak, nonatomic) IBOutlet UILabel *recordTimeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *voiceBg;
+@property (strong,nonatomic) MBProgressHUD *hud;
 @end
 
 @implementation ControllerMyVoice
@@ -52,7 +59,7 @@
             [session setActive:YES error:nil];
     }
     
-    [_recordButton setImage:[UIImage imageNamed:@"mine_me_down_sound_record_btn_clk"] forState:UIControlStateSelected];
+    [_recordButton setImage:[UIImage imageNamed:@"mine_me_down_sound_record_btn_clk"] forState:UIControlStateHighlighted];
     _voiceBg.hidden = YES;
     NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     playName = [NSString stringWithFormat:@"%@/play.aac",docDir];
@@ -75,23 +82,61 @@
 - (IBAction)playMyVoice:(id)sender {
     NSError *playerError;
     
+    playTime = recordTime;
+    if (playTime <= 0) {
+        return;
+    }
+    [self.playButton setImage:[UIImage imageNamed:@"mine_me_up_stop_btn"] forState:UIControlStateNormal];
+    self.playButton.userInteractionEnabled = NO;
+    //启动定时器
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(playTime:) userInfo:nil repeats:YES];
     //播放
     player = nil;
     player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:playName] error:&playerError];
-    
+    player.delegate = self;
     if (player == nil)
     {
         NSLog(@"ERror creating player: %@", [playerError description]);
     }else{
         [player play];
     }
+    
+}
 
+- (void)playTime:(id)sender{
+    playTime--;
+    _playTimeLabel.text = [NSString stringWithFormat:@"%ldS",playTime];
+    if (playTime == 0) {
+        [timer invalidate];
+        timer = nil;
+    }
+}
+
+#pragma mark AVPlayerDelegate
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    if (flag) {
+        [self.playButton setImage:[UIImage imageNamed:@"mine_me_up_play_btn"] forState:UIControlStateNormal];
+        self.playButton.userInteractionEnabled = YES;
+        _playTimeLabel.text = [NSString stringWithFormat:@"%ldS",recordTime];
+    }
 }
 
 - (IBAction)recordMyVoiceBegin:(id)sender {
     recordTime = 0;
     _voiceBg.hidden = NO;
     _recordTimeLabel.text = @"00:00";
+    //如果正在播放音乐暂停音乐并且归零
+    if (player.isPlaying) {
+        [timer invalidate];
+        timer = nil;
+        [player stop];
+        [self.playButton setImage:[UIImage imageNamed:@"mine_me_up_play_btn"] forState:UIControlStateNormal];
+        self.playButton.userInteractionEnabled = YES;
+        _playTimeLabel.text = @"0S";
+    }
+    
+    
+    
     if ([self canRecord]) {
         
         NSError *error = nil;
@@ -120,10 +165,24 @@
     recordTime++;
     if (recordTime < 10) {
         _recordTimeLabel.text = [NSString stringWithFormat:@"00:0%ld",(long)recordTime];
-    }else if(recordTime >= 10 && recordTime <= 90){
+    }else if(recordTime >= 10 && recordTime < 60){
         _recordTimeLabel.text = [NSString stringWithFormat:@"00:%ld",(long)recordTime];
+    }else if(recordTime >= 60 && recordTime< 70){
+        _recordTimeLabel.text = [NSString stringWithFormat:@"01:0%ld",(long)(recordTime - 60)];
+    }else if(recordTime >= 70 && recordTime <= 90){
+        _recordTimeLabel.text = [NSString stringWithFormat:@"01:%ld",(long)(recordTime - 60)];
     }else{
+        recordTime = 90;
         [self recordEnd];
+    }
+    if (recordTime % 2 == 1) {
+        [UIView animateWithDuration:1 animations:^{
+            self.voiceBg.alpha = 0.5;
+        }];
+    }else{
+        [UIView animateWithDuration:1 animations:^{
+            self.voiceBg.alpha = 1;
+        }];
     }
 }
 
@@ -133,6 +192,7 @@
 
 
 - (void)recordEnd{
+    _playTimeLabel.text = [NSString stringWithFormat:@"%ldS",recordTime];
     _recordTimeLabel.text = @"录音最长90S";
     _voiceBg.hidden = YES;
     [recorder stop];
@@ -173,15 +233,54 @@
 }
 
 
+- (IBAction)finishBtnClick:(id)sender {
+//    NSData *voiceData = [[NSData alloc] initWithContentsOfURL:playName];
+//    if (voiceData) {
+//        NSString *fileName = [NSString stringWithFormat:@"/user/%@/mine/voice/myVoice.acc",[UserDefultAccount userCode]];
+//        [XMOSS uploadFileWithData:voiceData fileName:fileName progress:^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
+//            
+//        } finish:^id(OSSTask *task, NSString *fileName) {
+//            
+//        }];
+    NSData *voiceData = [[NSData alloc] initWithContentsOfFile:playName];
+    if (voiceData) {
+        MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:hud];
+        [hud show:YES];
+        hud.progress = 0;
+        hud.mode = MBProgressHUDModeDeterminate;
+        hud.labelText = @"修改声线中...";
+        //[self.view addSubview:hud];
+        NSString *fileName = [NSString stringWithFormat:@"user/%@/mine/voice/myVocie.acc",[UserDefultAccount userCode]];
+        [XMOSS uploadFileWithData:voiceData fileName:fileName progress:^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
+            hud.progress = totalByteSent / 1.0 / totalBytesExpectedToSend;
+        } finish:^id(OSSTask *task, NSString *fileName) {
+            if (!task.error) {
+                [hud xmSetCustomModeWithResult:YES label:@"声线上传成功"];
+                
+                [hud setHidden:YES];
+            }else{
+                [hud xmSetCustomModeWithResult:YES label:@"声线上传失败"];
+                [hud setHidden:YES];
+            }
+            return nil;
+        }];
+    }
+}
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
-@end
+    
+- (IBAction)backButton:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+    
+    /*
+     #pragma mark - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    @end

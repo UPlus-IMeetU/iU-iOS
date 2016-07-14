@@ -35,7 +35,7 @@
                                         <action selector="choiceButtonClick:" destination="-1" eventType="touchUpInside" id="DqN-Ri-ics"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6D-gr-qC5">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6D-gr-qC5">
                                     <rect key="frame" x="157" y="7.5" width="100" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="uux-yu-WQE"/>

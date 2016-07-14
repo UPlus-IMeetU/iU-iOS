@@ -43,12 +43,6 @@
 
 }
 
-- (void)setModelFilter:(ModelFilter *)modelFilter{
-    _modelFilter = modelFilter;
-    _ageFloorSelected = modelFilter.selectFloor;
-    _ageCeilingSelected = modelFilter.selectCeil;
-    [self initChooseAgeRange];
-}
 
 - (void)initWithFormat:(NSString *)formatStr andWithFloor:(NSInteger)floor andWithCeil:(NSInteger)ceil{
     _formatStr = formatStr;
@@ -65,7 +59,6 @@
     NSLog(@"ceil = %lu floor = %lu",self.ageCeiling,self.ageFloor);
     float step = slidingRange/(self.ageCeiling-self.ageFloor);
     NSLog(@"step = %f",step);
-    NSLog(@"slidingRange = %lu",slidingRange);
     self.constraintChooseAgeMarginLeft.constant = step*(self.ageFloorSelected-self.ageFloor)+20-25;
     self.constraintChooseAgeMarginRight.constant = step*(self.ageCeilingSelected-self.ageFloor)+20-25;
     self.constraintChooseAgeRangeMarginLeft.constant = self.constraintChooseAgeMarginLeft.constant+25;

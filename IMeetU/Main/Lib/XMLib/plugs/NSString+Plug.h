@@ -21,7 +21,7 @@
  @return the trimmed string.
  */
 - (NSString *)stringByTrim;
-
++ (NSString *)toUpper:(NSString *)str;
 + (instancetype)xmStringWithInt:(int)num;
 + (instancetype)xmStringWithDouble:(double)num;
 + (instancetype)xmStringWithFloat:(float)num;

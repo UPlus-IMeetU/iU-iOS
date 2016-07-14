@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ModelSquare.h"
 @interface SquareViewCell : UITableViewCell
-
+@property (nonatomic,strong) ModelSquare *modelSquare;
 @end

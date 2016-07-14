@@ -9,9 +9,8 @@
 #import "MJIUHeader.h"
 
 #import "FilterView.h"
-#import "ModelFilter.h"
 
-#import "ControllerMyVoice.h"
+#import "ControllerMyCharm.h"
 
 #define Couple 10001
 #define Square 10002
@@ -53,10 +52,10 @@
 - (void)prepareUI{
     [self.view addSubview:self.backScrollView];
     self.type = Couple;
-    [_changeButton setShowsTouchWhenHighlighted:YES];
     [_backScrollView addSubview:self.squareTableView];
     [_backScrollView addSubview:self.coupleTableView];
     [_backScrollView addSubview:self.filterView];
+    [_changeButton setAdjustsImageWhenDisabled:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -216,8 +215,8 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ControllerMyVoice *myVoice = [[ControllerMyVoice alloc] init];
-    [self.navigationController pushViewController:myVoice animated:YES];
+    ControllerMyCharm *myCharm = [[ControllerMyCharm alloc] init];
+    [self.navigationController pushViewController:myCharm animated:YES];
 }
 
 
