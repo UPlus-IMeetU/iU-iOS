@@ -12,6 +12,7 @@
 #import "UserDefultAccount.h"
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+plug.h"
+#import "MLToast.h"
 @interface ControllerMyVoice ()<AVAudioPlayerDelegate>
 {
     //录音器
@@ -36,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
 @property (weak, nonatomic) IBOutlet UILabel *recordTimeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *voiceBg;
+@property (strong,nonatomic) MBProgressHUD *hud;
 @end
 
 @implementation ControllerMyVoice
@@ -170,6 +172,7 @@
     }else if(recordTime >= 70 && recordTime <= 90){
         _recordTimeLabel.text = [NSString stringWithFormat:@"01:%ld",(long)(recordTime - 60)];
     }else{
+        recordTime = 90;
         [self recordEnd];
     }
     if (recordTime % 2 == 1) {
@@ -241,57 +244,34 @@
 //        }];
     NSData *voiceData = [[NSData alloc] initWithContentsOfFile:playName];
     if (voiceData) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:hud];
+        [hud show:YES];
         hud.progress = 0;
         hud.mode = MBProgressHUDModeDeterminate;
-        hud.labelText = @"声音上传中...";
+        hud.labelText = @"修改声线中...";
+        //[self.view addSubview:hud];
         NSString *fileName = [NSString stringWithFormat:@"user/%@/mine/voice/myVocie.acc",[UserDefultAccount userCode]];
-        NSLog(@"fileName = %@",fileName);
         [XMOSS uploadFileWithData:voiceData fileName:fileName progress:^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
             hud.progress = totalByteSent / 1.0 / totalBytesExpectedToSend;
         } finish:^id(OSSTask *task, NSString *fileName) {
             if (!task.error) {
-                [hud xmSetCustomModeWithResult:NO label:@"上传声音成功"];
-                [hud hide:YES];
+                [hud xmSetCustomModeWithResult:YES label:@"声线上传成功"];
+                
+                [hud setHidden:YES];
             }else{
-                [hud xmSetCustomModeWithResult:NO label:@"上传声音失败"];
-                [hud hide:YES afterDelay:0.3];
+                [hud xmSetCustomModeWithResult:YES label:@"声线上传失败"];
+                [hud setHidden:YES];
             }
             return nil;
         }];
     }
 }
+
     
 - (IBAction)backButton:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
-    
-    //if (index < self.photos.count) {
-    //    hud.progress = 0;
-    //    hud.mode = MBProgressHUDModeDeterminate;
-    //    hud.labelText  = [NSString stringWithFormat:@"%li/%li", index+1, self.photos.count];
-    //
-    //    UIImage *img = self.photos[index];
-    //    NSString *fileName = [NSString stringWithFormat:@"community/post/img/%@_%@_%li.jpeg", [UserDefultAccount userCode], self.timepost, index];
-    //    [self.photosModelReq addObject:@{
-    //                                     @"url":fileName,
-    //                                     @"w":[NSNumber numberWithFloat:img.size.width],
-    //                                     @"h":[NSNumber numberWithFloat:img.size.height]
-    //                                     }];
-    //
-    //    [XMOSS uploadFileWithData:UIImageJPEGRepresentation(img, 0.8) fileName:fileName progress:^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
-    //        hud.progress = totalByteSent/1.0/totalBytesExpectedToSend;
-    //
-    //    } finish:^id(OSSTask *task, NSString *fileName) {
-    //        if (!task.error) {
-    //            [self releasePostWithImgIndex:index+1 hud:hud];
-    //        }else{
-    //            [hud xmSetCustomModeWithResult:NO label:@"图片上传失败"];
-    //            [hud hide:YES afterDelay:0.3];
-    //        }
-    //        return nil;
-    //    }];
-    
     
     /*
      #pragma mark - Navigation

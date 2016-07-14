@@ -10,7 +10,7 @@
 
 #import "FilterView.h"
 
-#import "ControllerMyVoice.h"
+#import "ControllerMyCharm.h"
 
 #define Couple 10001
 #define Square 10002
@@ -215,8 +215,8 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ControllerMyVoice *myVoice = [[ControllerMyVoice alloc] init];
-    [self.navigationController pushViewController:myVoice animated:YES];
+    ControllerMyCharm *myCharm = [[ControllerMyCharm alloc] init];
+    [self.navigationController pushViewController:myCharm animated:YES];
 }
 
 

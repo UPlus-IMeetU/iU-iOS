@@ -7,8 +7,14 @@
 //
 
 #import "ControllerMyCharm.h"
-
+#import "UIColor+Plug.h"
 @interface ControllerMyCharm ()
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *charmLabel;
+@property (weak, nonatomic) IBOutlet UIView *fullCharmView;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 
 @end
 
@@ -17,6 +23,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.fullCharmView.layer.cornerRadius = 3.5;
+    self.fullCharmView.clipsToBounds = YES;
+    self.fullCharmView.layer.borderWidth = 0.5;
+    self.fullCharmView.layer.borderColor = [UIColor xmColorWithHexStrRGB:@"FEFC9B"].CGColor;
+    
+    
+    self.bgView.layer.cornerRadius = 10;
+    self.bgView.clipsToBounds = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [UIView animateWithDuration:4 animations:^{
+           }];
 }
 
 - (void)didReceiveMemoryWarning {
