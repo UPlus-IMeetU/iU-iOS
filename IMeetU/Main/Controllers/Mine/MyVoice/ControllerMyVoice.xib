@@ -32,6 +32,9 @@
                                         <constraint firstAttribute="width" constant="52" id="MHa-Aj-u9P"/>
                                     </constraints>
                                     <state key="normal" image="global_navigation_back_ffffff"/>
+                                    <connections>
+                                        <action selector="backButton:" destination="-1" eventType="touchUpInside" id="tXG-yO-5oR"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的声线" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vv-Uf-GRD">
                                     <rect key="frame" x="171" y="11" width="72" height="22"/>
@@ -48,6 +51,9 @@
                                     <state key="normal" title="完成">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="finishBtnClick:" destination="-1" eventType="touchUpInside" id="heL-Lm-jXw"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.42352941179999998" green="0.81960784310000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>

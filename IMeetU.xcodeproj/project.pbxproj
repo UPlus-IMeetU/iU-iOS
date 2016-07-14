@@ -316,6 +316,10 @@
 		6F2AD3251D2364D0002B4338 /* UITabBar+badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2AD3241D2364D0002B4338 /* UITabBar+badge.m */; };
 		6F35633A1D06B65B0083AB90 /* banner_fail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F3563391D06B65B0083AB90 /* banner_fail@2x.png */; };
 		6F4A48541CE3117300D91B4C /* BiuBiu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A48531CE3117300D91B4C /* BiuBiu.storyboard */; };
+		6F63E45F1D37231E00EFAB0E /* ModelSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F63E45C1D37231E00EFAB0E /* ModelSquare.m */; };
+		6F63E4601D37231E00EFAB0E /* ModelSquareList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F63E45E1D37231E00EFAB0E /* ModelSquareList.m */; };
+		6F63E4691D3723E000EFAB0E /* ControllerMyCharm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F63E4671D3723E000EFAB0E /* ControllerMyCharm.m */; };
+		6F63E46A1D3723E000EFAB0E /* ControllerMyCharm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F63E4681D3723E000EFAB0E /* ControllerMyCharm.xib */; };
 		6FBC68741CFBCE9300B45657 /* ControllerPostList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBC686F1CFBCE9300B45657 /* ControllerPostList.m */; };
 		6FBC68751CFBCE9300B45657 /* PostListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBC68711CFBCE9300B45657 /* PostListCell.m */; };
 		6FBC68761CFBCE9300B45657 /* PostListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FBC68721CFBCE9300B45657 /* PostListCell.xib */; };
@@ -339,8 +343,6 @@
 		6FC13C071D362E9A00B64C62 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13C001D362E9A00B64C62 /* FilterView.xib */; };
 		6FC13C081D362E9A00B64C62 /* SquareViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13C021D362E9A00B64C62 /* SquareViewCell.m */; };
 		6FC13C091D362E9A00B64C62 /* SquareViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13C031D362E9A00B64C62 /* SquareViewCell.xib */; };
-		6FC13C0C1D364A2600B64C62 /* ModelSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13C0B1D364A2600B64C62 /* ModelSquare.m */; };
-		6FC13C0F1D364C3800B64C62 /* ModelSquareList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC13C0E1D364C3800B64C62 /* ModelSquareList.m */; };
 		6FE066341D3332F2001A02A6 /* IMCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE066321D3332F2001A02A6 /* IMCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -920,6 +922,13 @@
 		6F2AD3241D2364D0002B4338 /* UITabBar+badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+badge.m"; sourceTree = "<group>"; };
 		6F3563391D06B65B0083AB90 /* banner_fail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner_fail@2x.png"; sourceTree = "<group>"; };
 		6F4A48531CE3117300D91B4C /* BiuBiu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BiuBiu.storyboard; path = Main/Others/BiuBiu.storyboard; sourceTree = "<group>"; };
+		6F63E45B1D37231E00EFAB0E /* ModelSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelSquare.h; path = Couple/Model/ModelSquare.h; sourceTree = "<group>"; };
+		6F63E45C1D37231E00EFAB0E /* ModelSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelSquare.m; path = Couple/Model/ModelSquare.m; sourceTree = "<group>"; };
+		6F63E45D1D37231E00EFAB0E /* ModelSquareList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelSquareList.h; path = Couple/Model/ModelSquareList.h; sourceTree = "<group>"; };
+		6F63E45E1D37231E00EFAB0E /* ModelSquareList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelSquareList.m; path = Couple/Model/ModelSquareList.m; sourceTree = "<group>"; };
+		6F63E4661D3723E000EFAB0E /* ControllerMyCharm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerMyCharm.h; sourceTree = "<group>"; };
+		6F63E4671D3723E000EFAB0E /* ControllerMyCharm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerMyCharm.m; sourceTree = "<group>"; };
+		6F63E4681D3723E000EFAB0E /* ControllerMyCharm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ControllerMyCharm.xib; sourceTree = "<group>"; };
 		6FBC686E1CFBCE9300B45657 /* ControllerPostList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControllerPostList.h; path = Community/ControllerPostList/ControllerPostList.h; sourceTree = "<group>"; };
 		6FBC686F1CFBCE9300B45657 /* ControllerPostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControllerPostList.m; path = Community/ControllerPostList/ControllerPostList.m; sourceTree = "<group>"; };
 		6FBC68701CFBCE9300B45657 /* PostListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostListCell.h; path = Community/ControllerPostList/PostListCell.h; sourceTree = "<group>"; };
@@ -958,10 +967,6 @@
 		6FC13C011D362E9A00B64C62 /* SquareViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SquareViewCell.h; path = Couple/View/SquareViewCell.h; sourceTree = "<group>"; };
 		6FC13C021D362E9A00B64C62 /* SquareViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SquareViewCell.m; path = Couple/View/SquareViewCell.m; sourceTree = "<group>"; };
 		6FC13C031D362E9A00B64C62 /* SquareViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SquareViewCell.xib; path = Couple/View/SquareViewCell.xib; sourceTree = "<group>"; };
-		6FC13C0A1D364A2600B64C62 /* ModelSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelSquare.h; sourceTree = "<group>"; };
-		6FC13C0B1D364A2600B64C62 /* ModelSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelSquare.m; sourceTree = "<group>"; };
-		6FC13C0D1D364C3800B64C62 /* ModelSquareList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelSquareList.h; sourceTree = "<group>"; };
-		6FC13C0E1D364C3800B64C62 /* ModelSquareList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelSquareList.m; sourceTree = "<group>"; };
 		6FE066321D3332F2001A02A6 /* IMCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMCore.framework; sourceTree = "<group>"; };
 		6FE066331D3332F2001A02A6 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
 		74126A2A9FF1D8D3F7A7D4C1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1215,6 +1220,7 @@
 				044AF7811C8FC328009AF59F /* MineMainPhotoBrower */,
 				044AF7081C8D3061009AF59F /* AlterUserInfo */,
 				6FC13BE61D35DD9300B64C62 /* MyVoice */,
+				6F63E46B1D3723E500EFAB0E /* MyCharm */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2213,6 +2219,16 @@
 			path = push;
 			sourceTree = "<group>";
 		};
+		6F63E46B1D3723E500EFAB0E /* MyCharm */ = {
+			isa = PBXGroup;
+			children = (
+				6F63E4661D3723E000EFAB0E /* ControllerMyCharm.h */,
+				6F63E4671D3723E000EFAB0E /* ControllerMyCharm.m */,
+				6F63E4681D3723E000EFAB0E /* ControllerMyCharm.xib */,
+			);
+			name = MyCharm;
+			sourceTree = "<group>";
+		};
 		6FBC68671CFBCE6600B45657 /* Community */ = {
 			isa = PBXGroup;
 			children = (
@@ -2311,14 +2327,14 @@
 		6FC13BDD1D34DDD200B64C62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6F63E45B1D37231E00EFAB0E /* ModelSquare.h */,
+				6F63E45C1D37231E00EFAB0E /* ModelSquare.m */,
+				6F63E45D1D37231E00EFAB0E /* ModelSquareList.h */,
+				6F63E45E1D37231E00EFAB0E /* ModelSquareList.m */,
 				6FC13BED1D362E7C00B64C62 /* ModelCouple.h */,
 				6FC13BEE1D362E7C00B64C62 /* ModelCouple.m */,
 				6FC13BEF1D362E7C00B64C62 /* ModelCoupleList.h */,
 				6FC13BF01D362E7C00B64C62 /* ModelCoupleList.m */,
-				6FC13C0A1D364A2600B64C62 /* ModelSquare.h */,
-				6FC13C0B1D364A2600B64C62 /* ModelSquare.m */,
-				6FC13C0D1D364C3800B64C62 /* ModelSquareList.h */,
-				6FC13C0E1D364C3800B64C62 /* ModelSquareList.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2517,6 +2533,7 @@
 				044AF7031C8D182E009AF59F /* XMInputViews.xib in Resources */,
 				6FBC687D1CFBCE9D00B45657 /* CommunityReplyCell.xib in Resources */,
 				04B0F4281CBF96F300268082 /* CellUserIdentifierGuideFooter.xib in Resources */,
+				6F63E46A1D3723E000EFAB0E /* ControllerMyCharm.xib in Resources */,
 				044AF7891C8FCEFE009AF59F /* CellMinePhotoBrowse.xib in Resources */,
 				04B165751C89CC0B00EE6DB8 /* LaunchScreen.storyboard in Resources */,
 				0450B7C41C906678001DD60A /* Setting.storyboard in Resources */,
@@ -2675,7 +2692,7 @@
 				04C8F1D51D23C61A007DCF9F /* ModelComment.m in Sources */,
 				044AF74F1C8E6F86009AF59F /* CellMineMainProfileAndPhotos.m in Sources */,
 				044AF6F71C8D17BF009AF59F /* XMInputViewFactory.m in Sources */,
-				6FC13C0C1D364A2600B64C62 /* ModelSquare.m in Sources */,
+				6F63E45F1D37231E00EFAB0E /* ModelSquare.m in Sources */,
 				047519CB1CA631CB009115CE /* BCPayUtil.m in Sources */,
 				04C8F1DC1D23C61A007DCF9F /* ModelPraise.m in Sources */,
 				0450B8141C925CF0001DD60A /* ControllerMineAlterInterest.m in Sources */,
@@ -2779,11 +2796,12 @@
 				046B495C1CFC6B0B00946987 /* CellPostTags.m in Sources */,
 				6FBC68A11CFBE9EA00B45657 /* XMHttpCommunity.m in Sources */,
 				044AF7471C8DD88B009AF59F /* XMInputViewProfession.m in Sources */,
+				6F63E4691D3723E000EFAB0E /* ControllerMyCharm.m in Sources */,
 				047519B51CA631CB009115CE /* BCQueryBillsReq.m in Sources */,
 				04B165F21C89D87E00EE6DB8 /* UIDevice+Plug.m in Sources */,
 				04C8F21C1D23C640007DCF9F /* ModelMatchSetting.m in Sources */,
 				044728B61CA181CB000FD349 /* ModelBiuFaceStar.m in Sources */,
-				6FC13C0F1D364C3800B64C62 /* ModelSquareList.m in Sources */,
+				6F63E4601D37231E00EFAB0E /* ModelSquareList.m in Sources */,
 				044AF7171C8D3061009AF59F /* ControllerMineAlterName.m in Sources */,
 				04C8F2261D23C640007DCF9F /* ModelUserMatch.m in Sources */,
 				04C8F1DB1D23C61A007DCF9F /* ModelPostDetail.m in Sources */,

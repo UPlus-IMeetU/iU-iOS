@@ -8,6 +8,10 @@
 
 #import "ControllerMyVoice.h"
 #import <AVFoundation/AVFoundation.h>
+#import "XMOSS.h"
+#import "UserDefultAccount.h"
+#import "MBProgressHUD.h"
+#import "MBProgressHUD+plug.h"
 @interface ControllerMyVoice ()<AVAudioPlayerDelegate>
 {
     //录音器
@@ -75,7 +79,7 @@
 }
 - (IBAction)playMyVoice:(id)sender {
     NSError *playerError;
-   
+    
     playTime = recordTime;
     if (playTime <= 0) {
         return;
@@ -111,7 +115,7 @@
     if (flag) {
         [self.playButton setImage:[UIImage imageNamed:@"mine_me_up_play_btn"] forState:UIControlStateNormal];
         self.playButton.userInteractionEnabled = YES;
-         _playTimeLabel.text = [NSString stringWithFormat:@"%ldS",recordTime];
+        _playTimeLabel.text = [NSString stringWithFormat:@"%ldS",recordTime];
     }
 }
 
@@ -130,7 +134,7 @@
     }
     
     
-  
+    
     if ([self canRecord]) {
         
         NSError *error = nil;
@@ -226,15 +230,77 @@
 }
 
 
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
-@end
+- (IBAction)finishBtnClick:(id)sender {
+//    NSData *voiceData = [[NSData alloc] initWithContentsOfURL:playName];
+//    if (voiceData) {
+//        NSString *fileName = [NSString stringWithFormat:@"/user/%@/mine/voice/myVoice.acc",[UserDefultAccount userCode]];
+//        [XMOSS uploadFileWithData:voiceData fileName:fileName progress:^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
+//            
+//        } finish:^id(OSSTask *task, NSString *fileName) {
+//            
+//        }];
+    NSData *voiceData = [[NSData alloc] initWithContentsOfFile:playName];
+    if (voiceData) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.progress = 0;
+        hud.mode = MBProgressHUDModeDeterminate;
+        hud.labelText = @"声音上传中...";
+        NSString *fileName = [NSString stringWithFormat:@"user/%@/mine/voice/myVocie.acc",[UserDefultAccount userCode]];
+        NSLog(@"fileName = %@",fileName);
+        [XMOSS uploadFileWithData:voiceData fileName:fileName progress:^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
+            hud.progress = totalByteSent / 1.0 / totalBytesExpectedToSend;
+        } finish:^id(OSSTask *task, NSString *fileName) {
+            if (!task.error) {
+                [hud xmSetCustomModeWithResult:NO label:@"上传声音成功"];
+                [hud hide:YES];
+            }else{
+                [hud xmSetCustomModeWithResult:NO label:@"上传声音失败"];
+                [hud hide:YES afterDelay:0.3];
+            }
+            return nil;
+        }];
+    }
+}
+    
+- (IBAction)backButton:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+    
+    //if (index < self.photos.count) {
+    //    hud.progress = 0;
+    //    hud.mode = MBProgressHUDModeDeterminate;
+    //    hud.labelText  = [NSString stringWithFormat:@"%li/%li", index+1, self.photos.count];
+    //
+    //    UIImage *img = self.photos[index];
+    //    NSString *fileName = [NSString stringWithFormat:@"community/post/img/%@_%@_%li.jpeg", [UserDefultAccount userCode], self.timepost, index];
+    //    [self.photosModelReq addObject:@{
+    //                                     @"url":fileName,
+    //                                     @"w":[NSNumber numberWithFloat:img.size.width],
+    //                                     @"h":[NSNumber numberWithFloat:img.size.height]
+    //                                     }];
+    //
+    //    [XMOSS uploadFileWithData:UIImageJPEGRepresentation(img, 0.8) fileName:fileName progress:^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
+    //        hud.progress = totalByteSent/1.0/totalBytesExpectedToSend;
+    //
+    //    } finish:^id(OSSTask *task, NSString *fileName) {
+    //        if (!task.error) {
+    //            [self releasePostWithImgIndex:index+1 hud:hud];
+    //        }else{
+    //            [hud xmSetCustomModeWithResult:NO label:@"图片上传失败"];
+    //            [hud hide:YES afterDelay:0.3];
+    //        }
+    //        return nil;
+    //    }];
+    
+    
+    /*
+     #pragma mark - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    @end
