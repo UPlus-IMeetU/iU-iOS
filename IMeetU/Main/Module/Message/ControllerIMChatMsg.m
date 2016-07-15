@@ -10,16 +10,24 @@
 #import "UIStoryboard+Plug.h"
 #import "UserDefultAccount.h"
 
-#import <ImSDK/ImSDK.h>
+#import "ViewIMInputPanel.h"
 
-@interface ControllerIMChatMsg ()<UITableViewDelegate, UITableViewDataSource, TIMMessageListener>
-
-@property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldContext;
+@interface ControllerIMChatMsg ()<UITableViewDelegate, UITableViewDataSource, ViewIMInputPanelDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *msgs;
+
+@property (weak, nonatomic) IBOutlet ViewIMInputPanel *viewIMInputPanel;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnVoice;
+@property (weak, nonatomic) IBOutlet UIButton *btnEmoji;
+@property (weak, nonatomic) IBOutlet UIView *viewKeyboardWrap;
+@property (nonatomic, weak) IBOutlet UIView *textViewContentWrap;
+@property (weak, nonatomic) IBOutlet YYTextView *yyTextViewContent;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constarintViewIMInputPanelHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constarintViewIMInputPanelMarginBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewKeyboardWidth;
 
 @end
 
@@ -34,28 +42,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    TIMManager *manager = [TIMManager sharedInstance];
-    
-    [manager setMessageListener:self];
-    
-    [manager initSdk:1400009724 accountType:@"5119"];
-    
-    
-    TIMLoginParam * login_param = [[TIMLoginParam alloc ]init];
-    login_param.accountType = @"5119";
-    login_param.identifier = [UserDefultAccount userCode];
-    login_param.userSig = @"usersig";
-    login_param.appidAt3rd = @"1400009724";
-    
-    login_param.sdkAppId = 1400009724;
-    [manager login:nil succ:^{
-        
-    } fail:^(int code, NSString *msg) {
-        
-    }];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.viewIMInputPanel.delegateInputPanel = self;
+    
+    self.viewIMInputPanel.btnVoice = self.btnVoice;
+    self.viewIMInputPanel.btnEmoji = self.btnEmoji;
+    self.viewIMInputPanel.yyTextViewContent = self.yyTextViewContent;
+    self.viewIMInputPanel.viewKeyboardWrap = self.viewKeyboardWrap;
+    self.viewIMInputPanel.textViewContentWrap = self.textViewContentWrap;
+    
+    self.constarintViewIMInputPanelMarginBottom.constant = -220;
+    self.viewIMInputPanel.constraintViewInputViewHeight = self.constarintViewIMInputPanelHeight;
+    self.viewIMInputPanel.constarintViewIMInputPanelMarginBottom = self.constarintViewIMInputPanelMarginBottom;
+    
+    self.constraintViewKeyboardWidth.constant = [UIScreen mainScreen].bounds.size.width;
+    [self.viewIMInputPanel initial];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self.viewIMInputPanel initFrame];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -76,19 +84,12 @@
     return cell;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.viewIMInputPanel closeKeyboard];
+}
+
 - (IBAction)onTouchUpInsideBtnSend:(id)sender {
-    TIMTextElem * text_elem = [[TIMTextElem alloc] init];
-    [text_elem setText:self.textFieldContext.text];
     
-    TIMMessage * msg = [[TIMMessage alloc] init];
-    [msg addElem:text_elem];
-    
-    TIMConversation *conversation = [[TIMManager sharedInstance] getConversation:TIM_C2C receiver:self.textFieldPhone.text];
-    [conversation sendMessage:msg succ:^(){
-        NSLog(@"SendMsg Succ");
-    }fail:^(int code, NSString * err) {
-        NSLog(@"SendMsg Failed:%d->%@", code, err);
-    }];
 }
 
 - (IBAction)onTouchUpInsideBtnBack:(UIButton*)sender {
@@ -103,20 +104,11 @@
 }
 
 - (void)onNewMessage:(NSArray *)msgs{
-    for (int i=0; i<msgs.count; i++) {
-        TIMMessage *msg = msgs[i];
-        
-        for (int j=0; j<msg.elemCount; j++) {
-            TIMElem *elem = [msg getElem:j];
-            if ([elem isKindOfClass:[TIMTextElem class]]) {
-                TIMTextElem *elemTxt = (TIMTextElem*)elem;
-                
-                [self.msgs addObject:elemTxt.text];
-                [self.tableView reloadData];
-            }
-        }
-    }
+    
 }
 
 
+- (void)viewIMInputPanel:(ViewIMInputPanel *)view sendTxt:(NSString *)txt{
+    NSLog(@"====================%@", txt);
+}
 @end
