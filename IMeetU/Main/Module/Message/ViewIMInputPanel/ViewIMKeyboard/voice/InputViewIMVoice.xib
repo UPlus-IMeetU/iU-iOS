@@ -167,14 +167,6 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxq-lE-bPq">
-                            <rect key="frame" x="172" y="35" width="80" height="80"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="80" id="rSI-C7-qRv"/>
-                                <constraint firstAttribute="width" constant="80" id="tw0-X7-GOZ"/>
-                            </constraints>
-                            <state key="normal" backgroundImage="input_view_panel_voice_recorder"/>
-                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGa-aY-86i" customClass="CATCurveProgressView">
                             <rect key="frame" x="172" y="35" width="80" height="80"/>
                             <subviews>
@@ -245,6 +237,20 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxq-lE-bPq">
+                            <rect key="frame" x="171.5" y="35" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="rSI-C7-qRv"/>
+                                <constraint firstAttribute="width" constant="80" id="tw0-X7-GOZ"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="input_view_panel_voice_recorder"/>
+                            <connections>
+                                <action selector="onTouchDownBtnRecoder:" destination="iN0-l3-epB" eventType="touchDown" id="ahO-zp-O5J"/>
+                                <action selector="onTouchDrawOutsideBtnRecoder:" destination="iN0-l3-epB" eventType="touchDragOutside" id="eew-k3-9v8"/>
+                                <action selector="onTouchUpInsideBtnRecoder:" destination="iN0-l3-epB" eventType="touchUpInside" id="8Qr-El-Fvw"/>
+                                <action selector="onTouchUpOutsideBtnRecoder:" destination="iN0-l3-epB" eventType="touchUpOutside" id="GGn-yo-FJK"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -278,6 +284,20 @@
                 <constraint firstItem="MMW-XP-OUM" firstAttribute="top" secondItem="OO0-ZZ-jfa" secondAttribute="bottom" id="sgd-bD-SM1"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnCancel" destination="dST-Yy-4Dn" id="Ukh-zN-oZJ"/>
+                <outlet property="btnRecorder" destination="rxq-lE-bPq" id="FkY-pB-Psu"/>
+                <outlet property="btnRecorderDeleteSelected" destination="Ygm-Om-WRR" id="AVV-5X-aev"/>
+                <outlet property="btnRecorderReview" destination="MKN-Xv-qze" id="U6w-MJ-IOG"/>
+                <outlet property="btnRecorderReviewSelected" destination="zTn-zY-AXu" id="ODY-9I-97m"/>
+                <outlet property="btnSend" destination="xcx-kq-q2B" id="3KR-Ec-gVC"/>
+                <outlet property="constraintBtnRecorderDeleteSelectedWidth" destination="fuC-bP-Ttk" id="3oi-YP-qZX"/>
+                <outlet property="constraintBtnRecorderReviewSelectedWidth" destination="Cwl-5D-3pa" id="I6v-Vh-b1E"/>
+                <outlet property="labelContent" destination="LeG-S1-Z3I" id="lob-mr-Ekh"/>
+                <outlet property="progressRecorderReview" destination="kjm-fU-FX9" id="gXe-1h-0t6"/>
+                <outlet property="viewCancelSendWrap" destination="MMW-XP-OUM" id="Qwr-w7-4iH"/>
+                <outlet property="viewReviewWrap" destination="bGa-aY-86i" id="UHV-ZS-fRy"/>
+            </connections>
             <point key="canvasLocation" x="295" y="200"/>
         </view>
     </objects>

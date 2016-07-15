@@ -157,10 +157,10 @@
                                                         <exclude reference="f4l-mC-wOR"/>
                                                         <exclude reference="NRU-tV-Lcf"/>
                                                         <exclude reference="UjK-Ak-3pI"/>
-                                                        <exclude reference="dTE-qZ-Azv"/>
                                                         <exclude reference="Nh8-sh-CB3"/>
-                                                        <exclude reference="b0M-cQ-BqR"/>
+                                                        <exclude reference="dTE-qZ-Azv"/>
                                                         <exclude reference="UdW-oa-nII"/>
+                                                        <exclude reference="b0M-cQ-BqR"/>
                                                     </mask>
                                                 </variation>
                                             </view>
@@ -285,6 +285,10 @@
         <scene sceneID="ciz-Rr-P73">
             <objects>
                 <viewController id="raV-Wz-Xop" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Rb-Gl-1co"/>
+                        <viewControllerLayoutGuide type="bottom" id="PjS-8L-cpu"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="I3b-w4-tqT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
