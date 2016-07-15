@@ -21,6 +21,7 @@
 #import "UIColor+Plug.h"
 
 #import "UserDefultAccount.h"
+#import "AlertView.h"
 
 
 @interface CellMineMainProfileAndPhotos()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
@@ -29,13 +30,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnUserProfile;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewPhotos;
-@property (weak, nonatomic) IBOutlet UILabel *labelNameNick;
 
-@property (weak, nonatomic) IBOutlet UIView *viewHisInfo;
-@property (weak, nonatomic) IBOutlet UIView *viewMyInfo;
-@property (weak, nonatomic) IBOutlet UILabel *labelDistance;
-@property (weak, nonatomic) IBOutlet UILabel *labelMatchScore;
-@property (weak, nonatomic) IBOutlet UILabel *labelActyTime;
 
 @property (weak, nonatomic) IBOutlet UIView *viewProfileStatus;
 @property (weak, nonatomic) IBOutlet UILabel *labelProfileStatus;
@@ -46,16 +41,16 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnUserIdentifier;
 
-@property (weak, nonatomic) IBOutlet UIButton *btnBack;
-@property (weak, nonatomic) IBOutlet UIButton *btnBuyUmi;
-@property (weak, nonatomic) IBOutlet UIButton *btnSetting;
-@property (weak, nonatomic) IBOutlet UIButton *btnMore;
+//新版本追加
+@property (weak, nonatomic) IBOutlet UILabel *careAboutMeNum;
+@property (weak, nonatomic) IBOutlet UILabel *accessAmount;
+@property (weak, nonatomic) IBOutlet UILabel *iCareAboutNum;
 
-@property (weak, nonatomic) IBOutlet UILabel *totalNumLabel;
-@property (weak, nonatomic) IBOutlet UILabel *todayNumLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCollectionPhotoLeft;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLabelPhotosEmptyLeft;
+@property (weak, nonatomic) IBOutlet UIView *otherPeopleView;
+@property (weak, nonatomic) IBOutlet UIView *myInfoView;
 
 @end
 @implementation CellMineMainProfileAndPhotos
@@ -67,9 +62,13 @@
     self.btnAddPhotos.hidden = !isMine;
     
     if (isMine) {
+        self.myInfoView.hidden = NO;
+        self.otherPeopleView.hidden = YES;
         self.constraintCollectionPhotoLeft.constant = 90;
         self.constraintLabelPhotosEmptyLeft.constant = 80;
     }else{
+        self.myInfoView.hidden = YES;
+        self.otherPeopleView.hidden = NO;
         self.constraintCollectionPhotoLeft.constant = 10;
         self.constraintLabelPhotosEmptyLeft.constant = 0;
     }
@@ -88,29 +87,27 @@
     
     [self.viewPhotosWrap layoutIfNeeded];
     [self.collectionViewPhotos reloadData];
-    
-    [self.labelNameNick setText:self.mineInfo.nameNick];
     [self.btnUserProfile setBackgroundImageWithURL:[NSURL URLWithString:self.mineInfo.profileCircle] forState:UIControlStateNormal options:YYWebImageOptionAllowBackgroundTask];
     
-    self.viewHisInfo.hidden = isMine;
-    if (!isMine) {
-        if (mine.distanceToTA<1000) {
-            self.labelDistance.text = [NSString stringWithFormat:@"%lum", (long)mine.distanceToTA];
-        }else{
-            self.labelDistance.text = [NSString stringWithFormat:@"%.1fkm", mine.distanceToTA/1000.0];
-        }
-        self.labelMatchScore.text = [NSString stringWithFormat:@"%lu%%", (long)mine.matchScore];
-        NSInteger time = ([NSDate currentTimeMillis]-mine.actyTime)/1000/60;
-        if (time<60) {
-            self.labelActyTime.text = [NSString stringWithFormat:@"%lumin", (long)time];
-        }else if (time>60 && time<60*24){
-            self.labelActyTime.text = [NSString stringWithFormat:@"%ldh", time/60];
-        }else{
-            self.labelActyTime.text = [NSString stringWithFormat:@"%ld天", time/60/24];
-        }
-    }
-    self.viewHisInfo.hidden = isMine;
-    self.viewMyInfo.hidden = !isMine;
+//    self.viewHisInfo.hidden = isMine;
+//    if (!isMine) {
+//        if (mine.distanceToTA<1000) {
+//            self.labelDistance.text = [NSString stringWithFormat:@"%lum", (long)mine.distanceToTA];
+//        }else{
+//            self.labelDistance.text = [NSString stringWithFormat:@"%.1fkm", mine.distanceToTA/1000.0];
+//        }
+//        self.labelMatchScore.text = [NSString stringWithFormat:@"%lu%%", (long)mine.matchScore];
+//        NSInteger time = ([NSDate currentTimeMillis]-mine.actyTime)/1000/60;
+//        if (time<60) {
+//            self.labelActyTime.text = [NSString stringWithFormat:@"%lumin", (long)time];
+//        }else if (time>60 && time<60*24){
+//            self.labelActyTime.text = [NSString stringWithFormat:@"%ldh", time/60];
+//        }else{
+//            self.labelActyTime.text = [NSString stringWithFormat:@"%ld天", time/60/24];
+//        }
+//    }
+//    self.viewHisInfo.hidden = isMine;
+//    self.viewMyInfo.hidden = !isMine;
     if ([UserDefultAccount userProfileStatus] == 1) {
         self.viewProfileStatus.hidden = NO;
         self.labelProfileStatus.text = @"审核中";
@@ -120,42 +117,42 @@
         self.viewProfileStatus.hidden = NO;
         self.labelProfileStatus.text = @"未通过";
     }
-    if (isMine) {
-        NSString *todayNumStr;
-        if (self.mineInfo.todayNum < 10000) {
-            todayNumStr = [NSString stringWithFormat:@"%ld",(long)self.mineInfo.todayNum];
-        }else{
-            todayNumStr = [NSString stringWithFormat:@"%ldw+",(long)self.mineInfo.todayNum / 10000];
-        }
-        todayNumStr = [NSString stringWithFormat:@"今日访问:%@",todayNumStr];
-        
-        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:todayNumStr];
-        //进行范围设置
-        [attrStr addAttribute:NSForegroundColorAttributeName
-                        value: [UIColor often_FCFCC8:1]
-                        range:NSMakeRange(0,4)];
-        [attrStr addAttribute:NSForegroundColorAttributeName
-                        value: [UIColor often_FFFFFF:1]
-                        range:NSMakeRange(4,todayNumStr.length - 4)];
-        _todayNumLabel.attributedText = attrStr;
-        
-        NSString *totalNumStr ;
-        if (self.mineInfo.totalNum < 10000) {
-            totalNumStr = [NSString stringWithFormat:@"%ld",(long)self.mineInfo.totalNum];
-        }else{
-            totalNumStr = [NSString stringWithFormat:@"%ldw+",(long)self.mineInfo.totalNum / 10000];
-        }
-        totalNumStr = [NSString stringWithFormat:@"总访问:%@",totalNumStr];
-        attrStr = [[NSMutableAttributedString alloc] initWithString:totalNumStr];
-        //进行范围设置
-        [attrStr addAttribute:NSForegroundColorAttributeName
-                        value: [UIColor often_FCFCC8:1]
-                        range:NSMakeRange(0,3)];
-        [attrStr addAttribute:NSForegroundColorAttributeName
-                        value: [UIColor often_FFFFFF:1]
-                        range:NSMakeRange(3,totalNumStr.length - 3)];
-        _totalNumLabel.attributedText = attrStr;
-    }
+//    if (isMine) {
+//        NSString *todayNumStr;
+//        if (self.mineInfo.todayNum < 10000) {
+//            todayNumStr = [NSString stringWithFormat:@"%ld",(long)self.mineInfo.todayNum];
+//        }else{
+//            todayNumStr = [NSString stringWithFormat:@"%ldw+",(long)self.mineInfo.todayNum / 10000];
+//        }
+//        todayNumStr = [NSString stringWithFormat:@"今日访问:%@",todayNumStr];
+//        
+//        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:todayNumStr];
+//        //进行范围设置
+//        [attrStr addAttribute:NSForegroundColorAttributeName
+//                        value: [UIColor often_FCFCC8:1]
+//                        range:NSMakeRange(0,4)];
+//        [attrStr addAttribute:NSForegroundColorAttributeName
+//                        value: [UIColor often_FFFFFF:1]
+//                        range:NSMakeRange(4,todayNumStr.length - 4)];
+//        _todayNumLabel.attributedText = attrStr;
+//        
+//        NSString *totalNumStr ;
+//        if (self.mineInfo.totalNum < 10000) {
+//            totalNumStr = [NSString stringWithFormat:@"%ld",(long)self.mineInfo.totalNum];
+//        }else{
+//            totalNumStr = [NSString stringWithFormat:@"%ldw+",(long)self.mineInfo.totalNum / 10000];
+//        }
+//        totalNumStr = [NSString stringWithFormat:@"总访问:%@",totalNumStr];
+//        attrStr = [[NSMutableAttributedString alloc] initWithString:totalNumStr];
+//        //进行范围设置
+//        [attrStr addAttribute:NSForegroundColorAttributeName
+//                        value: [UIColor often_FCFCC8:1]
+//                        range:NSMakeRange(0,3)];
+//        [attrStr addAttribute:NSForegroundColorAttributeName
+//                        value: [UIColor often_FFFFFF:1]
+//                        range:NSMakeRange(3,totalNumStr.length - 3)];
+//        _totalNumLabel.attributedText = attrStr;
+//    }
 }
 
 - (void)awakeFromNib {
@@ -175,12 +172,12 @@
     self.btnUserProfile.layer.masksToBounds = YES;
     
     [self.btnUserProfile setBackgroundImage:[UIImage imageNamed:@"global_profile_defult"] forState:UIControlStateNormal];
-    self.labelNameNick.text = @"";
-    self.labelDistance.text = @"";
-    self.labelMatchScore.text = @"";
-    self.labelActyTime.text = @"";
-    
-    self.viewHisInfo.hidden = YES;
+//    self.labelNameNick.text = @"";
+//    self.labelDistance.text = @"";
+//    self.labelMatchScore.text = @"";
+//    self.labelActyTime.text = @"";
+//    
+//    self.viewHisInfo.hidden = YES;
     
     self.viewProfileStatus.hidden = YES;
 }
@@ -277,6 +274,16 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     return 10;
 }
+
+
+- (IBAction)careAboutMeBtnClick:(id)sender {
+    NSLog(@"关心我的");
+    
+}
+- (IBAction)iCareAboutBtnClick:(id)sender {
+    NSLog(@"我关心的");
+}
+
 
 + (CGFloat)viewHeight{
     return 257;

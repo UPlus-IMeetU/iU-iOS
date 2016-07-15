@@ -7,16 +7,31 @@
 #import "CoupleViewCell.h"
 #import "MJRefresh.h"
 #import "MJIUHeader.h"
+#import "ControllerMineMain.h"
 
 #import "FilterView.h"
 
-#import "ControllerMyCharm.h"
+#import "XMHttpCouple.h"
+#import "EnumHeader.h"
+#import "XMNetworkErr.h"
+
+#import <YYKit/YYKit.h>
+#import "ModelCoupleList.h"
+#import "ModelCouple.h"
+#import "ModelSquareList.h"
+#import "ModelSquare.h"
+
+#import "CoupleViewCell.h"
+#import "SquareViewCell.h"
 
 #define Couple 10001
 #define Square 10002
 #define ScreenWidth [UIScreen screenWidth]
 #define ScreenHeight [UIScreen screenHeight]
-@interface ControllerCouple ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+@interface ControllerCouple ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>{
+    BOOL coupleHasNext;
+    BOOL squareHasNext;
+}
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) UITableView *squareTableView;
 @property (nonatomic,strong) UITableView * coupleTableView;
@@ -25,6 +40,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *choiceButton;
 @property (nonatomic,strong) UIView *filterView;
 @property (nonatomic,strong) UIView *filterChildView;
+@property (nonatomic,strong) XMNetworkErr *xmNetworkErr;
+
+@property (nonatomic,strong) NSMutableArray *coupleListArray;
+@property (nonatomic,strong) NSMutableArray *squareListArray;
+
+
 @end
 @implementation ControllerCouple
 
@@ -38,6 +59,9 @@
 }
 
 - (void)viewDidLoad {
+    //进行初始化
+    _coupleListArray = [NSMutableArray array];
+    _squareListArray = [NSMutableArray array];
     [super viewDidLoad];
     [self prepareData];
     [self prepareUI];
@@ -45,10 +69,50 @@
 }
 
 - (void)prepareData{
-    
+    //加载数据
+    _coupleListArray = [NSMutableArray array];
+    _squareListArray = [NSMutableArray array];
+    [self loadCoupleWithTime:0 withType:Refresh];
+    [self loadSquareInfo];
 }
 
-
+- (void)loadSquareInfo{
+    [[XMHttpCouple http] xmGetSquareInfoWithBlock:^(NSInteger code, id response, NSURLSessionDataTask *task, NSError *error) {
+        typeof(self) weakSelf = self;
+        [_squareTableView.mj_header endRefreshing];
+        if (code == 200) {
+            ModelSquareList *modelSquareList = [ModelSquareList modelWithJSON:response];
+            [weakSelf.squareListArray removeAllObjects];
+            weakSelf.squareListArray = [NSMutableArray arrayWithArray:modelSquareList.square];
+            [weakSelf.squareTableView reloadData];
+        }
+    }];
+}
+- (void)loadCoupleWithTime:(long long)time withType:(RefreshType)refreshTyp{
+    typeof(self) weakSelf = self;
+    [[XMHttpCouple http] xmGetHalfListWithLastTime:time block:^(NSInteger code, id response, NSURLSessionDataTask *task, NSError *error) {
+        [_coupleTableView.mj_footer endRefreshing];
+        [_coupleTableView.mj_header endRefreshing];
+        if (code == 200) {
+            [_xmNetworkErr destroyView];
+            ModelCoupleList *modelCoupleList = [ModelCoupleList modelWithJSON:response];
+            coupleHasNext = modelCoupleList.has_next;
+            if (refreshTyp == Refresh) {
+                [weakSelf.coupleListArray removeAllObjects];
+                weakSelf.coupleListArray = [NSMutableArray arrayWithArray:modelCoupleList.users];
+            }else{
+                [weakSelf.coupleListArray addObjectsFromArray:modelCoupleList.users];
+            }
+            [weakSelf.coupleTableView reloadData];
+        }else{
+            if (!_xmNetworkErr) {
+                _xmNetworkErr = [[XMNetworkErr viewWithSuperView:self.view y:80 titles:@[@"呜呜，内容加载失败了",@"点击重新加载"] callback:^(XMNetworkErr *view) {
+                    [weakSelf loadCoupleWithTime:0 withType:Refresh];
+                }] showView];
+            }
+        }
+    }];
+}
 - (void)prepareUI{
     [self.view addSubview:self.backScrollView];
     self.type = Couple;
@@ -72,7 +136,7 @@
             _choiceButton.alpha = 0;
         }];
     }else{
-    //切换成一半
+        //切换成一半
         self.type = Couple;
         [_backScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         [UIView animateWithDuration:1 animations:^{
@@ -90,13 +154,13 @@
         _squareTableView.tag = Square;
         __weak typeof (self) weakSelf = self;
         _squareTableView.mj_header = [MJIUHeader headerWithRefreshingBlock:^{
-            [weakSelf.squareTableView.mj_header endRefreshing];
+            [weakSelf loadSquareInfo];
         }];
         [((MJIUHeader *)_squareTableView.mj_header) initGit];
-               _squareTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _squareTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_squareTableView registerNib:[UINib xmNibFromMainBundleWithName:@"SquareViewCell"] forCellReuseIdentifier:@"SquareViewCell"];
-
-
+        
+        
     }
     return _squareTableView;
 }
@@ -111,12 +175,18 @@
         _coupleTableView.tag = Couple;
         __weak typeof (self) weakSelf = self;
         _coupleTableView.mj_header = [MJIUHeader headerWithRefreshingBlock:^{
-            [weakSelf.coupleTableView.mj_header endRefreshing];
+            [weakSelf loadCoupleWithTime:0 withType:Refresh];
         }];
         _coupleTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [((MJIUHeader *)_coupleTableView.mj_header) initGit];
         _coupleTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-            [weakSelf.coupleTableView.mj_footer endRefreshing];
+            if (coupleHasNext) {
+                ModelCouple *modelCouple = [weakSelf.coupleListArray lastObject];
+                [weakSelf loadCoupleWithTime:modelCouple.actytime withType:Loading];
+            }else{
+                [weakSelf.coupleTableView.mj_footer endRefreshingWithNoMoreData];
+
+            }
         }];
         MJRefreshBackNormalFooter *footer = (MJRefreshBackNormalFooter *)_coupleTableView.mj_footer;
         footer.stateLabel.textColor = [UIColor colorWithR:128 G:128 B:128 A:1];
@@ -169,7 +239,7 @@
     if (pageInt == 0) {
         [_changeButton setImage:[UIImage imageNamed:@"cp_nav_btn_half"] forState:UIControlStateNormal];
     }else if(pageInt == 1){
-         [_changeButton setImage:[UIImage imageNamed:@"cp_nav_btn_public"] forState:UIControlStateNormal];
+        [_changeButton setImage:[UIImage imageNamed:@"cp_nav_btn_public"] forState:UIControlStateNormal];
     }
 }
 #pragma mark UITableViewDelegate,UITableViewDataSourse
@@ -178,18 +248,22 @@
     if (tableView.tag == Couple) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CoupleViewCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        ModelCouple *modelCouple = _coupleListArray[indexPath.row];
+        ((CoupleViewCell*)cell).modelCouple = modelCouple;
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:@"SquareViewCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        ModelSquare *modelSquare = _squareListArray[indexPath.row];
+        ((SquareViewCell*)cell).modelSquare = modelSquare;
     }
     cell.backgroundColor = [UIColor clearColor];
-//    cell.layer.transform = CATransform3DMakeScale(0.97, 0.97, 1);
-//    //x和y的最终值为1
-//    [UIView animateWithDuration:0.5 animations:^{
-//        cell.layer.transform = CATransform3DMakeScale(1, 1, 1);
-//        //cell.alpha=1;
-//    }];
-
+    //    cell.layer.transform = CATransform3DMakeScale(0.97, 0.97, 1);
+    //    //x和y的最终值为1
+    //    [UIView animateWithDuration:0.5 animations:^{
+    //        cell.layer.transform = CATransform3DMakeScale(1, 1, 1);
+    //        //cell.alpha=1;
+    //    }];
+    
     return cell;
 }
 
@@ -198,9 +272,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView.tag == Couple) {
-        return 20;
+        return _coupleListArray.count;
     }else{
-        return 15;
+        return _squareListArray.count;
     }
 }
 
@@ -215,8 +289,13 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ControllerMyCharm *myCharm = [[ControllerMyCharm alloc] init];
-    [self.navigationController pushViewController:myCharm animated:YES];
+    if (tableView.tag == Couple) {
+        ModelCouple *modelCouple = _coupleListArray[indexPath.row];
+        ControllerMineMain *mainMain = [ControllerMineMain controllerWithUserCode:[NSString stringWithFormat:@"%ld",modelCouple.user_code] getUserCodeFrom:MineMainGetUserCodeFromParam];
+        [self.navigationController pushViewController:mainMain animated:YES];
+    }else{
+        NSLog(@"点击了广场任务");
+    }
 }
 
 

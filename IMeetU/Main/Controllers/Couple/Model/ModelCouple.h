@@ -19,5 +19,5 @@
 @property (nonatomic,copy) NSString *school;
 @property (nonatomic,assign) NSInteger distance;
 @property (nonatomic,assign) long long actytime;
-@property (nonatomic,assign) NSString *sign;
+@property (nonatomic,copy) NSString *sign;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void (^MyVoiceBlock) (NSInteger voiceSecond);
 @interface ControllerMyVoice : UIViewController
-
+@property (nonatomic,copy) MyVoiceBlock myVoiceBlock;
 @end

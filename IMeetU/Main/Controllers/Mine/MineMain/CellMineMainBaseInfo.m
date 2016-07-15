@@ -29,6 +29,10 @@
 @property (nonatomic, copy) NSString *title;
 
 @property (weak, nonatomic) IBOutlet UIView *viewSeparator;
+@property (weak, nonatomic) IBOutlet UIView *voiceView;
+@property (weak, nonatomic) IBOutlet UIImageView *voiceImage;
+@property (weak, nonatomic) IBOutlet UILabel *voiceSecond;
+
 @end
 @implementation CellMineMainBaseInfo
 
@@ -57,6 +61,14 @@
         self.viewSeparator.hidden = NO;
     }
     
+    //我的声线
+    if (indexPath.section == 1 && indexPath.row == 1){
+        self.voiceView.hidden = NO;
+        self.voiceView.layer.cornerRadius = 11;
+        self.voiceView.clipsToBounds = YES;
+    }else{
+        self.voiceView.hidden = YES;
+    }
     //判断是否可以发biu
     UIButton *biuButton = [UIButton buttonWithType:UIButtonTypeCustom];
     biuButton.frame = CGRectMake(0, self.frame.size.width - 49, self.frame.size.width , 49);
@@ -101,11 +113,14 @@
 }
 
 - (NSString *)titleWithIndexPath:(NSIndexPath*)indexPath mineInfo:(ModelResponseMine *)mineInfo{
-    if (indexPath.section == 1){
+    if (indexPath.section == 0){
         switch (indexPath.row) {
-            case 1:return @"个人动态";
+            case 0:return @"个人动态";
         }
-    }else if (indexPath.section == 2){
+    }else if(indexPath.section == 1 && indexPath.row == 1){
+        return @"我的声线";
+    }
+    else if (indexPath.section == 2){
         switch (indexPath.row) {
             case 0:return @"昵称"; break;
             case 1:return @"性别"; break;
@@ -143,11 +158,14 @@
 - (UIImage*)imgViewTitleWithIndexPath:(NSIndexPath*)indexPath{
     UIImage *img = [[UIImage alloc] init];
     NSInteger row = indexPath.row;
-    if (indexPath.section == 1){
-        if (row == 1){
+    if (indexPath.section == 0){
+        if (row == 0){
             return [UIImage imageNamed:@"mine_main_imageview_post"];
         }
-    }else if (indexPath.section == 2) {
+    }else if(indexPath.section == 1 && indexPath.row == 1){
+        return [UIImage imageNamed:@"main_icon_voice"];
+    }
+    else if (indexPath.section == 2) {
         if (row == 0) {
             return [UIImage imageNamed:@"mine_main_imageview_name"];
         }else if (row == 1){
@@ -175,6 +193,7 @@
 }
 
 - (NSString*)contentWithIndexPath:(NSIndexPath*)indexPath mineInfo:(ModelResponseMine *)mineInfo{
+
     if (indexPath.section == 2) {
         switch (indexPath.row) {
             case 0:return mineInfo.nameNick; break;
@@ -223,4 +242,10 @@
     return @"";
 }
 
+- (IBAction)voicePlay:(id)sender {
+    _voiceImage.animationImages = [NSArray arrayWithObjects:[UIImage imageNamed:@"mine_me_voice_img01"],[UIImage imageNamed:@"mine_me_voice_img02"] ,[UIImage imageNamed:@"mine_me_voice_img03"],nil];
+    _voiceImage.animationDuration = 2.0;
+    _voiceImage.animationRepeatCount = 0;
+    [_voiceImage startAnimating];
+}
 @end

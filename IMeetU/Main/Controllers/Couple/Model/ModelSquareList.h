@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 @interface ModelSquareList : NSObject
-@property (nonatomic,strong) NSArray *squares;
+@property (nonatomic,strong) NSArray *square;
 @property (nonatomic,copy) NSString *token;
 @end

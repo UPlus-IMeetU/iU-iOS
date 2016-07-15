@@ -76,12 +76,12 @@
     return [calendar components:unit fromDate:self toDate:[NSDate date] options:0];
 }
 
-- (NSString *)distanceTimeWithBeforeTime:(long long)beTime
++ (NSString *)distanceTimeWithBeforeTime:(long long)beTime
 {
     NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
-    long long distanceTime = now - beTime;
+    long long distanceTime = now /1000 - beTime;
     //秒数
-    long long time = distanceTime / 1000;
+    long long time = distanceTime;
     if (time < 60) {
         return @"刚刚";
     }
