@@ -15,9 +15,12 @@
 
 @property (nonatomic, weak) id<ViewIMInputPanelDelegate> delegateInputPanel;
 
+@property (nonatomic, weak) UIViewController *superController;
+
 @property (weak, nonatomic) UIButton *btnVoice;
 @property (weak, nonatomic) UIButton *btnEmoji;
-@property (weak, nonatomic) UIButton *btnMore;
+@property (weak, nonatomic) UIButton *btnCamera;
+@property (weak, nonatomic) UIButton *btnPhotos;
 
 @property (weak, nonatomic) UIView *viewKeyboardWrap;
 
@@ -27,7 +30,7 @@
 @property (weak, nonatomic) NSLayoutConstraint *constraintViewInputViewHeight;
 @property (weak, nonatomic) NSLayoutConstraint *constarintViewIMInputPanelMarginBottom;
 
-+ (instancetype)viewIMInputPanel;
++ (instancetype)viewIMInputPanelWithSuperController:(UIViewController*)controller;
 
 - (void)initFrame;
 - (void)initial;

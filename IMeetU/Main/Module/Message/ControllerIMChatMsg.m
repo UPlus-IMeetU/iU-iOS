@@ -21,7 +21,10 @@
 @property (weak, nonatomic) IBOutlet ViewIMInputPanel *viewIMInputPanel;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnVoice;
+@property (weak, nonatomic) IBOutlet UIButton *btnCamera;
+@property (weak, nonatomic) IBOutlet UIButton *btnPhotos;
 @property (weak, nonatomic) IBOutlet UIButton *btnEmoji;
+
 @property (weak, nonatomic) IBOutlet UIView *viewKeyboardWrap;
 @property (nonatomic, weak) IBOutlet UIView *textViewContentWrap;
 @property (weak, nonatomic) IBOutlet YYTextView *yyTextViewContent;
@@ -46,10 +49,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    self.viewIMInputPanel.superController = self;
     self.viewIMInputPanel.delegateInputPanel = self;
     
     self.viewIMInputPanel.btnVoice = self.btnVoice;
     self.viewIMInputPanel.btnEmoji = self.btnEmoji;
+    self.viewIMInputPanel.btnCamera = self.btnCamera;
+    self.viewIMInputPanel.btnPhotos = self.btnPhotos;
     self.viewIMInputPanel.yyTextViewContent = self.yyTextViewContent;
     self.viewIMInputPanel.viewKeyboardWrap = self.viewKeyboardWrap;
     self.viewIMInputPanel.textViewContentWrap = self.textViewContentWrap;

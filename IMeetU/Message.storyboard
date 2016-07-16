@@ -118,33 +118,33 @@
                                                         <state key="normal" image="input_view_panel_emoji"/>
                                                         <state key="selected" image="input_view_panel_keyboard"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytk-W5-mZA">
-                                                        <rect key="frame" x="150" y="2" width="150" height="30"/>
-                                                        <state key="normal" title="相册"/>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3FQ-aU-eGi">
-                                                        <rect key="frame" x="300" y="2" width="150.5" height="30"/>
+                                                        <rect key="frame" x="150" y="2" width="150" height="30"/>
                                                         <state key="normal" title="相机"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytk-W5-mZA">
+                                                        <rect key="frame" x="300" y="2" width="150" height="30"/>
+                                                        <state key="normal" title="相册"/>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="UWS-bH-pvL" firstAttribute="leading" secondItem="3FQ-aU-eGi" secondAttribute="trailing" id="2ni-gC-1e1"/>
-                                                    <constraint firstItem="3FQ-aU-eGi" firstAttribute="leading" secondItem="ytk-W5-mZA" secondAttribute="trailing" id="4N8-0Z-G8S"/>
                                                     <constraint firstItem="UWS-bH-pvL" firstAttribute="width" secondItem="NBO-Au-fVS" secondAttribute="width" id="Anz-aG-iBg"/>
                                                     <constraint firstItem="3FQ-aU-eGi" firstAttribute="width" secondItem="ytk-W5-mZA" secondAttribute="width" id="FlI-dg-xDI"/>
                                                     <constraint firstItem="ytk-W5-mZA" firstAttribute="width" secondItem="NBO-Au-fVS" secondAttribute="width" id="JHQ-5z-ntD"/>
                                                     <constraint firstAttribute="bottom" secondItem="NBO-Au-fVS" secondAttribute="bottom" id="Jpl-tY-7nO"/>
+                                                    <constraint firstItem="UWS-bH-pvL" firstAttribute="leading" secondItem="ytk-W5-mZA" secondAttribute="trailing" id="Jr1-UT-wik"/>
                                                     <constraint firstItem="NBO-Au-fVS" firstAttribute="centerY" secondItem="2w0-1J-p62" secondAttribute="centerY" id="KqQ-8O-w76"/>
                                                     <constraint firstItem="ytk-W5-mZA" firstAttribute="top" secondItem="2w0-1J-p62" secondAttribute="top" id="NRU-tV-Lcf"/>
                                                     <constraint firstAttribute="bottom" secondItem="3FQ-aU-eGi" secondAttribute="bottom" id="Nh8-sh-CB3"/>
                                                     <constraint firstAttribute="height" constant="35" id="Q5Y-hj-BHu"/>
-                                                    <constraint firstItem="ytk-W5-mZA" firstAttribute="leading" secondItem="NBO-Au-fVS" secondAttribute="trailing" id="R8S-Ca-iM6"/>
                                                     <constraint firstAttribute="trailing" secondItem="UWS-bH-pvL" secondAttribute="trailing" id="SGj-HX-Y6n"/>
                                                     <constraint firstAttribute="bottom" secondItem="UWS-bH-pvL" secondAttribute="bottom" id="UdW-oa-nII"/>
                                                     <constraint firstAttribute="bottom" secondItem="ytk-W5-mZA" secondAttribute="bottom" id="UjK-Ak-3pI"/>
                                                     <constraint firstItem="UWS-bH-pvL" firstAttribute="top" secondItem="2w0-1J-p62" secondAttribute="top" id="b0M-cQ-BqR"/>
+                                                    <constraint firstItem="ytk-W5-mZA" firstAttribute="leading" secondItem="3FQ-aU-eGi" secondAttribute="trailing" id="bx5-uC-KLb"/>
                                                     <constraint firstItem="3FQ-aU-eGi" firstAttribute="top" secondItem="2w0-1J-p62" secondAttribute="top" id="dTE-qZ-Azv"/>
+                                                    <constraint firstItem="3FQ-aU-eGi" firstAttribute="leading" secondItem="NBO-Au-fVS" secondAttribute="trailing" id="dih-V3-3VK"/>
                                                     <constraint firstItem="NBO-Au-fVS" firstAttribute="top" secondItem="2w0-1J-p62" secondAttribute="top" id="f4l-mC-wOR"/>
                                                     <constraint firstItem="3FQ-aU-eGi" firstAttribute="centerY" secondItem="2w0-1J-p62" secondAttribute="centerY" id="fBS-mF-QPw"/>
                                                     <constraint firstItem="ytk-W5-mZA" firstAttribute="centerY" secondItem="2w0-1J-p62" secondAttribute="centerY" id="l07-wq-yEF"/>
@@ -155,10 +155,10 @@
                                                     <mask key="constraints">
                                                         <exclude reference="Jpl-tY-7nO"/>
                                                         <exclude reference="f4l-mC-wOR"/>
-                                                        <exclude reference="NRU-tV-Lcf"/>
-                                                        <exclude reference="UjK-Ak-3pI"/>
                                                         <exclude reference="Nh8-sh-CB3"/>
                                                         <exclude reference="dTE-qZ-Azv"/>
+                                                        <exclude reference="NRU-tV-Lcf"/>
+                                                        <exclude reference="UjK-Ak-3pI"/>
                                                         <exclude reference="UdW-oa-nII"/>
                                                         <exclude reference="b0M-cQ-BqR"/>
                                                     </mask>
@@ -176,8 +176,8 @@
                                             <constraint firstAttribute="trailing" secondItem="2w0-1J-p62" secondAttribute="trailing" id="yWG-Af-aMD"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GoG-ZA-UG4">
-                                        <rect key="frame" x="0.0" y="75" width="560" height="220"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GoG-ZA-UG4">
+                                        <rect key="frame" x="0.0" y="75" width="600" height="220"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="600" id="UIT-MW-dkH"/>
@@ -212,7 +212,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnCamera" destination="3FQ-aU-eGi" id="5W3-FT-utL"/>
                         <outlet property="btnEmoji" destination="UWS-bH-pvL" id="dMx-fW-lDP"/>
+                        <outlet property="btnPhotos" destination="ytk-W5-mZA" id="nxI-ng-ftO"/>
                         <outlet property="btnVoice" destination="NBO-Au-fVS" id="ZQQ-3r-Kg3"/>
                         <outlet property="constarintViewIMInputPanelHeight" destination="yGw-Pv-ZE0" id="bf2-9A-kEj"/>
                         <outlet property="constarintViewIMInputPanelMarginBottom" destination="dZ2-Wh-afT" id="NTV-vD-jET"/>

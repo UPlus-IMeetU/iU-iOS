@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040CAC191D38D816008C125B /* XMSoundRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CAC181D38D816008C125B /* XMSoundRecorder.m */; };
+		040CAC1D1D39EA2D008C125B /* XMViewVoicePowerIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CAC1C1D39EA2D008C125B /* XMViewVoicePowerIndicator.m */; };
 		040F4F8D1CAAB96100AD8334 /* XMAlertDialogUnfriendYou.m in Sources */ = {isa = PBXBuildFile; fileRef = 040F4F8C1CAAB96100AD8334 /* XMAlertDialogUnfriendYou.m */; };
 		040F4F911CAAC2CE00AD8334 /* DBCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 040F4F901CAAC2CE00AD8334 /* DBCache.m */; };
 		040F4F961CAB731200AD8334 /* biubiu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 040F4F951CAB731200AD8334 /* biubiu.wav */; };
@@ -394,6 +396,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040CAC171D38D816008C125B /* XMSoundRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMSoundRecorder.h; sourceTree = "<group>"; };
+		040CAC181D38D816008C125B /* XMSoundRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMSoundRecorder.m; sourceTree = "<group>"; };
+		040CAC1B1D39EA2D008C125B /* XMViewVoicePowerIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMViewVoicePowerIndicator.h; sourceTree = "<group>"; };
+		040CAC1C1D39EA2D008C125B /* XMViewVoicePowerIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMViewVoicePowerIndicator.m; sourceTree = "<group>"; };
 		040F4F8B1CAAB96100AD8334 /* XMAlertDialogUnfriendYou.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAlertDialogUnfriendYou.h; sourceTree = "<group>"; };
 		040F4F8C1CAAB96100AD8334 /* XMAlertDialogUnfriendYou.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAlertDialogUnfriendYou.m; sourceTree = "<group>"; };
 		040F4F8F1CAAC2CE00AD8334 /* DBCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCache.h; sourceTree = "<group>"; };
@@ -1106,6 +1112,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040CAC1A1D39E9FF008C125B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				040CAC1B1D39EA2D008C125B /* XMViewVoicePowerIndicator.h */,
+				040CAC1C1D39EA2D008C125B /* XMViewVoicePowerIndicator.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		040F4F8E1CAAC23D00AD8334 /* DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -1919,6 +1934,8 @@
 		04AC65EF1D35F32700FB61F0 /* voice */ = {
 			isa = PBXGroup;
 			children = (
+				040CAC171D38D816008C125B /* XMSoundRecorder.h */,
+				040CAC181D38D816008C125B /* XMSoundRecorder.m */,
 				04AC65F01D35F32700FB61F0 /* InputViewIMVoice.h */,
 				04AC65F11D35F32700FB61F0 /* InputViewIMVoice.m */,
 				04AC65F21D35F32700FB61F0 /* InputViewIMVoice.xib */,
@@ -2141,6 +2158,7 @@
 		04B165C01C89D87E00EE6DB8 /* XMLib */ = {
 			isa = PBXGroup;
 			children = (
+				040CAC1A1D39E9FF008C125B /* view */,
 				044B3FC41D02F0A200E9E46F /* XMNetworkErr */,
 				044724B81C9A5B95000FD349 /* MLToast */,
 				04B165C11C89D87E00EE6DB8 /* plugs */,
@@ -2948,6 +2966,7 @@
 				04C8F2281D23C640007DCF9F /* ModelRemoteNotificationAPNS.m in Sources */,
 				044AF7711C8EDD7B009AF59F /* XMTableViewNoHover.m in Sources */,
 				04C8F2161D23C640007DCF9F /* ModelActivityContents.m in Sources */,
+				040CAC191D38D816008C125B /* XMSoundRecorder.m in Sources */,
 				6FBC687C1CFBCE9D00B45657 /* CommunityReplyCell.m in Sources */,
 				044AF7141C8D3061009AF59F /* ControllerMineAlterBirthday.m in Sources */,
 				04DA95EE1CAE29AB00A5BF37 /* UserDefultConfig.m in Sources */,
@@ -3077,6 +3096,7 @@
 				044B3F5E1CFEF4A300E9E46F /* CellCommunityNotifies.m in Sources */,
 				044AF6C71C8C883D009AF59F /* DBSchools.m in Sources */,
 				04AC66051D35F32700FB61F0 /* ModelIMEmojiMarkets.m in Sources */,
+				040CAC1D1D39EA2D008C125B /* XMViewVoicePowerIndicator.m in Sources */,
 				047519C21CA631CB009115CE /* BCQueryBillResult.m in Sources */,
 				04C8F22A1D23C640007DCF9F /* ModelRemoteNotificationProfileStatus.m in Sources */,
 				04C8F2221D23C640007DCF9F /* ModelResponseOSSSecurityToke.m in Sources */,

@@ -20,7 +20,7 @@
 #import "IMEmojiHelper.h"
 #import "TextParserIMInputPanel.h"
 
-@interface ViewIMInputPanel()<InputViewIMEmojiDelegate, YYTextViewDelegate>
+@interface ViewIMInputPanel()<InputViewIMEmojiDelegate, YYTextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, assign) CGFloat viewHeight;
 @property (nonatomic, assign) CGFloat viewFrameHeight;
@@ -34,11 +34,14 @@
 
 //值为YES时，当键盘关闭时，不关闭输入面板
 @property (nonatomic, assign) BOOL isNotCloseWhenKeyboardClose;
+
+@property (nonatomic, strong) UIImagePickerController *pickControllerImage;
 @end
 @implementation ViewIMInputPanel
 
-+ (instancetype)viewIMInputPanel{
++ (instancetype)viewIMInputPanelWithSuperController:(UIViewController *)controller{
     ViewIMInputPanel *view = [UINib xmViewWithName:@"ViewIMInputPanel" class:[ViewIMInputPanel class]];
+    view.superController = controller;
     
     return view;
 }
@@ -72,6 +75,8 @@
     
     [self.btnEmoji addTarget:self action:@selector(onTouchUpInsideBtnEmoji:) forControlEvents:UIControlEventTouchUpInside];
     [self.btnVoice addTarget:self action:@selector(onTouchUpInsideBtnVoice:) forControlEvents:UIControlEventTouchUpInside];
+    [self.btnCamera addTarget:self action:@selector(onTouchUpInsideBtnPhotos:) forControlEvents:UIControlEventTouchUpInside];
+    [self.btnPhotos addTarget:self action:@selector(onTouchUpInsideBtnCamera:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)onTouchUpInsideBtnVoice:(UIButton*)sender {
@@ -95,7 +100,16 @@
     }
     
     self.btnEmoji.selected = NO;
-    self.btnMore.selected = NO;
+}
+
+- (void)onTouchUpInsideBtnPhotos:(UIButton*)sender{
+    self.pickControllerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self.superController presentViewController:self.pickControllerImage animated:YES completion:nil];
+}
+
+- (void)onTouchUpInsideBtnCamera:(UIButton*)sender{
+    self.pickControllerImage.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self.superController presentViewController:self.pickControllerImage animated:YES completion:nil];
 }
 
 - (void)onTouchUpInsideBtnEmoji:(UIButton*)sender {
@@ -119,7 +133,6 @@
     }
     
     self.btnVoice.selected = NO;
-    self.btnMore.selected = NO;
 }
 
 - (void)onTouchUpInsideBtnMore:(UIButton*)sender {
@@ -171,7 +184,6 @@
     
     self.btnVoice.selected = NO;
     self.btnEmoji.selected = NO;
-    self.btnMore.selected = NO;
 }
 
 #pragma mark 键盘关闭
@@ -284,4 +296,20 @@
     return _inputViewIMMore;
 }
 
+
+- (UIImagePickerController *)pickControllerImage{
+    if (!_pickControllerImage) {
+        _pickControllerImage = [[UIImagePickerController alloc] init];
+        _pickControllerImage.delegate = self;
+        _pickControllerImage.allowsEditing = YES;
+    }
+    return _pickControllerImage;
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    [self.pickControllerImage dismissViewControllerAnimated:YES completion:^{
+        UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    }];
+    
+}
 @end

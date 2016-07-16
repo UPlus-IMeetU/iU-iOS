@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "InputViewIM.h"
 
+typedef NS_ENUM(NSInteger ,IMRecorderOperation) {
+    IMRecorderOperationSend,
+    IMRecorderOperationReview,
+    IMRecorderOperationDelete
+};
+
 @interface InputViewIMVoice : InputViewIM
 
 @end
