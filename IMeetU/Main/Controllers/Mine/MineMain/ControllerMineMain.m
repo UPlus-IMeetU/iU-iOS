@@ -80,6 +80,13 @@
 
 #import "ControllerBiuPayB.h"
 
+#import "ControllerMyVoice.h"
+
+#import "AlertView.h"
+
+#import "ControllerICarePeople.h"
+#import "ControllerAuthentication.h"
+
 @interface ControllerMineMain ()<UITableViewDataSource, UITableViewDelegate, CellMineMainPersonalIntroductionsDelegate, CellMineMainProfileAndPhotosDelegate, ControllerMineAlterCharacterDelegate, ControllerMineAlterInterestDelegate, ViewMineMainAlterProfileDelegate, ControllerMineAlterNameDelegate, ControllerMineAlterBirthdayDelegate, ControllerMineAlterConstellationDelegate, ControllerMineAlterAboutMeDelegate, ControllerMineAlterAddressDelegate, ControllerMineAlterBodyHeightWeightDelegate, ControllerMineAlterIdentityProfessionDelegate, ControllerMineAlterCompanyDelegate, ControllerSelectSchoolDelegate, ControllerMinePhotoBrowseDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, XMActionSheetMineMainMoreDelegate>
 
 @property (nonatomic, copy) NSString *userCode;
@@ -87,6 +94,8 @@
 @property (nonatomic, assign) BOOL isOpen;
 
 @property (nonatomic, strong) ModelResponseMine *mineInfo;
+//Biu币
+@property (weak, nonatomic) IBOutlet UILabel *biuBiuLabel;
 @property (nonatomic, strong) NSArray *interestModels;
 @property (nonatomic, strong) UIImagePickerController *pickControllerImg;
 @property (nonatomic, strong) UIImagePickerController *pickControllerProfile;
@@ -102,6 +111,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnMore;
 @property (weak, nonatomic) IBOutlet UIButton *btnSetting;
 @property (weak, nonatomic) IBOutlet UILabel *labelNameNick;
+@property (weak, nonatomic) IBOutlet UIButton *praiseBtn;
+@property (weak, nonatomic) IBOutlet UIView *otherView;
 
 /**
  *  是否正在加载个人信息
@@ -157,7 +168,7 @@
     
     if (!_isMine) {
         if (self.tabBarController.tabBar.hidden) {
-            [self.view addSubview:self.biuButton];
+            self.otherView.hidden = NO;
         }
     }
 }
@@ -228,14 +239,6 @@
                 self.mineInfo.profileCircle = self.mineInfo.profileOrigin;
                 [self.labelNameNick setText:self.mineInfo.nameNick];
                 //进行状态的判定
-                NSInteger biuCode = self.mineInfo.biuCode;
-                if (biuCode == 0 || biuCode == 1) {
-                    [_biuButton setTitle:@"biu一下" forState:UIControlStateNormal];
-                    _biuButton.tag = 10001;
-                }else if(biuCode == 2){
-                    [_biuButton setTitle:@"和TA聊聊" forState:UIControlStateNormal];
-                    _biuButton.tag = 10002;
-                }
                 [self.tableView reloadData];
                 
                 if ((!self.mineInfo.school || self.mineInfo.school.length==0) && self.isMine){
@@ -266,13 +269,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
-        return 1;
+        return 2;
     }else if (section == 1){
         return 3;
     }else if (section == 2){
         return 8;
     }else if (section == 3){
-        return 3;
+        return 4;
     }else if (section == 4){
         return 2;
     }else if (section == 5){
@@ -286,7 +289,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return [CellMineMainProfileAndPhotos viewHeight];
+        if (indexPath.row == 0) {
+             return [CellMineMainProfileAndPhotos viewHeight];
+        }else if(indexPath.row ==1){
+            return [CellMineMainBaseInfo viewHeight];
+        }
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
             return 35;
@@ -328,12 +335,27 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
+    __weak typeof (self) weakSelf = self;
     if (indexPath.section == 0) {
-        CellMineMainProfileAndPhotos *cellProfileAndPhotos = [tableView dequeueReusableCellWithIdentifier:NibXMCellMineMainProfileAndPhotos forIndexPath:indexPath];
-        [cellProfileAndPhotos initWithMine:self.mineInfo isMine:self.isMine isShowBtnBack:(self.getUserCodeFrom == MineMainGetUserCodeFromParam)];
-        cellProfileAndPhotos.delegateCell = self;
-        cell = cellProfileAndPhotos;
-    }else if (indexPath.section == 1){
+        if (indexPath.row == 0) {
+            CellMineMainProfileAndPhotos *cellProfileAndPhotos = [tableView dequeueReusableCellWithIdentifier:NibXMCellMineMainProfileAndPhotos forIndexPath:indexPath];
+            [cellProfileAndPhotos initWithMine:self.mineInfo isMine:self.isMine isShowBtnBack:(self.getUserCodeFrom == MineMainGetUserCodeFromParam)];
+            cellProfileAndPhotos.delegateCell = self;
+            cellProfileAndPhotos.careAboutMeBtnBlock = ^(UIButton *button){
+                if (button.tag == 10001) {
+                    [weakSelf careAboutMeBtnClick];
+                }else if(button.tag == 10002){
+                    [weakSelf myCareAboutBtnClick];
+                }
+                
+            };
+            cell = cellProfileAndPhotos;
+        }else if(indexPath.row == 1){
+            CellMineMainBaseInfo *cellBaseInfo = [tableView dequeueReusableCellWithIdentifier:NibXMCellMineMainBaseInfo forIndexPath:indexPath];
+            [cellBaseInfo initWithIsMine:self.isMine indexPath:indexPath mineInfo:nil];
+            cell = cellBaseInfo;
+        }
+     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
             CellMineMainTableViewHeader *cellHeader = [tableView dequeueReusableCellWithIdentifier:NibXMCellMineMainTableViewHeader forIndexPath:indexPath];
             [cellHeader initWithSection:indexPath.section];
@@ -406,7 +428,7 @@
 
 #pragma mark - tableView选中代理
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-     if (indexPath.section==1 && indexPath.row==2) {
+     if (indexPath.section==0 && indexPath.row==1) {
         //进入个人动态
         ControllerSamePostList *controllerSamePostList = [ControllerSamePostList controllerSamePostList];
         controllerSamePostList.isMyPostList = YES;
@@ -422,6 +444,12 @@
         controller.delegateAlterAboutMe = self;
         //[controller setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:controller animated:YES];
+    }else if(indexPath.section == 1 && indexPath.row == 2){
+        ControllerMyVoice *controllerMyVoice = [[ControllerMyVoice alloc] init];
+        controllerMyVoice.myVoiceBlock = ^(NSInteger recordTime){
+            
+        };
+        [self.navigationController pushViewController:controllerMyVoice animated:YES];
     }else if (indexPath.section==2 && indexPath.row==1) {
         ControllerMineAlterName *controller = [ControllerMineAlterName controllerMyAlterName:self.mineInfo.nameNick];
         controller.delegateAlterName = self;
@@ -461,6 +489,9 @@
     }else if (indexPath.section==3 && indexPath.row==2) {
         ControllerSelectSchool *controller = [ControllerSelectSchool controllerViewSelectSchool];
         controller.delegateSelegateSchool = self;
+        [self.navigationController pushViewController:controller animated:YES];
+    }else if(indexPath.section == 3 && indexPath.row == 3){
+        ControllerAuthentication *controller = [ControllerAuthentication new];
         [self.navigationController pushViewController:controller animated:YES];
     }else if (indexPath.section==4 && indexPath.row==1) {
         ControllerMineAlterCharacter *controller = [ControllerMineAlterCharacter controllerWithCharacters:self.mineInfo.characters gender:self.mineInfo.gender];
@@ -966,17 +997,32 @@
     return _userCode;
 }
 
-
-- (UIButton *)biuButton{
-    if (!_biuButton) {
-        _biuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _biuButton.frame = CGRectMake(0, self.view.frame.size.height - 49, self.view.frame.size.width, 49);
-        [_biuButton setBackgroundColor:[UIColor often_6CD1C9:1]];
-        [_biuButton setTitle:@"抢biu" forState:UIControlStateNormal];
-        [_biuButton setTintColor:[UIColor whiteColor]];
-        [_biuButton addTarget:self action:@selector(biuButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_biuButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    }
-    return _biuButton;
+//点击聊天按钮
+- (IBAction)charBtnClick:(id)sender {
 }
+//点击点赞按钮
+- (IBAction)praiseBtnClick:(id)sender {
+}
+//点击成为CP按钮
+
+- (IBAction)cpBtnClick:(id)sender {
+    AlertView *alertView = [AlertView instanceAlertView];
+    alertView.alertType =  AlertTypeCareAboutMe;
+    alertView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height );
+    [self.view addSubview:alertView];
+}
+
+//点击关心我的按钮
+- (void)careAboutMeBtnClick{
+    AlertView *alertView = [AlertView instanceAlertView];
+    alertView.alertType =  AlertTypeCareAboutMe;
+    alertView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height );
+    [self.view addSubview:alertView];
+}
+
+- (void)myCareAboutBtnClick{
+    ControllerICarePeople *carePeople = [ControllerICarePeople new];
+    [self.navigationController pushViewController:carePeople animated:YES];
+}
+
 @end

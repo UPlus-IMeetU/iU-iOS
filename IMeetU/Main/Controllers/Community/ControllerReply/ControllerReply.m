@@ -305,7 +305,7 @@
     replyCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     //进行删除或者举报操作
-    typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     replyCell.modelComment = _commentArray[indexPath.row];
     replyCell.replyOperationBlock = ^(NSInteger commentId,NSInteger userCode){
         if ([[UserDefultAccount userCode] integerValue] == userCode) {

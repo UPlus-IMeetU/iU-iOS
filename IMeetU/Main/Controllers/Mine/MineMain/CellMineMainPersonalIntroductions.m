@@ -100,11 +100,11 @@
     
     maxHeight += 34;
     
-    return maxHeight;
+    return maxHeight += 38;
 }
 
 + (CGFloat)defultHeight{
-    return 80;
+    return 80 + 38;
 }
 
 @end

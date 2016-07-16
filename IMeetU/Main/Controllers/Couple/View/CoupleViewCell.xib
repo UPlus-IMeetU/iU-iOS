@@ -48,11 +48,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="清华大学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec4-Sv-1Oo">
                                 <rect key="frame" x="120" y="40" width="44" height="10"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="火星来的，没有签名......" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjz-Rc-rGi">
-                                <rect key="frame" x="105" y="65" width="140" height="16"/>
+                                <rect key="frame" x="105" y="65" width="240" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -92,6 +92,7 @@
                             <constraint firstItem="ec4-Sv-1Oo" firstAttribute="leading" secondItem="i1N-H2-EcE" secondAttribute="trailing" constant="7" id="7sb-1r-U3u"/>
                             <constraint firstItem="Yjz-Rc-rGi" firstAttribute="leading" secondItem="gOX-P2-eHt" secondAttribute="trailing" constant="10" id="8A6-7h-g9S"/>
                             <constraint firstItem="90f-WS-JWW" firstAttribute="centerY" secondItem="rIh-xv-gxy" secondAttribute="centerY" id="AD7-kt-Zc4"/>
+                            <constraint firstAttribute="trailing" secondItem="Yjz-Rc-rGi" secondAttribute="trailing" constant="10" id="AdK-6T-mJy"/>
                             <constraint firstAttribute="trailing" secondItem="G9Q-nD-UUX" secondAttribute="trailing" constant="11" id="BBv-WJ-znY"/>
                             <constraint firstItem="G9Q-nD-UUX" firstAttribute="centerY" secondItem="NF9-w5-VVX" secondAttribute="centerY" id="FBd-Xh-89d"/>
                             <constraint firstItem="G9Q-nD-UUX" firstAttribute="leading" secondItem="NF9-w5-VVX" secondAttribute="trailing" constant="5" id="NXK-RG-dgR"/>

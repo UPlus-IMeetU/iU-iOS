@@ -11,7 +11,7 @@
 @implementation ModelSquareList
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{
-             @"squares" : [ModelSquare class]
+             @"square" : [ModelSquare class]
              };
 }
 @end

@@ -234,14 +234,6 @@
 
 
 - (IBAction)finishBtnClick:(id)sender {
-//    NSData *voiceData = [[NSData alloc] initWithContentsOfURL:playName];
-//    if (voiceData) {
-//        NSString *fileName = [NSString stringWithFormat:@"/user/%@/mine/voice/myVoice.acc",[UserDefultAccount userCode]];
-//        [XMOSS uploadFileWithData:voiceData fileName:fileName progress:^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
-//            
-//        } finish:^id(OSSTask *task, NSString *fileName) {
-//            
-//        }];
     NSData *voiceData = [[NSData alloc] initWithContentsOfFile:playName];
     if (voiceData) {
         MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
@@ -257,8 +249,11 @@
         } finish:^id(OSSTask *task, NSString *fileName) {
             if (!task.error) {
                 [hud xmSetCustomModeWithResult:YES label:@"声线上传成功"];
-                
                 [hud setHidden:YES];
+                if (self.myVoiceBlock) {
+                    self.myVoiceBlock(recordTime);
+                }
+                [self.navigationController popViewControllerAnimated:YES];
             }else{
                 [hud xmSetCustomModeWithResult:YES label:@"声线上传失败"];
                 [hud setHidden:YES];

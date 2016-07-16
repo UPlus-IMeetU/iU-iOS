@@ -207,4 +207,20 @@
 + (NSString *)xmBiuMeListClean;
 
 + (NSString *)xmBiuMeListAccept;
+
+
+
+//新版本接口
+/**
+ *  获取一半的数据
+ */
++ (NSString *)xmGetOtherHalf;
+/**
+ *  获取广场数据
+ */
++ (NSString *)xmGetSqureInfo;
+/**
+ *  获取我关心人的列表
+ */
++ (NSString *)xmGetCarePeopleList;
 @end

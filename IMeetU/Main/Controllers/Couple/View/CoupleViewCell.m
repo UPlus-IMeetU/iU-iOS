@@ -10,6 +10,7 @@
 #import "UIViewAdditions.h"
 #import <YYKit/YYKit.h>
 #import "NSDate+MJ.h"
+#import "DBSchools.h"
 @interface CoupleViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *portraitImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -37,8 +38,15 @@
     _modelCouple = modelCouple;
     [_portraitImageView setImageWithURL:[NSURL URLWithString:_modelCouple.icon_thumbnailUrl] placeholder:[UIImage imageNamed:@"photo_fail"]];
     _nameLabel.text = modelCouple.nickname;
-    _collegeNameLabel.text = modelCouple.school;
-    _signLabel.text = modelCouple.sign;
+    _collegeNameLabel.text = [self searchSchoolNameWithID:[modelCouple.school intValue]];
+    NSLog(@"modelCouple = %@",modelCouple);
+    
+    if (modelCouple.sign) {
+        _signLabel.text = modelCouple.sign;
+    }else{
+        _signLabel.text = @"火星来的，没有签名......";
+    }
+    
     _distanceLabel.text = [NSString stringWithFormat:@"%ldkm",(long)_modelCouple.distance];
     if ([_modelCouple.sex isEqualToString:@"1"]) {
         [_genderImageView setImage:[UIImage imageNamed:@"list_icon_boy"]];
@@ -49,7 +57,10 @@
 }
 
 
-
+- (NSString *)searchSchoolNameWithID:(NSInteger)schoolID{
+    DBSchools *dbSchools = [DBSchools shareInstance];
+    return [[dbSchools schoolWithID:schoolID] objectForKey:@"schoolName"];
+}
 
 
 
