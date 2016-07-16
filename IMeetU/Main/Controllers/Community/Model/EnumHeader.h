@@ -25,3 +25,8 @@ typedef NS_ENUM(NSInteger,RefreshType) {
     Refresh = 0,
     Loading = 1
 };
+
+typedef NS_ENUM(NSInteger,AlertType){
+    AlertTypeCareAboutMe = 0,
+    AlertTypeApplyCP = 1
+};

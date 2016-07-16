@@ -134,6 +134,7 @@
         switch (indexPath.row) {
             case 0:return @"身份"; break;
             case 1:return @"学校"; break;
+            case 2:return @"个人认证"; break;
         }
     }
     
@@ -186,6 +187,8 @@
             return [UIImage imageNamed:@"mine_main_imageview_shenfen"];
         }else if (row == 1){
             return [UIImage imageNamed:@"mine_main_imageview_school"];
+        }else if (row == 2){
+            return [UIImage imageNamed:@"mine_main_imageview_school"];
         }
     }
     
@@ -236,6 +239,8 @@
             }
         }else if (indexPath.row == 1){
             return [[DBSchools shareInstance] schoolNameWithID:[mineInfo.school integerValue]];
+        }else if (indexPath.row == 2){
+            return @"未认证";
         }
     }
     

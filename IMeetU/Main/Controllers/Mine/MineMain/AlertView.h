@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "EnumHeader.h"
 @interface AlertView : UIView
 +(AlertView *)instanceAlertView;
+@property (nonatomic,assign) AlertType alertType;
 @end

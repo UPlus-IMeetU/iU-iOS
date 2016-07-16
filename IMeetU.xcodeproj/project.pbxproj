@@ -343,6 +343,8 @@
 		04FA88281D11816D00F81A24 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FA88251D11816D00F81A24 /* libXG-SDK.a */; };
 		307DFDCAED0FA4E06183F229 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782115C93935C5E2EF970E47 /* Pods.framework */; };
 		6F0CC15D1D0574E6002B6D9D /* MJPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6F0CC15C1D0574E5002B6D9D /* MJPhotoBrowser.bundle */; };
+		6F13C19B1D39DB44005FCA84 /* ControllerAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F13C1991D39DB44005FCA84 /* ControllerAuthentication.m */; };
+		6F13C19C1D39DB44005FCA84 /* ControllerAuthentication.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F13C19A1D39DB44005FCA84 /* ControllerAuthentication.xib */; };
 		6F2AD3251D2364D0002B4338 /* UITabBar+badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2AD3241D2364D0002B4338 /* UITabBar+badge.m */; };
 		6F35633A1D06B65B0083AB90 /* banner_fail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F3563391D06B65B0083AB90 /* banner_fail@2x.png */; };
 		6F4A48541CE3117300D91B4C /* BiuBiu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A48531CE3117300D91B4C /* BiuBiu.storyboard */; };
@@ -1005,6 +1007,9 @@
 		04FA88271D11816D00F81A24 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSetting.h; sourceTree = "<group>"; };
 		13B58D6812D48FB900FADECB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6F0CC15C1D0574E5002B6D9D /* MJPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJPhotoBrowser.bundle; sourceTree = "<group>"; };
+		6F13C1981D39DB44005FCA84 /* ControllerAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControllerAuthentication.h; path = Authentication/ControllerAuthentication.h; sourceTree = "<group>"; };
+		6F13C1991D39DB44005FCA84 /* ControllerAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControllerAuthentication.m; path = Authentication/ControllerAuthentication.m; sourceTree = "<group>"; };
+		6F13C19A1D39DB44005FCA84 /* ControllerAuthentication.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ControllerAuthentication.xib; path = Authentication/ControllerAuthentication.xib; sourceTree = "<group>"; };
 		6F2AD3231D2364D0002B4338 /* UITabBar+badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+badge.h"; sourceTree = "<group>"; };
 		6F2AD3241D2364D0002B4338 /* UITabBar+badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+badge.m"; sourceTree = "<group>"; };
 		6F3563391D06B65B0083AB90 /* banner_fail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner_fail@2x.png"; sourceTree = "<group>"; };
@@ -1320,6 +1325,7 @@
 				6FC13BE61D35DD9300B64C62 /* MyVoice */,
 				6F63E46B1D3723E500EFAB0E /* MyCharm */,
 				6FC53DF51D38E88B00DA0A1C /* MyCareAbout */,
+				6F13C19D1D39DB4A005FCA84 /* Authentication */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2436,6 +2442,16 @@
 			path = push;
 			sourceTree = "<group>";
 		};
+		6F13C19D1D39DB4A005FCA84 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				6F13C1981D39DB44005FCA84 /* ControllerAuthentication.h */,
+				6F13C1991D39DB44005FCA84 /* ControllerAuthentication.m */,
+				6F13C19A1D39DB44005FCA84 /* ControllerAuthentication.xib */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
 		6F63E46B1D3723E500EFAB0E /* MyCharm */ = {
 			isa = PBXGroup;
 			children = (
@@ -2727,6 +2743,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FC13BE51D35DD8900B64C62 /* ControllerMyVoice.xib in Resources */,
+				6F13C19C1D39DB44005FCA84 /* ControllerAuthentication.xib in Resources */,
 				04AC66081D35F32700FB61F0 /* InputViewIMMore.xib in Resources */,
 				04AC661D1D35F6C200FB61F0 /* IMEmoji.bundle in Resources */,
 				046B49601CFC6B0B00946987 /* ViewHeaderPostTags.xib in Resources */,
@@ -2996,6 +3013,7 @@
 				044B3F841D0176F400E9E46F /* DBCacheKeyValue.m in Sources */,
 				044AF6FB1C8D17BF009AF59F /* XMInputViewCity.m in Sources */,
 				04C8F1DD1D23C61A007DCF9F /* ModelTag.m in Sources */,
+				6F13C19B1D39DB44005FCA84 /* ControllerAuthentication.m in Sources */,
 				044724B71C99B52B000FD349 /* ModelMatchSettingUpdate.m in Sources */,
 				044AF7681C8E7D4D009AF59F /* CellMineMainTableViewHeader.m in Sources */,
 				046B49571CFC6B0B00946987 /* CellPostReleaseImage.m in Sources */,

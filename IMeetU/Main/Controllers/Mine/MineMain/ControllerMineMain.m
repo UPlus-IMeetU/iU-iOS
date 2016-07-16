@@ -85,6 +85,7 @@
 #import "AlertView.h"
 
 #import "ControllerICarePeople.h"
+#import "ControllerAuthentication.h"
 
 @interface ControllerMineMain ()<UITableViewDataSource, UITableViewDelegate, CellMineMainPersonalIntroductionsDelegate, CellMineMainProfileAndPhotosDelegate, ControllerMineAlterCharacterDelegate, ControllerMineAlterInterestDelegate, ViewMineMainAlterProfileDelegate, ControllerMineAlterNameDelegate, ControllerMineAlterBirthdayDelegate, ControllerMineAlterConstellationDelegate, ControllerMineAlterAboutMeDelegate, ControllerMineAlterAddressDelegate, ControllerMineAlterBodyHeightWeightDelegate, ControllerMineAlterIdentityProfessionDelegate, ControllerMineAlterCompanyDelegate, ControllerSelectSchoolDelegate, ControllerMinePhotoBrowseDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, XMActionSheetMineMainMoreDelegate>
 
@@ -238,14 +239,6 @@
                 self.mineInfo.profileCircle = self.mineInfo.profileOrigin;
                 [self.labelNameNick setText:self.mineInfo.nameNick];
                 //进行状态的判定
-                NSInteger biuCode = self.mineInfo.biuCode;
-                if (biuCode == 0 || biuCode == 1) {
-                    [_biuButton setTitle:@"biu一下" forState:UIControlStateNormal];
-                    _biuButton.tag = 10001;
-                }else if(biuCode == 2){
-                    [_biuButton setTitle:@"和TA聊聊" forState:UIControlStateNormal];
-                    _biuButton.tag = 10002;
-                }
                 [self.tableView reloadData];
                 
                 if ((!self.mineInfo.school || self.mineInfo.school.length==0) && self.isMine){
@@ -282,7 +275,7 @@
     }else if (section == 2){
         return 8;
     }else if (section == 3){
-        return 3;
+        return 4;
     }else if (section == 4){
         return 2;
     }else if (section == 5){
@@ -496,6 +489,9 @@
     }else if (indexPath.section==3 && indexPath.row==2) {
         ControllerSelectSchool *controller = [ControllerSelectSchool controllerViewSelectSchool];
         controller.delegateSelegateSchool = self;
+        [self.navigationController pushViewController:controller animated:YES];
+    }else if(indexPath.section == 3 && indexPath.row == 3){
+        ControllerAuthentication *controller = [ControllerAuthentication new];
         [self.navigationController pushViewController:controller animated:YES];
     }else if (indexPath.section==4 && indexPath.row==1) {
         ControllerMineAlterCharacter *controller = [ControllerMineAlterCharacter controllerWithCharacters:self.mineInfo.characters gender:self.mineInfo.gender];
@@ -1010,11 +1006,16 @@
 //点击成为CP按钮
 
 - (IBAction)cpBtnClick:(id)sender {
+    AlertView *alertView = [AlertView instanceAlertView];
+    alertView.alertType =  AlertTypeCareAboutMe;
+    alertView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height );
+    [self.view addSubview:alertView];
 }
 
 //点击关心我的按钮
 - (void)careAboutMeBtnClick{
     AlertView *alertView = [AlertView instanceAlertView];
+    alertView.alertType =  AlertTypeCareAboutMe;
     alertView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height );
     [self.view addSubview:alertView];
 }
