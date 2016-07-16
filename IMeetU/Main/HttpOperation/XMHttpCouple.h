@@ -21,4 +21,8 @@
  *
  */
 - (void)xmGetSquareInfoWithBlock:(XMHttpBlockStandard)block;
+/**
+ *  获取关心人列表
+ */
+- (void)xmGetMyCareAboutPeopleWithBlock:(XMHttpBlockStandard)block;
 @end

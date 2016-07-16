@@ -9,23 +9,30 @@
 #import "AlertView.h"
 
 @interface AlertView()
-@property (weak, nonatomic) IBOutlet UIButton *careAboutMeView;
+@property (weak, nonatomic) IBOutlet UIView *careAboutMeView;
 @property (weak, nonatomic) IBOutlet UIButton *careAboutMeBtn;
 
 @end
 @implementation AlertView
-- (instancetype)init
+
+
++(AlertView *)instanceAlertView
 {
-    self = [super init];
-    if (self) {
-        self.careAboutMeView.layer.cornerRadius = 10;
-        self.careAboutMeView.clipsToBounds = YES;
-        self.careAboutMeBtn.layer.cornerRadius = 15;
-        self.careAboutMeBtn.clipsToBounds = YES;
-    }
-    return self;
+    NSArray* nibView =  [[NSBundle mainBundle] loadNibNamed:@"AlertView" owner:nil options:nil];
+    return [nibView objectAtIndex:0];
 }
 
+- (void)awakeFromNib{
+    self.careAboutMeView.layer.cornerRadius = 10;
+    self.careAboutMeView.clipsToBounds = YES;
+    self.careAboutMeBtn.layer.cornerRadius = 15;
+    self.careAboutMeBtn.clipsToBounds = YES;
+    
+    self.layer.transform = CATransform3DMakeScale(1.1, 1.1, 1);
+    [UIView animateWithDuration:0.5 animations:^{
+        self.layer.transform = CATransform3DMakeScale(1, 1, 1);
+    }];
+}
 
 - (IBAction)careAboutMeBtnClick:(id)sender {
     [self removeFromSuperview];

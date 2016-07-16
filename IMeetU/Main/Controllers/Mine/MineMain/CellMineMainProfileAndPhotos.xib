@@ -168,7 +168,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="eua-gK-jTw" secondAttribute="trailing" id="yYY-qp-8Me"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNh-Y4-CL9">
+                                            <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNh-Y4-CL9">
                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="54"/>
                                                 <connections>
                                                     <action selector="careAboutMeBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iA9-ol-eO1"/>
@@ -250,7 +250,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="uY6-8e-gIs" secondAttribute="trailing" id="pYI-Yy-XOZ"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNQ-En-Sb8">
+                                            <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNQ-En-Sb8">
                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="54"/>
                                                 <connections>
                                                     <action selector="iCareAboutBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zeu-fL-Bvn"/>

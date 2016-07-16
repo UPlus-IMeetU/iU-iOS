@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class ModelResponseMine;
-
+typedef void (^CareAboutMeBtnBlock) (UIButton *button);
 @protocol CellMineMainProfileAndPhotosDelegate;
 
 @interface CellMineMainProfileAndPhotos : UITableViewCell
-
+@property (nonatomic,copy) CareAboutMeBtnBlock careAboutMeBtnBlock;
 @property (nonatomic, weak) id<CellMineMainProfileAndPhotosDelegate> delegateCell;
 - (void)initWithMine:(ModelResponseMine*)mine isMine:(BOOL)isMine isShowBtnBack:(BOOL)isShowBtnBack;
 

@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view alpha="0.5" contentMode="scaleToFill" id="iN0-l3-epB" customClass="AlertView">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AlertView">
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -55,15 +55,15 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="nG7-zy-76R" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="05J-gl-4Ns"/>
                 <constraint firstItem="nG7-zy-76R" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="evA-As-Vsn"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
             <connections>
-                <outlet property="careAboutMeBtn" destination="nL5-FM-gEz" id="2TV-HC-7Ze"/>
-                <outlet property="careAboutMeView" destination="nL5-FM-gEz" id="815-7G-lIh"/>
+                <outlet property="careAboutMeBtn" destination="nL5-FM-gEz" id="YAe-zR-Qzh"/>
+                <outlet property="careAboutMeView" destination="nG7-zy-76R" id="ah2-cU-gWy"/>
             </connections>
         </view>
     </objects>

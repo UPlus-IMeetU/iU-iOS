@@ -38,4 +38,14 @@
 }
 
 
+- (void)xmGetMyCareAboutPeopleWithBlock:(XMHttpBlockStandard)block{
+    NSString *url = [XMUrlHttp xmGetCarePeopleList];
+    NSDictionary *param = [self parametersFactoryAppendTokenDeviceCode:@{}];
+    [self.httpManager POST:url parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        ModelResponse *response = [ModelResponse responselWithObject:responseObject];
+        block (response.state, response.data, task, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        block (RESPONSE_CODE_ERR, nil, task, error);
+    }];
+}
 @end

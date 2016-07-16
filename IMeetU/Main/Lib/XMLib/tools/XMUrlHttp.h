@@ -219,4 +219,8 @@
  *  获取广场数据
  */
 + (NSString *)xmGetSqureInfo;
+/**
+ *  获取我关心人的列表
+ */
++ (NSString *)xmGetCarePeopleList;
 @end

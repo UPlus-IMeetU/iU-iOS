@@ -3,8 +3,6 @@
 #import "UIScreen+Plug.h"
 #import "UINib+Plug.h"
 #import "UIColor+Plug.h"
-
-#import "CoupleViewCell.h"
 #import "MJRefresh.h"
 #import "MJIUHeader.h"
 #import "ControllerMineMain.h"
@@ -78,7 +76,7 @@
 
 - (void)loadSquareInfo{
     [[XMHttpCouple http] xmGetSquareInfoWithBlock:^(NSInteger code, id response, NSURLSessionDataTask *task, NSError *error) {
-        typeof(self) weakSelf = self;
+        __weak typeof(self) weakSelf = self;
         [_squareTableView.mj_header endRefreshing];
         if (code == 200) {
             ModelSquareList *modelSquareList = [ModelSquareList modelWithJSON:response];
@@ -89,7 +87,7 @@
     }];
 }
 - (void)loadCoupleWithTime:(long long)time withType:(RefreshType)refreshTyp{
-    typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     [[XMHttpCouple http] xmGetHalfListWithLastTime:time block:^(NSInteger code, id response, NSURLSessionDataTask *task, NSError *error) {
         [_coupleTableView.mj_footer endRefreshing];
         [_coupleTableView.mj_header endRefreshing];

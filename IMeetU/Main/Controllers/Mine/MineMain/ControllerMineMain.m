@@ -82,6 +82,10 @@
 
 #import "ControllerMyVoice.h"
 
+#import "AlertView.h"
+
+#import "ControllerICarePeople.h"
+
 @interface ControllerMineMain ()<UITableViewDataSource, UITableViewDelegate, CellMineMainPersonalIntroductionsDelegate, CellMineMainProfileAndPhotosDelegate, ControllerMineAlterCharacterDelegate, ControllerMineAlterInterestDelegate, ViewMineMainAlterProfileDelegate, ControllerMineAlterNameDelegate, ControllerMineAlterBirthdayDelegate, ControllerMineAlterConstellationDelegate, ControllerMineAlterAboutMeDelegate, ControllerMineAlterAddressDelegate, ControllerMineAlterBodyHeightWeightDelegate, ControllerMineAlterIdentityProfessionDelegate, ControllerMineAlterCompanyDelegate, ControllerSelectSchoolDelegate, ControllerMinePhotoBrowseDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, XMActionSheetMineMainMoreDelegate>
 
 @property (nonatomic, copy) NSString *userCode;
@@ -338,11 +342,20 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
+    __weak typeof (self) weakSelf = self;
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             CellMineMainProfileAndPhotos *cellProfileAndPhotos = [tableView dequeueReusableCellWithIdentifier:NibXMCellMineMainProfileAndPhotos forIndexPath:indexPath];
             [cellProfileAndPhotos initWithMine:self.mineInfo isMine:self.isMine isShowBtnBack:(self.getUserCodeFrom == MineMainGetUserCodeFromParam)];
             cellProfileAndPhotos.delegateCell = self;
+            cellProfileAndPhotos.careAboutMeBtnBlock = ^(UIButton *button){
+                if (button.tag == 10001) {
+                    [weakSelf careAboutMeBtnClick];
+                }else if(button.tag == 10002){
+                    [weakSelf myCareAboutBtnClick];
+                }
+                
+            };
             cell = cellProfileAndPhotos;
         }else if(indexPath.row == 1){
             CellMineMainBaseInfo *cellBaseInfo = [tableView dequeueReusableCellWithIdentifier:NibXMCellMineMainBaseInfo forIndexPath:indexPath];
@@ -997,6 +1010,18 @@
 //点击成为CP按钮
 
 - (IBAction)cpBtnClick:(id)sender {
+}
+
+//点击关心我的按钮
+- (void)careAboutMeBtnClick{
+    AlertView *alertView = [AlertView instanceAlertView];
+    alertView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height );
+    [self.view addSubview:alertView];
+}
+
+- (void)myCareAboutBtnClick{
+    ControllerICarePeople *carePeople = [ControllerICarePeople new];
+    [self.navigationController pushViewController:carePeople animated:YES];
 }
 
 @end

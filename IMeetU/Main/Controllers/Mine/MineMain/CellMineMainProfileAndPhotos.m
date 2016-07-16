@@ -278,10 +278,16 @@
 
 - (IBAction)careAboutMeBtnClick:(id)sender {
     NSLog(@"关心我的");
+    if (_careAboutMeBtnBlock) {
+        _careAboutMeBtnBlock(sender);
+    }
     
 }
 - (IBAction)iCareAboutBtnClick:(id)sender {
     NSLog(@"我关心的");
+    if (_careAboutMeBtnBlock) {
+        _careAboutMeBtnBlock(sender);
+    }
 }
 
 

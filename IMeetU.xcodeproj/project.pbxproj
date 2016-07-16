@@ -376,6 +376,8 @@
 		6FC13C091D362E9A00B64C62 /* SquareViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC13C031D362E9A00B64C62 /* SquareViewCell.xib */; };
 		6FC53DED1D38D5B700DA0A1C /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC53DEC1D38D5B700DA0A1C /* AlertView.m */; };
 		6FC53DEF1D38D5C900DA0A1C /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC53DEE1D38D5C900DA0A1C /* AlertView.xib */; };
+		6FC53DF31D38E76400DA0A1C /* ControllerICarePeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC53DF11D38E76400DA0A1C /* ControllerICarePeople.m */; };
+		6FC53DF41D38E76400DA0A1C /* ControllerICarePeople.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC53DF21D38E76400DA0A1C /* ControllerICarePeople.xib */; };
 		6FE066341D3332F2001A02A6 /* IMCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE066321D3332F2001A02A6 /* IMCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -1057,6 +1059,9 @@
 		6FC53DEB1D38D5B700DA0A1C /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
 		6FC53DEC1D38D5B700DA0A1C /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertView.m; sourceTree = "<group>"; };
 		6FC53DEE1D38D5C900DA0A1C /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		6FC53DF01D38E76400DA0A1C /* ControllerICarePeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControllerICarePeople.h; path = MyCarePeople/ControllerICarePeople.h; sourceTree = "<group>"; };
+		6FC53DF11D38E76400DA0A1C /* ControllerICarePeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControllerICarePeople.m; path = MyCarePeople/ControllerICarePeople.m; sourceTree = "<group>"; };
+		6FC53DF21D38E76400DA0A1C /* ControllerICarePeople.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ControllerICarePeople.xib; path = MyCarePeople/ControllerICarePeople.xib; sourceTree = "<group>"; };
 		6FE066321D3332F2001A02A6 /* IMCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMCore.framework; sourceTree = "<group>"; };
 		6FE066331D3332F2001A02A6 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
 		74126A2A9FF1D8D3F7A7D4C1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1314,6 +1319,7 @@
 				044AF7081C8D3061009AF59F /* AlterUserInfo */,
 				6FC13BE61D35DD9300B64C62 /* MyVoice */,
 				6F63E46B1D3723E500EFAB0E /* MyCharm */,
+				6FC53DF51D38E88B00DA0A1C /* MyCareAbout */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2560,6 +2566,16 @@
 			name = MyVoice;
 			sourceTree = "<group>";
 		};
+		6FC53DF51D38E88B00DA0A1C /* MyCareAbout */ = {
+			isa = PBXGroup;
+			children = (
+				6FC53DF01D38E76400DA0A1C /* ControllerICarePeople.h */,
+				6FC53DF11D38E76400DA0A1C /* ControllerICarePeople.m */,
+				6FC53DF21D38E76400DA0A1C /* ControllerICarePeople.xib */,
+			);
+			name = MyCareAbout;
+			sourceTree = "<group>";
+		};
 		8DED88011BE5CD828EC52278 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2723,6 +2739,7 @@
 				044AF6DA1C8C88B0009AF59F /* schools.sqlite in Resources */,
 				0450B8181C925CF0001DD60A /* ReusableViewMineAlterInterestHeader.xib in Resources */,
 				6FBC68761CFBCE9300B45657 /* PostListCell.xib in Resources */,
+				6FC53DF41D38E76400DA0A1C /* ControllerICarePeople.xib in Resources */,
 				6FC13C091D362E9A00B64C62 /* SquareViewCell.xib in Resources */,
 				04DA95EB1CAD7CE900A5BF37 /* ViewNewComerGuide.xib in Resources */,
 				044AF6831C8C85E7009AF59F /* ControllerSelectSchool.storyboard in Resources */,
@@ -2891,6 +2908,7 @@
 				047519C61CA631CB009115CE /* BCSecurityPolicy.m in Sources */,
 				046B495A1CFC6B0B00946987 /* ControllerPostReleaseImage.m in Sources */,
 				6FBC68751CFBCE9300B45657 /* PostListCell.m in Sources */,
+				6FC53DF31D38E76400DA0A1C /* ControllerICarePeople.m in Sources */,
 				047519C41CA631CB009115CE /* BCHTTPSessionManager.m in Sources */,
 				044AF7381C8D8747009AF59F /* ControllerUserRegisterSecondStep.m in Sources */,
 				04C8F2151D23C640007DCF9F /* ModelActivity.m in Sources */,

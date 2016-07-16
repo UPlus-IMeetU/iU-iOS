@@ -1,5 +1,5 @@
 //
-//  AlertView.h
+//  ControllerICarePeople.h
 //  IMeetU
 //
 //  Created by Spring on 16/7/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AlertView : UIView
-+(AlertView *)instanceAlertView;
+@interface ControllerICarePeople : UIViewController
+
 @end
