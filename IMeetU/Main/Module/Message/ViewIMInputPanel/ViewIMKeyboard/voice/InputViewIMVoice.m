@@ -252,7 +252,7 @@
             self.viewRecoderState.hidden = NO;
             self.viewRecoderDuration.hidden = YES;
             
-            [self senderVoice];
+            [self sendVoice];
         }
         
         self.audio = [[XMSoundRecorder sharedInstance] stopRecord];
@@ -270,9 +270,13 @@
     [self.viewVoicePowerIndicatorR cleanPowerItem];
 }
 
-- (void)senderVoice{
+- (void)sendVoice{
     if (self.recorderSeconds > 1){
-        
+        if (self.delegateKeyboard) {
+            if ([self.delegateKeyboard respondsToSelector:@selector(inputViewIMVoice:voice:)]) {
+                [self.delegateKeyboard inputViewIMVoice:self voice:self.audio];
+            }
+        }
     }else{
         //录音时间太短
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"录音太短" message:@"你最少需要录制1秒的语音" preferredStyle:UIAlertControllerStyleAlert];
@@ -325,7 +329,7 @@
     self.viewRecoderState.hidden = NO;
     self.viewRecoderDuration.hidden = YES;
     
-    [self senderVoice];
+    [self sendVoice];
 }
 
 - (NSString*)recorderSecondsToStr:(int)seconds{

@@ -18,19 +18,9 @@
 
 @property (nonatomic, strong) NSMutableArray *msgs;
 
-@property (weak, nonatomic) IBOutlet ViewIMInputPanel *viewIMInputPanel;
+@property (weak, nonatomic) ViewIMInputPanel *viewIMInputPanel;
 
-@property (weak, nonatomic) IBOutlet UIButton *btnVoice;
-@property (weak, nonatomic) IBOutlet UIButton *btnCamera;
-@property (weak, nonatomic) IBOutlet UIButton *btnPhotos;
-@property (weak, nonatomic) IBOutlet UIButton *btnEmoji;
 
-@property (weak, nonatomic) IBOutlet UIView *viewKeyboardWrap;
-@property (nonatomic, weak) IBOutlet UIView *textViewContentWrap;
-@property (weak, nonatomic) IBOutlet YYTextView *yyTextViewContent;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constarintViewIMInputPanelHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constarintViewIMInputPanelMarginBottom;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewKeyboardWidth;
 
 @end
 
@@ -49,22 +39,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.viewIMInputPanel.superController = self;
-    self.viewIMInputPanel.delegateInputPanel = self;
-    
-    self.viewIMInputPanel.btnVoice = self.btnVoice;
-    self.viewIMInputPanel.btnEmoji = self.btnEmoji;
-    self.viewIMInputPanel.btnCamera = self.btnCamera;
-    self.viewIMInputPanel.btnPhotos = self.btnPhotos;
-    self.viewIMInputPanel.yyTextViewContent = self.yyTextViewContent;
-    self.viewIMInputPanel.viewKeyboardWrap = self.viewKeyboardWrap;
-    self.viewIMInputPanel.textViewContentWrap = self.textViewContentWrap;
-    
-    self.constarintViewIMInputPanelMarginBottom.constant = -220;
-    self.viewIMInputPanel.constraintViewInputViewHeight = self.constarintViewIMInputPanelHeight;
-    self.viewIMInputPanel.constarintViewIMInputPanelMarginBottom = self.constarintViewIMInputPanelMarginBottom;
-    
-    self.constraintViewKeyboardWidth.constant = [UIScreen mainScreen].bounds.size.width;
+    self.viewIMInputPanel = [ViewIMInputPanel viewIMInputPanelWithSuperController:self delegate:self];
+    [self.view addSubview:self.viewIMInputPanel];
     [self.viewIMInputPanel initial];
 }
 
@@ -116,5 +92,13 @@
 
 - (void)viewIMInputPanel:(ViewIMInputPanel *)view sendTxt:(NSString *)txt{
     NSLog(@"====================%@", txt);
+}
+
+- (void)viewIMInputPanel:(ViewIMInputPanel *)view sendVoice:(NSData *)voice{
+    NSLog(@"============voice");
+}
+
+- (void)viewIMInputPanel:(ViewIMInputPanel *)view sendImg:(UIImage *)img{
+    NSLog(@"============img");
 }
 @end

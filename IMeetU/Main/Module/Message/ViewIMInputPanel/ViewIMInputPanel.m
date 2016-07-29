@@ -20,7 +20,24 @@
 #import "IMEmojiHelper.h"
 #import "TextParserIMInputPanel.h"
 
-@interface ViewIMInputPanel()<InputViewIMEmojiDelegate, YYTextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ViewIMInputPanel()<InputViewIMEmojiDelegate, InputViewIMVoiceDelegate, YYTextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (nonatomic, weak) UIViewController *superController;
+@property (nonatomic, weak) id<ViewIMInputPanelDelegate> delegateInputPanel;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnVoice;
+@property (weak, nonatomic) IBOutlet UIButton *btnCamera;
+@property (weak, nonatomic) IBOutlet UIButton *btnPhotos;
+@property (weak, nonatomic) IBOutlet UIButton *btnEmoji;
+
+@property (weak, nonatomic) IBOutlet UIView *viewKeyboardWrap;
+@property (nonatomic, weak) IBOutlet UIView *textViewContentWrap;
+@property (weak, nonatomic) IBOutlet YYTextView *yyTextViewContent;
+
+@property (strong, nonatomic) NSLayoutConstraint *constarintViewHeight;
+@property (strong, nonatomic) NSLayoutConstraint *constarintViewMarginLeft;
+@property (strong, nonatomic) NSLayoutConstraint *constarintViewMarginRight;
+@property (strong, nonatomic) NSLayoutConstraint *constarintViewMarginBottom;
 
 @property (nonatomic, assign) CGFloat viewHeight;
 @property (nonatomic, assign) CGFloat viewFrameHeight;
@@ -30,7 +47,7 @@
 
 @property (nonatomic, strong) InputViewIMVoice *inputViewIMVoice;
 @property (nonatomic, strong) InputViewIMEmoji *inputViewIMEmoji;
-@property (nonatomic, strong) InputViewIMMore *inputViewIMMore;
+//@property (nonatomic, strong) InputViewIMMore *inputViewIMMore;
 
 //值为YES时，当键盘关闭时，不关闭输入面板
 @property (nonatomic, assign) BOOL isNotCloseWhenKeyboardClose;
@@ -39,9 +56,10 @@
 @end
 @implementation ViewIMInputPanel
 
-+ (instancetype)viewIMInputPanelWithSuperController:(UIViewController *)controller{
++ (instancetype)viewIMInputPanelWithSuperController:(UIViewController *)controller delegate:(id<ViewIMInputPanelDelegate>)delegate{
     ViewIMInputPanel *view = [UINib xmViewWithName:@"ViewIMInputPanel" class:[ViewIMInputPanel class]];
     view.superController = controller;
+    view.delegateInputPanel = delegate;
     
     return view;
 }
@@ -49,17 +67,15 @@
 - (void)initial{
     self.inputViewHeight = 75;
     
+    self.inputViewIMVoice.delegateKeyboard = self;
     [self.viewKeyboardWrap addSubview:self.inputViewIMVoice];
     
     self.inputViewIMEmoji.delegateInputView = self;
     [self.viewKeyboardWrap addSubview:self.inputViewIMEmoji];
     self.inputViewIMEmoji.frame = CGRectMake(0, 0, [UIScreen screenWidth], 220);
     
-    //[self.viewKeyboardWrap addSubview:self.inputViewIMMore];
-    
     self.inputViewIMVoice.hidden = YES;
     self.inputViewIMEmoji.hidden = YES;
-    self.inputViewIMMore.hidden = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -77,6 +93,15 @@
     [self.btnVoice addTarget:self action:@selector(onTouchUpInsideBtnVoice:) forControlEvents:UIControlEventTouchUpInside];
     [self.btnCamera addTarget:self action:@selector(onTouchUpInsideBtnPhotos:) forControlEvents:UIControlEventTouchUpInside];
     [self.btnPhotos addTarget:self action:@selector(onTouchUpInsideBtnCamera:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.constarintViewHeight = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:295];
+    self.constarintViewMarginLeft = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.superController.view attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0];
+    self.constarintViewMarginRight = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.superController.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0];
+    self.constarintViewMarginBottom = [NSLayoutConstraint constraintWithItem:self.superController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-220];
+    self.constarintViewHeight.active = YES;
+    self.constarintViewMarginLeft.active = YES;
+    self.constarintViewMarginRight.active = YES;
+    self.constarintViewMarginBottom.active = YES;
 }
 
 - (void)onTouchUpInsideBtnVoice:(UIButton*)sender {
@@ -84,14 +109,13 @@
     if (sender.selected) {
         self.inputViewIMVoice.hidden = NO;
         self.inputViewIMEmoji.hidden = YES;
-        self.inputViewIMMore.hidden = YES;
         
         if ([self.yyTextViewContent isFirstResponder]) {
             self.isNotCloseWhenKeyboardClose = YES;
             [self.yyTextViewContent resignFirstResponder];
         }else{
             [UIView animateWithDuration:0.25 animations:^{
-                self.constarintViewIMInputPanelMarginBottom.constant = 0;
+                self.constarintViewMarginBottom.constant = 0;
                 [self layoutIfNeeded];
             }];
         }
@@ -117,14 +141,13 @@
     if (sender.selected) {
         self.inputViewIMVoice.hidden = YES;
         self.inputViewIMEmoji.hidden = NO;
-        self.inputViewIMMore.hidden = YES;
         
         if ([self.yyTextViewContent isFirstResponder]) {
             self.isNotCloseWhenKeyboardClose = YES;
             [self.yyTextViewContent resignFirstResponder];
         }else{
             [UIView animateWithDuration:0.25 animations:^{
-                self.constarintViewIMInputPanelMarginBottom.constant = 0;
+                self.constarintViewMarginBottom.constant = 0;
                 [self layoutIfNeeded];
             }];
         }
@@ -135,30 +158,6 @@
     self.btnVoice.selected = NO;
 }
 
-- (void)onTouchUpInsideBtnMore:(UIButton*)sender {
-    sender.selected = !sender.selected;
-    if (sender.selected) {
-        self.inputViewIMVoice.hidden = YES;
-        self.inputViewIMEmoji.hidden = YES;
-        self.inputViewIMMore.hidden = NO;
-        
-        if ([self.yyTextViewContent isFirstResponder]) {
-            self.isNotCloseWhenKeyboardClose = YES;
-            [self.yyTextViewContent resignFirstResponder];
-        }else{
-            [UIView animateWithDuration:0.25 animations:^{
-                self.frame = CGRectMake(0, [UIScreen screenHeight]-self.inputViewHeight-self.keyBoardViewHeight, [UIScreen screenWidth], self.viewFrameHeight);
-            }];
-        }
-        
-        [self refreshFrame];
-    }else{
-        [self.yyTextViewContent becomeFirstResponder];
-    }
-    
-    self.btnVoice.selected = NO;
-    self.btnEmoji.selected = NO;
-}
 
 #pragma mark - 键盘相关操作
 #pragma mark 关闭键盘
@@ -168,7 +167,7 @@
         self.isNotCloseWhenKeyboardClose = NO;
     }else{
         [UIView animateWithDuration:0.5 animations:^{
-            self.constarintViewIMInputPanelMarginBottom.constant = -self.keyBoardViewHeight;
+            self.constarintViewMarginBottom.constant = -self.keyBoardViewHeight;
         }];
     }
 }
@@ -178,7 +177,7 @@
     float duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     self.keyBoardViewHeightSys = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     [UIView animateWithDuration:duration animations:^{
-        self.constarintViewIMInputPanelMarginBottom.constant = self.keyBoardViewHeightSys - self.keyBoardViewHeight;
+        self.constarintViewMarginBottom.constant = self.keyBoardViewHeightSys - self.keyBoardViewHeight;
         [self layoutIfNeeded];
     }];
     
@@ -191,9 +190,9 @@
     float duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     [UIView animateWithDuration:duration animations:^{
         if (self.isNotCloseWhenKeyboardClose) {
-            self.constarintViewIMInputPanelMarginBottom.constant = 0;
+            self.constarintViewMarginBottom.constant = 0;
         }else{
-            self.constarintViewIMInputPanelMarginBottom.constant = -self.keyBoardViewHeight;
+            self.constarintViewMarginBottom.constant = -self.keyBoardViewHeight;
         }
         [self layoutIfNeeded];
         self.isNotCloseWhenKeyboardClose = NO;
@@ -239,6 +238,7 @@
             [self.delegateInputPanel viewIMInputPanel:self sendTxt:self.yyTextViewContent.text];
         }
     }
+    self.yyTextViewContent.text = @"";
 }
 
 #pragma mark - YYTextView代理
@@ -255,6 +255,7 @@
             }
         }
         
+        self.yyTextViewContent.text = @"";
         return NO;
     }
     
@@ -270,8 +271,39 @@
     height = height < 24?24:height;
     height = height > 90?90:height;
     
-    self.constraintViewInputViewHeight.constant = 220+height+51;
+    self.constarintViewHeight.constant = 220+height+51;
     [self layoutIfNeeded];
+}
+
+#pragma mark - 语音键盘回调
+- (void)inputViewIMVoice:(InputViewIMVoice *)view voice:(NSData *)voice{
+    if (self.delegateInputPanel) {
+        if ([self.delegateInputPanel respondsToSelector:@selector(viewIMInputPanel:sendVoice:)]) {
+            [self.delegateInputPanel viewIMInputPanel:self sendVoice:voice];
+        }
+    }
+}
+
+#pragma mark - 照片相关
+- (UIImagePickerController *)pickControllerImage{
+    if (!_pickControllerImage) {
+        _pickControllerImage = [[UIImagePickerController alloc] init];
+        _pickControllerImage.delegate = self;
+        _pickControllerImage.allowsEditing = NO;
+    }
+    return _pickControllerImage;
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    [self.pickControllerImage dismissViewControllerAnimated:YES completion:^{
+        UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+        if (self.delegateInputPanel) {
+            if ([self.delegateInputPanel respondsToSelector:@selector(viewIMInputPanel:sendImg:)]) {
+                [self.delegateInputPanel viewIMInputPanel:self sendImg:image];
+            }
+        }
+    }];
+    
 }
 
 #pragma mark - 懒加载键盘视图
@@ -289,27 +321,4 @@
     return _inputViewIMEmoji;
 }
 
-- (InputViewIMMore *)inputViewIMMore{
-    if (!_inputViewIMMore) {
-        _inputViewIMMore = [InputViewIMMore inputViewWithHeight:self.keyBoardViewHeight];
-    }
-    return _inputViewIMMore;
-}
-
-
-- (UIImagePickerController *)pickControllerImage{
-    if (!_pickControllerImage) {
-        _pickControllerImage = [[UIImagePickerController alloc] init];
-        _pickControllerImage.delegate = self;
-        _pickControllerImage.allowsEditing = YES;
-    }
-    return _pickControllerImage;
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    [self.pickControllerImage dismissViewControllerAnimated:YES completion:^{
-        UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
-    }];
-    
-}
 @end

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		040CAC191D38D816008C125B /* XMSoundRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CAC181D38D816008C125B /* XMSoundRecorder.m */; };
 		040CAC1D1D39EA2D008C125B /* XMViewVoicePowerIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CAC1C1D39EA2D008C125B /* XMViewVoicePowerIndicator.m */; };
+		040CAC1F1D3A450E008C125B /* ViewIMInputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040CAC1E1D3A450E008C125B /* ViewIMInputPanel.xib */; };
+		040CACC31D3CAE95008C125B /* CellIMChatMsgTxtRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CACC21D3CAE95008C125B /* CellIMChatMsgTxtRight.m */; };
+		040CACC61D3CAEA4008C125B /* CellIMChatMsgTxtLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CACC51D3CAEA4008C125B /* CellIMChatMsgTxtLeft.m */; };
+		040CACC81D3CB18C008C125B /* CellIMChatMsgTxtLeft.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040CACC71D3CB18C008C125B /* CellIMChatMsgTxtLeft.xib */; };
+		040CACCA1D3CB41F008C125B /* CellIMChatMsgTxtRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040CACC91D3CB41F008C125B /* CellIMChatMsgTxtRight.xib */; };
 		040F4F8D1CAAB96100AD8334 /* XMAlertDialogUnfriendYou.m in Sources */ = {isa = PBXBuildFile; fileRef = 040F4F8C1CAAB96100AD8334 /* XMAlertDialogUnfriendYou.m */; };
 		040F4F911CAAC2CE00AD8334 /* DBCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 040F4F901CAAC2CE00AD8334 /* DBCache.m */; };
 		040F4F961CAB731200AD8334 /* biubiu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 040F4F951CAB731200AD8334 /* biubiu.wav */; };
@@ -407,6 +412,13 @@
 		040CAC181D38D816008C125B /* XMSoundRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMSoundRecorder.m; sourceTree = "<group>"; };
 		040CAC1B1D39EA2D008C125B /* XMViewVoicePowerIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMViewVoicePowerIndicator.h; sourceTree = "<group>"; };
 		040CAC1C1D39EA2D008C125B /* XMViewVoicePowerIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMViewVoicePowerIndicator.m; sourceTree = "<group>"; };
+		040CAC1E1D3A450E008C125B /* ViewIMInputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewIMInputPanel.xib; sourceTree = "<group>"; };
+		040CACC11D3CAE95008C125B /* CellIMChatMsgTxtRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellIMChatMsgTxtRight.h; sourceTree = "<group>"; };
+		040CACC21D3CAE95008C125B /* CellIMChatMsgTxtRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellIMChatMsgTxtRight.m; sourceTree = "<group>"; };
+		040CACC41D3CAEA4008C125B /* CellIMChatMsgTxtLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellIMChatMsgTxtLeft.h; sourceTree = "<group>"; };
+		040CACC51D3CAEA4008C125B /* CellIMChatMsgTxtLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellIMChatMsgTxtLeft.m; sourceTree = "<group>"; };
+		040CACC71D3CB18C008C125B /* CellIMChatMsgTxtLeft.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellIMChatMsgTxtLeft.xib; sourceTree = "<group>"; };
+		040CACC91D3CB41F008C125B /* CellIMChatMsgTxtRight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellIMChatMsgTxtRight.xib; sourceTree = "<group>"; };
 		040F4F8B1CAAB96100AD8334 /* XMAlertDialogUnfriendYou.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAlertDialogUnfriendYou.h; sourceTree = "<group>"; };
 		040F4F8C1CAAB96100AD8334 /* XMAlertDialogUnfriendYou.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAlertDialogUnfriendYou.m; sourceTree = "<group>"; };
 		040F4F8F1CAAC2CE00AD8334 /* DBCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCache.h; sourceTree = "<group>"; };
@@ -1137,6 +1149,19 @@
 				040CAC1C1D39EA2D008C125B /* XMViewVoicePowerIndicator.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		040CACC01D3CAE64008C125B /* MsgCell */ = {
+			isa = PBXGroup;
+			children = (
+				040CACC11D3CAE95008C125B /* CellIMChatMsgTxtRight.h */,
+				040CACC21D3CAE95008C125B /* CellIMChatMsgTxtRight.m */,
+				040CACC91D3CB41F008C125B /* CellIMChatMsgTxtRight.xib */,
+				040CACC41D3CAEA4008C125B /* CellIMChatMsgTxtLeft.h */,
+				040CACC51D3CAEA4008C125B /* CellIMChatMsgTxtLeft.m */,
+				040CACC71D3CB18C008C125B /* CellIMChatMsgTxtLeft.xib */,
+			);
+			path = MsgCell;
 			sourceTree = "<group>";
 		};
 		040F4F8E1CAAC23D00AD8334 /* DB */ = {
@@ -1891,11 +1916,12 @@
 		04AC65C61D35F32700FB61F0 /* ViewIMInputPanel */ = {
 			isa = PBXGroup;
 			children = (
+				04AC65CC1D35F32700FB61F0 /* ViewIMKeyboard */,
 				04AC65C71D35F32700FB61F0 /* TextParserIMInputPanel.h */,
 				04AC65C81D35F32700FB61F0 /* TextParserIMInputPanel.m */,
 				04AC65C91D35F32700FB61F0 /* ViewIMInputPanel.h */,
 				04AC65CA1D35F32700FB61F0 /* ViewIMInputPanel.m */,
-				04AC65CC1D35F32700FB61F0 /* ViewIMKeyboard */,
+				040CAC1E1D3A450E008C125B /* ViewIMInputPanel.xib */,
 				04AC65E91D35F32700FB61F0 /* InputViewIM.h */,
 				04AC65EA1D35F32700FB61F0 /* InputViewIM.m */,
 			);
@@ -2401,6 +2427,7 @@
 			children = (
 				04AC65C61D35F32700FB61F0 /* ViewIMInputPanel */,
 				04AC660B1D35F47600FB61F0 /* EmojiHelper */,
+				040CACC01D3CAE64008C125B /* MsgCell */,
 				04C8F2451D23D2EB007DCF9F /* ControllerIMChatMsg.h */,
 				04C8F2461D23D2EB007DCF9F /* ControllerIMChatMsg.m */,
 				04AC65C01D35ECBE00FB61F0 /* ControllerNaviIM.h */,
@@ -2763,8 +2790,10 @@
 				6FC13BE51D35DD8900B64C62 /* ControllerMyVoice.xib in Resources */,
 				6F13C19C1D39DB44005FCA84 /* ControllerAuthentication.xib in Resources */,
 				04AC66081D35F32700FB61F0 /* InputViewIMMore.xib in Resources */,
+				040CACCA1D3CB41F008C125B /* CellIMChatMsgTxtRight.xib in Resources */,
 				04AC661D1D35F6C200FB61F0 /* IMEmoji.bundle in Resources */,
 				046B49601CFC6B0B00946987 /* ViewHeaderPostTags.xib in Resources */,
+				040CACC81D3CB18C008C125B /* CellIMChatMsgTxtLeft.xib in Resources */,
 				044AF76A1C8E7E48009AF59F /* CellMineMainTableViewHeader.xib in Resources */,
 				044AF7581C8E7210009AF59F /* CellMineMainBaseInfo.xib in Resources */,
 				04B165DE1C89D87E00EE6DB8 /* Guide.storyboard in Resources */,
@@ -2805,6 +2834,7 @@
 				6F63E46A1D3723E000EFAB0E /* ControllerMyCharm.xib in Resources */,
 				044AF7891C8FCEFE009AF59F /* CellMinePhotoBrowse.xib in Resources */,
 				04AC65FB1D35F32700FB61F0 /* CellCollectionEmojiStore.xib in Resources */,
+				040CAC1F1D3A450E008C125B /* ViewIMInputPanel.xib in Resources */,
 				04B165751C89CC0B00EE6DB8 /* LaunchScreen.storyboard in Resources */,
 				0450B7C41C906678001DD60A /* Setting.storyboard in Resources */,
 				0450B7C91C907F13001DD60A /* ReusableViewMatchSettingHeader.xib in Resources */,
@@ -2968,6 +2998,7 @@
 				0450B7F21C91D38B001DD60A /* ControllerMineAlterIdentityProfession.m in Sources */,
 				04C8F1D51D23C61A007DCF9F /* ModelComment.m in Sources */,
 				044AF74F1C8E6F86009AF59F /* CellMineMainProfileAndPhotos.m in Sources */,
+				040CACC61D3CAEA4008C125B /* CellIMChatMsgTxtLeft.m in Sources */,
 				044AF6F71C8D17BF009AF59F /* XMInputViewFactory.m in Sources */,
 				6F63E45F1D37231E00EFAB0E /* ModelSquare.m in Sources */,
 				047519CB1CA631CB009115CE /* BCPayUtil.m in Sources */,
@@ -3123,6 +3154,7 @@
 				047519BD1CA631CB009115CE /* BCQueryRefundsCountReq.m in Sources */,
 				044724BE1C9A5D7F000FD349 /* XMAlertDialogLoginRegister.m in Sources */,
 				0450B7E41C91A118001DD60A /* ViewMineMainAlterProfile.m in Sources */,
+				040CACC31D3CAE95008C125B /* CellIMChatMsgTxtRight.m in Sources */,
 				0450B8171C925CF0001DD60A /* ReusableViewMineAlterInterestHeader.m in Sources */,
 				044AF6841C8C85E7009AF59F /* ControllerSelectSchool.m in Sources */,
 				044AF77F1C8F0536009AF59F /* CellMineMainFooter.m in Sources */,

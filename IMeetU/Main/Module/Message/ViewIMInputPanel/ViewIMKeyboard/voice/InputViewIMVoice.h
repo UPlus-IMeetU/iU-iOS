@@ -15,6 +15,14 @@ typedef NS_ENUM(NSInteger ,IMRecorderOperation) {
     IMRecorderOperationDelete
 };
 
+@protocol InputViewIMVoiceDelegate;
+
 @interface InputViewIMVoice : InputViewIM
+
+@property (nonatomic, weak) id<InputViewIMVoiceDelegate> delegateKeyboard;
+
+@end
+@protocol InputViewIMVoiceDelegate <NSObject>
+- (void)inputViewIMVoice:(InputViewIMVoice*)view voice:(NSData*)voice;
 
 @end
